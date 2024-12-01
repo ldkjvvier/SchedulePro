@@ -10,7 +10,15 @@ module.exports = {
 		'./src/app/**/*.{js,jsx,ts,tsx,mdx}',
 	],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				primary: '#FFFFFF', // Blanco Limpio
+				secondary: '#F5F5F5', // Gris Claro
+				'text-main': '#333333', // Gris Oscuro
+				'text-secondary': '#6B7280', // Gris Medio
+				accent: '#D1D5DB', // Gris Plateado
+			},
+		},
 	},
 	plugins: [],
 }
