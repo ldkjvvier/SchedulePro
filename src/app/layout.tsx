@@ -27,7 +27,7 @@ export default function RootLayout({
 
 			<ThemeRegistry>
 				<body className={inter.className}>
-					<main className="tw-flex tw-min-h-screen tw-flex-col tw-items-center tw-justify-between tw-bg-secondary">
+					<main className="tw-flex tw-min-h-screen tw-flex-col tw-items-center tw-justify-between tw-bg-transparent">
 						{children}
 					</main>
 				</body>
