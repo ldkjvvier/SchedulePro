@@ -40,7 +40,7 @@ const Header = () => {
 							Inicio
 						</Button>
 					</Link>
-					<Link href="/servicios" passHref>
+					<Link href="/services" passHref>
 						<Button
 							className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
 							variant="text"
@@ -48,7 +48,7 @@ const Header = () => {
 							Servicios
 						</Button>
 					</Link>
-					<Link href="/contacto" passHref>
+					<Link href="/contact" passHref>
 						<Button
 							className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
 							variant="text"
