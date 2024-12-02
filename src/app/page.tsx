@@ -9,8 +9,8 @@ export default function Home() {
 		<>
 			<Header />
 
-			<div className="tw-bg-secondary">
-				<div className="container mx-auto tw-px-4 tw-py-8">
+			<>
+				<div className="tw-mx-auto tw-px-16 tw-py-8">
 					{/* Sección de Bienvenida */}
 					<section className="tw-mb-12 tw-text-center">
 						<h1 className="tw-text-4xl tw-font-bold tw-mb-4 tw-text-text-main">
@@ -20,15 +20,9 @@ export default function Home() {
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.
 							Ullam cupiditate ut vitae autem necessitatibus.
 						</p>
-						<Link
-							href="/servicios"
-							className="tw-bg-accent tw-text-text-main tw-px-6 tw-py-2 tw-rounded-full hover:tw-bg-highlight hover:tw-text-white tw-transition-colors"
-						>
-							Ver Servicios
-						</Link>
 					</section>
 
-					<section>
+					<section className="tw-grid tw-grid-rows-2 tw-gap-4 md:tw-grid-cols-2">
 						{/* Sección Sobre Nosotros */}
 						<div className="tw-mb-12">
 							<h2 className="tw-text-2xl tw-font-bold tw-mb-4 tw-text-text-main">
@@ -73,7 +67,7 @@ export default function Home() {
 						</div>
 					</section>
 				</div>
-			</div>
+			</>
 			<Footer />
 		</>
 	)
