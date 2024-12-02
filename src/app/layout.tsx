@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import ThemeRegistry from './components/themeRegistry'
 import './globals.css'
-
+import Header from './components/Header'
+import Footer from './components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({
 
 			<ThemeRegistry>
 				<body className={inter.className}>
-					<main className="tw-flex tw-min-h-screen tw-flex-col tw-items-center tw-justify-between tw-p-24">
+					<main className="tw-flex tw-min-h-screen tw-flex-col tw-items-center tw-justify-between">
 						{children}
 					</main>
 				</body>
