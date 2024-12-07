@@ -21,7 +21,11 @@ const Header = () => {
 	return (
 		<AppBar
 			position="static"
-			className="tw-bg-primary tw-border-b tw-border-accent"
+			sx={{
+				backgroundColor: '#FFFFFF',
+				borderBottom: '1px solid',
+				borderColor: 'accent',
+			}}
 			elevation={0}
 		>
 			<Toolbar className="tw-justify-between">
