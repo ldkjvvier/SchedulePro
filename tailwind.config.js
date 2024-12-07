@@ -17,6 +17,10 @@ module.exports = {
 				'text-main': '#333333', // Gris Oscuro
 				'text-secondary': '#6B7280', // Gris Medio
 				accent: '#D1D5DB', // Gris Plateado
+				/* BUTTON COLORS */
+				'button-primary': '#2563EB', // Azul
+				'button-secondary': '#F87171', // Rojo
+				'button-tertiary': '#34D399', // Verde
 			},
 		},
 	},
