@@ -16,14 +16,14 @@ const Footer = () => {
 					<nav className="tw-text-center">
 						<Link
 							href="/privacidad"
-							className="tw-text-text-main hover:tw-text-accent tw-mr-4 tw-transition-colors"
+							className="tw-text-text-main tw-mr-4 tw-transition-colors"
 							underline="hover"
 						>
 							Política de Privacidad
 						</Link>
 						<Link
 							href="/terminos"
-							className="tw-text-text-main hover:tw-text-accent tw-transition-colors"
+							className="tw-text-text-main tw-transition-colors"
 							underline="hover"
 						>
 							Términos de Servicio
