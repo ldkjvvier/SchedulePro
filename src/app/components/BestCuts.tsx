@@ -38,8 +38,8 @@ export const BestCuts = () => {
 							src={cut.image}
 							alt={cut.name}
 							width={300}
-							height={200}
-							className="tw-w-full tw-h-48 tw-object-cover"
+							height={250}
+							className="tw-w-full tw-h-62 tw-object-cover"
 						/>
 						<div className="tw-p-4">
 							<h3 className="tw-text-xl tw-font-bold tw-mb-2 tw-text-text-main">
