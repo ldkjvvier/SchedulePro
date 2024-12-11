@@ -39,6 +39,24 @@ export default function Profesional({
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
 			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
+				<div>
+					<Typography
+						variant="h4"
+						color="text.primary"
+						sx={{ fontWeight: 'bold' }}
+					>
+						{user?.name}
+					</Typography>
+					<Typography variant="body1" color="text.secondary">
+						{user?.email}
+					</Typography>
+					<Typography variant="body1" color="text.secondary">
+						{user?.contactNumber}
+					</Typography>
+					<Typography variant="body1" color="text.secondary">
+						{user?.bio}
+					</Typography>
+				</div>
 				<Accordion
 					sx={{
 						boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
@@ -61,7 +79,11 @@ export default function Profesional({
 								>
 									<Typography
 										variant="h6"
-										sx={{ fontWeight: 'bold', fontSize: '0.9rem' }}
+										sx={{
+											fontWeight: 'bold',
+											fontSize: '0.9rem',
+											textTransform: 'capitalize',
+										}}
 									>
 										{service.name}
 									</Typography>
@@ -79,7 +101,10 @@ export default function Profesional({
 									<Typography
 										variant="body2"
 										color="text.secondary"
-										sx={{ fontWeight: 'bold' }}
+										marginTop={1}
+										sx={{
+											fontWeight: 'semibold',
+										}}
 									>
 										{service.description}
 									</Typography>
