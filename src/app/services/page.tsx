@@ -56,7 +56,7 @@ export default function Servicios() {
 									{barber.specialty}
 								</p>
 								<Link
-									href={`/barberos/${barber.id}`}
+									href={`/profesional/${barber.id}`}
 									className="tw-inline-block tw-bg-button-primary tw-text-white tw-px-6 tw-py-3 tw-rounded-md tw-font-medium tw-shadow hover:tw-bg-button-secondary hover:tw-text-text-main tw-no-underline tw-transition-colors"
 								>
 									Ver Servicios
