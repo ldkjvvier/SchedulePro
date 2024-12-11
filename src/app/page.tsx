@@ -46,7 +46,7 @@ export default function Home() {
 				<BestCuts />
 
 				{/* Redes Sociales */}
-				<section className="tw-text-center tw-bg-secondary tw-my-8 tw-p-8 tw-rounded-lg tw-shadow-md tw-border tw-border-accent">
+				<section className="tw-text-center tw-bg-secondary tw-my-8 tw-p-8 tw-rounded-lg tw-shadow-md tw-border tw-border-gray-200">
 					<h2 className="tw-text-2xl tw-font-bold tw-mb-4 tw-text-text-main">
 						Síguenos en Redes Sociales
 					</h2>

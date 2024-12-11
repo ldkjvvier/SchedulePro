@@ -4,7 +4,7 @@ import Link from '@mui/material/Link'
 
 const Footer = () => {
 	return (
-		<footer className="tw-bg-primary tw-px-12 tw-py-6 tw-border-t tw-border-accent tw-w-full">
+		<footer className="tw-bg-primary tw-px-12 tw-py-6 tw-border-t tw-w-full">
 			<div className="tw-px-12">
 				<div className="tw-flex tw-justify-between tw-items-center tw-flex-col sm:tw-flex-row">
 					<Typography

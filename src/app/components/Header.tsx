@@ -23,8 +23,6 @@ const Header = () => {
 			position="static"
 			sx={{
 				backgroundColor: '#FFFFFF',
-				borderBottom: '1px solid',
-				borderColor: 'accent',
 			}}
 			elevation={0}
 		>
