@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useEffect, useState } from 'react'
 import { getBarber, getBarberServices } from '@/services'
+import { Button } from '@mui/material'
 export default function Profesional({
 	params,
 }: {
@@ -28,6 +29,13 @@ export default function Profesional({
 	}, [params.id])
 	console.log(user)
 	console.log(services)
+
+	const formatPrice = (price: number) => {
+		return new Intl.NumberFormat('es-CL', {
+			style: 'currency',
+			currency: 'CLP',
+		}).format(price)
+	}
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
 			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
@@ -45,25 +53,50 @@ export default function Profesional({
 						<Typography>Servicios de Barberia</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
-						<div className="tw-grid tw-grid-cols-2 tw-grid-flow-row">
+						<div className="tw-grid md:tw-grid-cols-2 tw-grid-flow-row">
 							{services.map((service) => (
 								<div
 									key={service.id}
-									className="tw-flex tw-flex-col tw-items-center tw-justify-center tw-p-4 tw-rounded-lg tw-m-2"
-									style={{
-										border: '1px solid #f56565', // Borde rojo (#f56565 es el código de color para rojo en Tailwind)
-									}}
+									className="tw-flex tw-flex-col tw-border tw-border-red-500 tw-rounded-md tw-text-start tw-justify-start tw-p-4 tw-m-2"
 								>
-									<h3 className="tw-text-lg tw-font-semibold">
+									<Typography
+										variant="h6"
+										sx={{ fontWeight: 'bold', fontSize: '0.9rem' }}
+									>
 										{service.name}
-									</h3>
-									<p className="tw-text-sm tw-text-center">
+									</Typography>
+
+									<Typography variant="body2" color="text.secondary">
+										{service.duration}
+									</Typography>
+									<Typography
+										variant="body2"
+										color="text.secondary"
+										sx={{ fontWeight: 'bold' }}
+									>
+										{formatPrice(service.price)}
+									</Typography>
+									<Typography
+										variant="body2"
+										color="text.secondary"
+										sx={{ fontWeight: 'bold' }}
+									>
 										{service.description}
-									</p>
-									<p className="tw-text-lg tw-font-semibold">
-										${service.price}
-									</p>
-									<p className="tw-text-sm">{service.duration}</p>
+									</Typography>
+									<div className="tw-flex tw-items-end tw-w-full tw-justify-end tw-p-4 tw-h-full">
+										<Button
+											variant="contained"
+											color="primary"
+											size="small"
+											sx={{
+												backgroundColor: '#ff0000',
+												color: 'white',
+												fontWeight: 'bold',
+											}}
+										>
+											Agendar Servicio
+										</Button>
+									</div>
 								</div>
 							))}
 						</div>
