@@ -1,1 +1,2 @@
-export * from './user'
+export * from './barber'
+export * from './barberServices'
