@@ -7,6 +7,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useEffect, useState } from 'react'
 import { getBarber, getBarberServices } from '@/services'
 import { Button } from '@mui/material'
+import Image from 'next/image'
 export default function Profesional({
 	params,
 }: {
@@ -40,6 +41,13 @@ export default function Profesional({
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
 			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
 				<div>
+					<Image
+						src={user?.profilePicture}
+						alt={user?.name}
+						width={200}
+						height={200}
+						className="tw-rounded-full"
+					/>
 					<Typography
 						variant="h4"
 						color="text.primary"
