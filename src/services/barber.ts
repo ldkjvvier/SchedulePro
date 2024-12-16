@@ -1,3 +1,5 @@
+import { Barber } from '@/app/models/barber'
+
 /* import apiClient from './apiClient'
 
 export const getUser = async (userId: string) => {
@@ -5,7 +7,7 @@ export const getUser = async (userId: string) => {
 	return response.data
 }
  */
-const mockBarber = [
+const mockBarber: Barber[] = [
 	{
 		id: '1',
 		name: 'Havuer Barber',
@@ -52,7 +54,9 @@ const mockBarber = [
 	},
 ]
 
-export const getBarber = async (barberId: string) => {
+export const getBarber = async (
+	barberId: string
+): Promise<Barber> => {
 	try {
 		// Simular un retardo para imitar una llamada a una API
 		await new Promise((resolve) => setTimeout(resolve, 500))

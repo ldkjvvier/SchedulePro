@@ -1,4 +1,6 @@
-const mockServices = [
+import { BarberService, Service } from '@/app/models/barber'
+
+const mockServices: BarberService[] = [
 	{
 		barberId: '1',
 		services: [
@@ -51,7 +53,9 @@ const mockServices = [
 	},
 ]
 
-export const getBarberServices = async (barberId: string) => {
+export const getBarberServices = async (
+	barberId: string
+): Promise<Service[]> => {
 	try {
 		// Simular retardo
 		await new Promise((resolve) => setTimeout(resolve, 500))
