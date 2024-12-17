@@ -1,20 +1,23 @@
 'use client'
-import Accordion from '@mui/material/Accordion'
-import AccordionSummary from '@mui/material/AccordionSummary'
-import AccordionDetails from '@mui/material/AccordionDetails'
-import Typography from '@mui/material/Typography'
+import {
+	Typography,
+	Accordion,
+	AccordionSummary,
+	AccordionDetails,
+} from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useEffect, useState } from 'react'
 import { getBarber, getBarberServices } from '@/services'
 import { Button } from '@mui/material'
 import Image from 'next/image'
+import { Barber, Service } from '@/app/models/barber'
 export default function Profesional({
 	params,
 }: {
 	params: { id: string }
 }) {
-	const [user, setUser] = useState<any>(null)
-	const [services, setServices] = useState<any[]>([])
+	const [user, setUser] = useState<Barber>()
+	const [services, setServices] = useState<Service[]>([])
 	useEffect(() => {
 		;(async () => {
 			try {
@@ -28,9 +31,10 @@ export default function Profesional({
 			}
 		})()
 	}, [params.id])
-	console.log(user)
-	console.log(services)
 
+	if (!user) {
+		return null
+	}
 	const formatPrice = (price: number) => {
 		return new Intl.NumberFormat('es-CL', {
 			style: 'currency',
@@ -40,30 +44,32 @@ export default function Profesional({
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
 			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
-				<div>
+				<div className="tw-flex tw-items-center tw-gap-4 tw-mb-8">
 					<Image
-						src={user?.profilePicture}
-						alt={user?.name}
-						width={200}
-						height={200}
+						src={user.image}
+						alt={user.name}
+						width={100}
+						height={100}
 						className="tw-rounded-full"
 					/>
-					<Typography
-						variant="h4"
-						color="text.primary"
-						sx={{ fontWeight: 'bold' }}
-					>
-						{user?.name}
-					</Typography>
-					<Typography variant="body1" color="text.secondary">
-						{user?.email}
-					</Typography>
-					<Typography variant="body1" color="text.secondary">
-						{user?.contactNumber}
-					</Typography>
-					<Typography variant="body1" color="text.secondary">
-						{user?.bio}
-					</Typography>
+					<div>
+						<Typography
+							variant="h4"
+							color="text.primary"
+							sx={{ fontWeight: 'bold' }}
+						>
+							{user.name}
+						</Typography>
+						<Typography variant="body1" color="text.secondary">
+							{user.email}
+						</Typography>
+						<Typography variant="body1" color="text.secondary">
+							{user.contactNumber}
+						</Typography>
+						<Typography variant="body1" color="text.secondary">
+							{user.bio}
+						</Typography>
+					</div>
 				</div>
 				<Accordion
 					sx={{
