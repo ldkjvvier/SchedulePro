@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 import { getBarber, getBarberServices } from '@/services'
 import { Button } from '@mui/material'
 import Image from 'next/image'
-import { Barber, Service } from '@/app/models/barber'
+import { Barber, Service } from '@/models/barber'
 export default function Profesional({
 	params,
 }: {
