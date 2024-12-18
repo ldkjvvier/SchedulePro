@@ -6,31 +6,20 @@ import {
 	AccordionDetails,
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import { useEffect, useState } from 'react'
-import { fetchBarber } from '@/services'
 import Image from 'next/image'
-import { Barber } from '@/models/barber'
 import { Services } from './components/services'
+import { useBarber } from '@/hooks/useBarber'
 export default function Profesional({
 	params,
 }: {
 	params: { id: string }
 }) {
-	const [user, setUser] = useState<Barber>()
-	useEffect(() => {
-		;(async () => {
-			try {
-				const barber = await fetchBarber(params.id)
-				setUser(barber)
-			} catch (error) {
-				console.error(error)
-			}
-		})()
-	}, [params.id])
+	const { data: user, isLoading, error } = useBarber(params.id)
 
-	if (!user) {
-		return null
-	}
+	if (!user) return <p>User not found</p>
+	if (!params.id) return <p>Barber ID is missing</p>
+	if (isLoading) return <p>Loading events...</p>
+	if (error) return <p>Error loading events: {error.message}</p>
 
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
