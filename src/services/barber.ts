@@ -1,4 +1,4 @@
-import { Barber } from '@/app/models/barber'
+import { Barber } from '@/models/barber'
 
 /* import apiClient from './apiClient'
 
@@ -12,7 +12,7 @@ const mockBarber: Barber[] = [
 		id: '1',
 		name: 'Havuer Barber',
 		email: 'john.barber@example.com',
-		image: 'https://example.com/images/john-barber.jpg', // URL de imagen de perfil
+		image: '/user.png', // URL de imagen de perfil
 		specialties: [
 			'Cortes clásicos',
 			'Barbas estilo moderno',
@@ -34,7 +34,7 @@ const mockBarber: Barber[] = [
 		id: '2',
 		name: 'John Barber',
 		email: 'john.barber@example.com',
-		image: 'https://example.com/images/john-barber.jpg', // URL de imagen de perfil
+		image: '/user.png', // URL de imagen de perfil
 		specialties: [
 			'Cortes clásicos',
 			'Barbas estilo moderno',
