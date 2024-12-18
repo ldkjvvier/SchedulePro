@@ -1,11 +1,12 @@
-import { Typography, Button } from '@mui/material'
+import { Typography, Button, Skeleton } from '@mui/material'
 import { useServices } from '@/hooks/useServices'
+import { AccordionSkeleton } from './loadingSkeleton'
 
 export const Services = ({ barberId }: { barberId: string }) => {
 	const { data: services, isLoading, error } = useServices(barberId)
 
+	if (isLoading) return <AccordionSkeleton />
 	if (!barberId) return <p>Barber ID is missing</p>
-	if (isLoading) return <p>Loading events...</p>
 	if (error) return <p>Error loading events: {error.message}</p>
 
 	const formatPrice = (price: number) => {

@@ -4,11 +4,13 @@ import {
 	Accordion,
 	AccordionSummary,
 	AccordionDetails,
+	Skeleton,
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import Image from 'next/image'
 import { Services } from './components/Services'
 import { useBarber } from '@/hooks/useBarber'
+import { LoadingSkeleton } from './components/loadingSkeleton'
 export default function Profesional({
 	params,
 }: {
@@ -17,9 +19,9 @@ export default function Profesional({
 	const { data: user, isLoading, error } = useBarber(params.id)
 
 	if (!params.id) return <p>Barber ID is missing</p>
-	if (isLoading) return <p>Loading events...</p>
-	if (!user) return <p>User not found</p>
+	if (isLoading) return <LoadingSkeleton />
 	if (error) return <p>Error loading events: {error.message}</p>
+	if (!user) return <p>User not found</p>
 
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
