@@ -4,6 +4,7 @@ import ThemeRegistry from './theme/themeRegistry'
 import './globals.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import QueryProvider from './components/QueryProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,12 +28,14 @@ export default function RootLayout({
 			</head>
 			<ThemeRegistry>
 				<body className={inter.className}>
-					<main className="tw-flex tw-flex-1 tw-justify-between tw-min-h-screen tw-flex-col tw-bg-transparent">
-						<Header />
+					<QueryProvider>
+						<main className="tw-flex tw-flex-1 tw-justify-between tw-min-h-screen tw-flex-col tw-bg-transparent">
+							<Header />
 
-						{children}
-						<Footer />
-					</main>
+							{children}
+							<Footer />
+						</main>
+					</QueryProvider>
 				</body>
 			</ThemeRegistry>
 		</html>
