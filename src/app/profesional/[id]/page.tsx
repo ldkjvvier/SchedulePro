@@ -16,9 +16,9 @@ export default function Profesional({
 }) {
 	const { data: user, isLoading, error } = useBarber(params.id)
 
-	if (!user) return <p>User not found</p>
 	if (!params.id) return <p>Barber ID is missing</p>
 	if (isLoading) return <p>Loading events...</p>
+	if (!user) return <p>User not found</p>
 	if (error) return <p>Error loading events: {error.message}</p>
 
 	return (
