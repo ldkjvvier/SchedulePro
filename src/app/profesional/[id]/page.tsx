@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import Image from 'next/image'
-import { Services } from './components/services'
+import { Services } from './components/Services'
 import { useBarber } from '@/hooks/useBarber'
 export default function Profesional({
 	params,
