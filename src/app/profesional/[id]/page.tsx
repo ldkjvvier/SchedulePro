@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useEffect, useState } from 'react'
-import { getBarber, getBarberServices } from '@/services'
+import { fetchBarber, fetchServices } from '@/services'
 import { Button } from '@mui/material'
 import Image from 'next/image'
 import { Barber, Service } from '@/models/barber'
@@ -21,10 +21,10 @@ export default function Profesional({
 	useEffect(() => {
 		;(async () => {
 			try {
-				const barber = await getBarber(params.id)
+				const barber = await fetchBarber(params.id)
 				setUser(barber)
 
-				const services = await getBarberServices(params.id)
+				const services = await fetchServices(params.id)
 				setServices(services)
 			} catch (error) {
 				console.error(error)

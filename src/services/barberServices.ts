@@ -53,7 +53,7 @@ const mockServices: BarberService[] = [
 	},
 ]
 
-export const getBarberServices = async (
+export const fetchServices = async (
 	barberId: string
 ): Promise<Service[]> => {
 	try {

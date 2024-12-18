@@ -54,7 +54,7 @@ const mockBarber: Barber[] = [
 	},
 ]
 
-export const getBarber = async (
+export const fetchBarber = async (
 	barberId: string
 ): Promise<Barber> => {
 	try {
