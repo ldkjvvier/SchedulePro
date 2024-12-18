@@ -7,25 +7,21 @@ import {
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import { useEffect, useState } from 'react'
-import { fetchBarber, fetchServices } from '@/services'
-import { Button } from '@mui/material'
+import { fetchBarber } from '@/services'
 import Image from 'next/image'
-import { Barber, Service } from '@/models/barber'
+import { Barber } from '@/models/barber'
+import { Services } from './components/services'
 export default function Profesional({
 	params,
 }: {
 	params: { id: string }
 }) {
 	const [user, setUser] = useState<Barber>()
-	const [services, setServices] = useState<Service[]>([])
 	useEffect(() => {
 		;(async () => {
 			try {
 				const barber = await fetchBarber(params.id)
 				setUser(barber)
-
-				const services = await fetchServices(params.id)
-				setServices(services)
 			} catch (error) {
 				console.error(error)
 			}
@@ -35,12 +31,7 @@ export default function Profesional({
 	if (!user) {
 		return null
 	}
-	const formatPrice = (price: number) => {
-		return new Intl.NumberFormat('es-CL', {
-			style: 'currency',
-			currency: 'CLP',
-		}).format(price)
-	}
+
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
 			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
@@ -85,60 +76,7 @@ export default function Profesional({
 						<Typography>Servicios de Barberia</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
-						<div className="tw-grid md:tw-grid-cols-2 tw-grid-flow-row">
-							{services.map((service) => (
-								<div
-									key={service.id}
-									className="tw-flex tw-flex-col tw-border tw-border-red-500 tw-rounded-md tw-text-start tw-justify-start tw-p-4 tw-m-2"
-								>
-									<Typography
-										variant="h6"
-										sx={{
-											fontWeight: 'bold',
-											fontSize: '0.9rem',
-											textTransform: 'capitalize',
-										}}
-									>
-										{service.name}
-									</Typography>
-
-									<Typography variant="body2" color="text.secondary">
-										{service.duration}
-									</Typography>
-									<Typography
-										variant="body2"
-										color="text.secondary"
-										sx={{ fontWeight: 'bold' }}
-									>
-										{formatPrice(service.price)}
-									</Typography>
-									<Typography
-										variant="body2"
-										color="text.secondary"
-										marginTop={1}
-										sx={{
-											fontWeight: 'semibold',
-										}}
-									>
-										{service.description}
-									</Typography>
-									<div className="tw-flex tw-items-end tw-w-full tw-justify-end tw-p-4 tw-h-full">
-										<Button
-											variant="contained"
-											color="primary"
-											size="small"
-											sx={{
-												backgroundColor: '#ff0000',
-												color: 'white',
-												fontWeight: 'bold',
-											}}
-										>
-											Agendar Servicio
-										</Button>
-									</div>
-								</div>
-							))}
-						</div>
+						<Services barberId={user.id} />
 					</AccordionDetails>
 				</Accordion>
 			</div>
