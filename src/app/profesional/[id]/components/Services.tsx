@@ -1,14 +1,18 @@
-import { Typography, Button, Skeleton } from '@mui/material'
+import { Typography, Button } from '@mui/material'
 import { useServices } from '@/hooks/useServices'
 import { AccordionSkeleton } from './loadingSkeleton'
 
 export const Services = ({ barberId }: { barberId: string }) => {
-	const { data: services, isLoading, error } = useServices(barberId)
+	const { data: services, isLoading } = useServices(barberId)
 
 	if (isLoading) return <AccordionSkeleton />
-	if (!barberId) return <p>Barber ID is missing</p>
-	if (error) return <p>Error loading events: {error.message}</p>
-
+	if (!services || services.length === 0) {
+		return (
+			<p className="tw-text-center tw-text-red-500 tw-font-bold tw-mt-4">
+				Services not found
+			</p>
+		)
+	}
 	const formatPrice = (price: number) => {
 		return new Intl.NumberFormat('es-CL', {
 			style: 'currency',
@@ -18,7 +22,7 @@ export const Services = ({ barberId }: { barberId: string }) => {
 
 	return (
 		<div className="tw-grid md:tw-grid-cols-2 tw-grid-flow-row">
-			{services?.map((service) => (
+			{services.map((service) => (
 				<div
 					key={service.id}
 					className="tw-flex tw-flex-col tw-border tw-border-red-500 tw-rounded-md tw-text-start tw-justify-start tw-p-4 tw-m-2"
