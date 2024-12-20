@@ -10,17 +10,16 @@ import Image from 'next/image'
 import { Services } from './components/Services'
 import { useBarber } from '@/hooks/useBarber'
 import { LoadingSkeleton } from './components/loadingSkeleton'
+import Custom404 from '@/app/not-found'
 export default function Profesional({
 	params,
 }: {
 	params: { id: string }
 }) {
-	const { data: user, isLoading, error } = useBarber(params.id)
+	const { data: user, isLoading } = useBarber(params.id)
 
-	if (!params.id) return <p>Barber ID is missing</p>
 	if (isLoading) return <LoadingSkeleton />
-	if (error) return <p>Error loading events: {error.message}</p>
-	if (!user) return <p>User not found</p>
+	if (!user) return <Custom404 message="Barber not found" />
 
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
