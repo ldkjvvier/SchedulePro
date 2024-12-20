@@ -6,6 +6,7 @@ export const useServices = (barberId: string) => {
 		queryKey: ['services', barberId],
 		queryFn: () => fetchServices(barberId),
 		enabled: !!barberId,
+		refetchOnWindowFocus: false,
 		staleTime: 1000 * 60 * 5, // 5 minutos
 	})
 }
