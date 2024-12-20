@@ -14,8 +14,40 @@ import Image from 'next/image'
 const Header = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
+	const navLinks = [
+		{
+			title: 'Inicio',
+			url: '/',
+		},
+		{
+			title: 'Servicios',
+			url: '/services',
+		},
+		{
+			title: 'Contacto',
+			url: '/contact',
+		},
+	]
+
 	const toggleDrawer = () => {
 		setIsDrawerOpen(!isDrawerOpen)
+	}
+
+	const Links = () => {
+		return (
+			<>
+				{navLinks.map((link) => (
+					<Link key={link.url} href={link.url} passHref>
+						<Button
+							className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
+							variant="text"
+						>
+							{link.title}
+						</Button>
+					</Link>
+				))}
+			</>
+		)
 	}
 
 	return (
@@ -28,7 +60,7 @@ const Header = () => {
 		>
 			<Toolbar className="tw-justify-between">
 				{/* Logo y Nombre */}
-				<div className="tw-flex tw-items-center">
+				<Link className="tw-flex tw-items-center" href="/">
 					<Image
 						src="/page_logo.png"
 						alt="Barbería Logo"
@@ -41,7 +73,7 @@ const Header = () => {
 					>
 						ShedulePro
 					</Typography>
-				</div>
+				</Link>
 
 				{/* Botón de Menú en dispositivos pequeños */}
 				<div className="tw-flex lg:tw-hidden">
@@ -55,30 +87,7 @@ const Header = () => {
 
 				{/* Navegación en pantallas grandes */}
 				<nav className="tw-hidden lg:tw-flex tw-gap-4">
-					<Link href="/" passHref>
-						<Button
-							className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
-							variant="text"
-						>
-							Inicio
-						</Button>
-					</Link>
-					<Link href="/services" passHref>
-						<Button
-							className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
-							variant="text"
-						>
-							Servicios
-						</Button>
-					</Link>
-					<Link href="/contact" passHref>
-						<Button
-							className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
-							variant="text"
-						>
-							Contacto
-						</Button>
-					</Link>
+					<Links />
 				</nav>
 			</Toolbar>
 
@@ -96,33 +105,7 @@ const Header = () => {
 						Menú
 					</Typography>
 					<nav className="tw-flex tw-flex-col tw-gap-4">
-						<Link href="/" passHref>
-							<Button
-								className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
-								variant="text"
-								onClick={toggleDrawer}
-							>
-								Inicio
-							</Button>
-						</Link>
-						<Link href="/services" passHref>
-							<Button
-								className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
-								variant="text"
-								onClick={toggleDrawer}
-							>
-								Servicios
-							</Button>
-						</Link>
-						<Link href="/contact" passHref>
-							<Button
-								className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
-								variant="text"
-								onClick={toggleDrawer}
-							>
-								Contacto
-							</Button>
-						</Link>
+						<Links />
 					</nav>
 				</div>
 			</Drawer>
