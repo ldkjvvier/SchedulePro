@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 
 const Footer = () => {
+	const currentYear = new Date().getFullYear()
 	return (
 		<footer className="tw-bg-primary tw-px-12 tw-py-6 tw-border-t tw-w-full">
 			<div className="tw-px-12">
@@ -11,7 +12,7 @@ const Footer = () => {
 						variant="body2"
 						className="tw-text-text-secondary tw-mb-4 sm:tw-mb-0"
 					>
-						© 2023 ShedulePro. Todos los derechos reservados.
+						© {currentYear} ShedulePro. Todos los derechos reservados.
 					</Typography>
 					<nav className="tw-text-center">
 						<Link
