@@ -23,6 +23,7 @@ export interface BarberSummary {
 	id: string
 	name: string
 	image: string
+	specialty: string
 	biography: string
 }
 

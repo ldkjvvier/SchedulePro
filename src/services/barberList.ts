@@ -8,6 +8,7 @@ export const fetchBarberList = async (): Promise<BarberSummary[]> => {
 			id: barber.id,
 			name: barber.name,
 			image: barber.image,
+			specialty: barber.specialties[0],
 			biography: barber.bio.split('.')[0],
 		}))
 	} catch (error) {
