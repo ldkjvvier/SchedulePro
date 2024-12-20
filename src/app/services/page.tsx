@@ -1,34 +1,16 @@
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-
-const barbers = [
-	{
-		id: 1,
-		name: 'Juan Pérez',
-		specialty: 'Cortes clásicos',
-		image: '/user.png',
-	},
-	{
-		id: 2,
-		name: 'María García',
-		specialty: 'Barbas y afeitados',
-		image: '/user.png',
-	},
-	{
-		id: 3,
-		name: 'Carlos Rodríguez',
-		specialty: 'Estilos modernos',
-		image: '/user.png',
-	},
-	{
-		id: 4,
-		name: 'Ana López',
-		specialty: 'Cortes de cabello',
-		image: '/user.png',
-	},
-]
+import { useBarberList } from '@/hooks/useBarberList'
 
 export default function Servicios() {
+	const { data: barberList, isLoading, error } = useBarberList()
+
+	if (isLoading) return <p>Cargando...</p>
+	if (error)
+		return <p>Error al cargar los barberos: {error.message}</p>
+	if (!barberList) return <p>No hay barberos</p>
+
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
 			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
@@ -36,7 +18,7 @@ export default function Servicios() {
 					Nuestros Barberos
 				</h1>
 				<div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-12">
-					{barbers.map((barber) => (
+					{barberList.map((barber) => (
 						<div
 							key={barber.id}
 							className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105"
