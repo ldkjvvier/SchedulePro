@@ -4,7 +4,6 @@ import {
 	Accordion,
 	AccordionSummary,
 	AccordionDetails,
-	Skeleton,
 } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import Image from 'next/image'
