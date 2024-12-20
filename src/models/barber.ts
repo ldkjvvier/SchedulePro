@@ -19,6 +19,13 @@ export interface Availability {
 	sunday: string
 }
 
+export interface BarberSummary {
+	id: string
+	name: string
+	image: string
+	biography: string
+}
+
 export interface BarberService {
 	barberId: string
 	services: Service[]
