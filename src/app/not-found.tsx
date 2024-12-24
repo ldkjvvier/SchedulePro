@@ -8,6 +8,11 @@ export default function Custom404({
 	return (
 		<div>
 			<div className={styles['not-found']}>404</div>
+			{!message && (
+				<p className={styles['error-message']}>
+					La página que buscas no existe
+				</p>
+			)}
 			{message && (
 				<p className={styles['error-message']}>{message}</p>
 			)}
