@@ -1,5 +1,5 @@
-// components/BestCuts.tsx
-import Image from 'next/image'
+'use client'
+import { BarberImage } from './BarberImage'
 
 export const BestCuts = () => {
 	const cuts = [
@@ -34,12 +34,12 @@ export const BestCuts = () => {
 						key={cut.id}
 						className="tw-bg-primary tw-rounded-lg tw-overflow-hidden tw-shadow-lg tw-border tw-border-accent"
 					>
-						<Image
+						<BarberImage
 							src={cut.image}
 							alt={cut.name}
 							width={300}
-							height={250}
-							className="tw-w-full tw-h-62 tw-object-cover"
+							height={200}
+							className="tw-w-full tw-object-cover"
 						/>
 						<div className="tw-p-4">
 							<h3 className="tw-text-xl tw-font-bold tw-mb-2 tw-text-text-main">
