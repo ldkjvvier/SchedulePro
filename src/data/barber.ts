@@ -4,7 +4,7 @@ export const mockBarber: Barber[] = [
 		id: '1',
 		name: 'Havuer Barber',
 		email: 'john.barber@example.com',
-		image: '/user.png', // URL de imagen de perfil
+		image: '', // URL de imagen de perfil
 		specialties: [
 			'Cortes clásicos',
 			'Barbas estilo moderno',
