@@ -8,11 +8,7 @@ import {
 } from '@mui/material'
 import { useBarberShedule } from '@/hooks/useBarberShedule'
 
-export const SchedulePicker = ({
-	barberId = '1',
-}: {
-	barberId?: string
-}) => {
+export const SchedulePicker = () => {
 	const [selectedDate, setSelectedDate] = useState<string>(
 		new Date().toISOString().split('T')[0]
 	)
@@ -22,7 +18,7 @@ export const SchedulePicker = ({
 		isLoading,
 		error,
 		refetch,
-	} = useBarberShedule(barberId, selectedDate)
+	} = useBarberShedule('1', selectedDate)
 
 	useEffect(() => {
 		const generateDates = () => {
