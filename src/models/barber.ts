@@ -39,3 +39,8 @@ export interface Service {
 	duration: string
 	description: string
 }
+
+export interface Schedule {
+	date: string
+	times: string[]
+}
