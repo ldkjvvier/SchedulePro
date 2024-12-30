@@ -7,30 +7,16 @@ import {
 	Box,
 } from '@mui/material'
 import { useBarberShedule } from '@/hooks/useBarberShedule'
+import { DateCarouselCalendar } from './DateCarouselCalendar'
 
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
-	const [dates, setDates] = useState<Date[]>([])
 	const {
 		data: schedule,
 		isLoading,
 		error,
 		refetch,
-	} = useBarberShedule('1', selectedDate.toISOString().split('T')[0])
-
-	useEffect(() => {
-		const generateDates = (): void => {
-			const today = new Date()
-			const datesArray: Date[] = []
-			for (let i = 0; i < 7; i++) {
-				const date = new Date(today)
-				date.setDate(today.getDate() + i)
-				datesArray.push(date)
-			}
-			setDates(datesArray)
-		}
-		generateDates()
-	}, [])
+	} = useBarberShedule('2', selectedDate.toISOString().split('T')[0])
 
 	useEffect(() => {
 		refetch()
@@ -47,22 +33,16 @@ export const SchedulePicker: React.FC = () => {
 					<Typography variant="subtitle1" gutterBottom>
 						Selecciona una fecha
 					</Typography>
-					<List>
-						{dates.map((date) => (
-							<ListItem key={date.toISOString()}>
-								<ListItemButton
-									onClick={() => handleSelectDate(date)}
-								>
-									{date.toDateString()}
-								</ListItemButton>
-							</ListItem>
-						))}
-					</List>
+					<DateCarouselCalendar
+						selectedDate={selectedDate}
+						setSelectedDate={setSelectedDate}
+						onSelectDate={handleSelectDate}
+					/>
 					{selectedDate && (
 						<div>
 							<Typography variant="subtitle1" gutterBottom>
 								Horarios disponibles para{' '}
-								{selectedDate.toDateString()}:
+								{selectedDate.toISOString().split('T')[0]}:
 							</Typography>
 							{isLoading && <p>Cargando horarios...</p>}
 							{error && (
