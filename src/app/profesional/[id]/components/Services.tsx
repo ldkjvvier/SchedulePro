@@ -1,10 +1,15 @@
 import { Typography, Button } from '@mui/material'
 import { useServices } from '@/hooks/useServices'
 import { AccordionSkeleton } from './loadingSkeleton'
+import { useState } from 'react'
+import { Service } from '@/models/barber'
+import { ScheduleModalWrapper } from './ScheduleModalWrapper'
 
 export const Services = ({ barberId }: { barberId: string }) => {
 	const { data: services, isLoading } = useServices(barberId)
-
+	const [selectedService, setSelectedService] = useState<Service>(
+		{} as Service
+	)
 	if (isLoading) return <AccordionSkeleton />
 	if (!services || services.length === 0) {
 		return (
@@ -18,6 +23,10 @@ export const Services = ({ barberId }: { barberId: string }) => {
 			style: 'currency',
 			currency: 'CLP',
 		}).format(price)
+	}
+
+	const handleClickService = (service: Service) => {
+		setSelectedService(service)
 	}
 
 	return (
@@ -59,18 +68,21 @@ export const Services = ({ barberId }: { barberId: string }) => {
 						{service.description}
 					</Typography>
 					<div className="tw-flex tw-items-end tw-w-full tw-justify-end tw-p-4 tw-h-full">
-						<Button
-							variant="contained"
-							color="primary"
-							size="small"
-							sx={{
-								backgroundColor: '#ff0000',
-								color: 'white',
-								fontWeight: 'bold',
-							}}
-						>
-							Agendar Servicio
-						</Button>
+						<ScheduleModalWrapper>
+							<Button
+								variant="contained"
+								color="primary"
+								size="small"
+								onClick={() => handleClickService(service)}
+								sx={{
+									backgroundColor: '#ff0000',
+									color: 'white',
+									fontWeight: 'bold',
+								}}
+							>
+								Agendar Servicio
+							</Button>
+						</ScheduleModalWrapper>
 					</div>
 				</div>
 			))}
