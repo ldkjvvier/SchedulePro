@@ -80,7 +80,7 @@ export const SchedulePicker: React.FC = () => {
 						</div>
 					)}
 				</Box>
-				<Box className="tw-w-[40%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md tw-p-4">
+				<Box className="md:tw-block tw-hidden tw-w-[40%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md tw-p-4">
 					<Typography variant="subtitle1" gutterBottom>
 						Información del servicio
 					</Typography>
