@@ -1,5 +1,5 @@
 import React from 'react'
-import { format } from 'date-fns'
+import { format, isBefore, startOfDay } from 'date-fns'
 import { es } from 'date-fns/locale'
 import { Box, Typography } from '@mui/material'
 
@@ -14,29 +14,38 @@ export const DateItem: React.FC<DateItemProps> = ({
 	isSelected,
 	onSelect,
 }) => {
+	// Se compara la fecha sin tiempo (startOfDay) para asegurar precisión
+	const today = startOfDay(new Date())
+	const isPastDate = isBefore(startOfDay(date), today)
+
 	return (
 		<Box
-			onClick={() => onSelect(date)}
+			onClick={() => !isPastDate && onSelect(date)}
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
 				padding: 2,
-				cursor: 'pointer',
+				cursor: isPastDate ? 'not-allowed' : 'pointer',
 				borderRadius: 2,
 				transition: 'all 0.3s ease',
+				backgroundColor: isPastDate
+					? 'rgba(0, 0, 0, 0.1)'
+					: 'inherit',
+				color: isPastDate ? 'rgba(0, 0, 0, 0.5)' : 'inherit',
 				'&:hover': {
-					backgroundColor: 'rgba(0, 0, 0, 0.04)',
+					backgroundColor: !isPastDate && 'rgba(0, 0, 0, 0.04)',
 				},
-				...(isSelected && {
-					backgroundColor: 'primary.main',
-					color: 'primary.contrastText',
-					boxShadow: 3,
-					'&:hover': {
-						backgroundColor: 'primary.dark',
-					},
-				}),
+				...(isSelected &&
+					!isPastDate && {
+						backgroundColor: 'primary.main',
+						color: 'primary.contrastText',
+						boxShadow: 3,
+						'&:hover': {
+							backgroundColor: 'primary.dark',
+						},
+					}),
 			}}
 		>
 			<Typography
