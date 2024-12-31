@@ -48,8 +48,8 @@ export const DateCarouselCalendar: React.FC<
 		dots: false,
 		infinite: false, // Desactivar bucle para evitar fechas incoherentes
 		speed: 500,
-		slidesToShow: 4,
-		slidesToScroll: 1,
+		slidesToShow: 8,
+		slidesToScroll: 8,
 		centerMode: true,
 		focusOnSelect: true,
 		centerPadding: '0px',
@@ -80,8 +80,7 @@ export const DateCarouselCalendar: React.FC<
 		<Box
 			sx={{
 				position: 'relative',
-				width: '100%',
-				maxWidth: 600,
+				maxWidth: '90%',
 				margin: 'auto',
 			}}
 		>
