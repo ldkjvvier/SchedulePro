@@ -42,5 +42,9 @@ export interface Service {
 
 export interface Schedule {
 	date: string
-	times: string[]
+	times: {
+		id: string
+		time: string
+		isBooked: boolean
+	}[]
 }
