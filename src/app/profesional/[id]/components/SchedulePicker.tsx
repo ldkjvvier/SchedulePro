@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Typography, Box } from '@mui/material'
 import { useBarberShedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
-import { ScheduleDateButton } from './ScheduleDateButton'
+import { SchedulePartOfDay } from './SchedulePartOfDay'
 
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
@@ -24,43 +24,69 @@ export const SchedulePicker: React.FC = () => {
 	return (
 		<div className="tw-flex tw-items-center tw-justify-center tw-bg-secondary tw-w-full tw-h-full tw-text-black">
 			<Box className="tw-flex tw-items-center tw-justify-center tw-gap-4 tw-w-[80%] tw-h-[80%]">
-				<Box className="tw-w-[60%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md tw-p-4">
-					<Typography variant="subtitle1" gutterBottom>
-						Selecciona una fecha
-					</Typography>
-					<DateCarouselCalendar
-						selectedDate={selectedDate}
-						setSelectedDate={setSelectedDate}
-						onSelectDate={handleSelectDate}
-					/>
-					{isLoading && <p>Cargando horarios...</p>}
-					{error && (
-						<p>Ha ocurrido un error al cargar los horarios</p>
-					)}
-					{!error && selectedDate && (
-						<div>
-							<Typography variant="subtitle1" gutterBottom>
-								Horarios disponibles para{' '}
-								{selectedDate.toISOString().split('T')[0]}:
-							</Typography>
-							{schedule && (
-								<>
-									<ScheduleDateButton
-										schedule={schedule}
-										partOfDay="Mañana"
-									/>
-									<ScheduleDateButton
-										schedule={schedule}
-										partOfDay="Tarde"
-									/>
-									<ScheduleDateButton
-										schedule={schedule}
-										partOfDay="Noche"
-									/>
-								</>
-							)}
-						</div>
-					)}
+				<Box className="tw-w-[60%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md">
+					<div className="tw-border-b tw-border-secondary tw-mb-4">
+						<Typography variant="h6" sx={{ px: 2, py: 1 }}>
+							Selecciona una fecha y horario
+						</Typography>
+					</div>
+					<div className="tw-p-4">
+						<Typography variant="h6" gutterBottom>
+							{/* MES de la fecha seleccionada */}
+							{selectedDate.toLocaleString('es-ES', {
+								month: 'long',
+							})}
+						</Typography>
+						<DateCarouselCalendar
+							selectedDate={selectedDate}
+							setSelectedDate={setSelectedDate}
+							onSelectDate={handleSelectDate}
+						/>
+						{isLoading && <Typography>Cargando...</Typography>}
+						{error && <Typography>Error: {error.message}</Typography>}
+						{!error && selectedDate && (
+							<div>
+								<Typography variant="subtitle1" gutterBottom>
+									Horarios disponibles para{' '}
+									{selectedDate.toISOString().split('T')[0]}:
+								</Typography>
+								{schedule && (
+									<>
+										<SchedulePartOfDay
+											schedule={schedule}
+											partOfDay="Mañana"
+											filterFn={(time) => {
+												const hour = new Date(
+													`1970-01-01T${time}`
+												).getHours()
+												return hour >= 6 && hour < 12
+											}}
+										/>
+										<SchedulePartOfDay
+											schedule={schedule}
+											partOfDay="Tarde"
+											filterFn={(time) => {
+												const hour = new Date(
+													`1970-01-01T${time}`
+												).getHours()
+												return hour >= 12 && hour < 18
+											}}
+										/>
+										<SchedulePartOfDay
+											schedule={schedule}
+											partOfDay="Noche"
+											filterFn={(time) => {
+												const hour = new Date(
+													`1970-01-01T${time}`
+												).getHours()
+												return hour >= 18 && hour < 24
+											}}
+										/>
+									</>
+								)}
+							</div>
+						)}
+					</div>
 				</Box>
 				<Box className="md:tw-block tw-hidden tw-w-[40%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md tw-p-4">
 					<Typography variant="subtitle1" gutterBottom>
