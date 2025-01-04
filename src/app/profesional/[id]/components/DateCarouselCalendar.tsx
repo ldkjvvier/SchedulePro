@@ -53,8 +53,8 @@ export const DateCarouselCalendar: React.FC<
 		dots: false,
 		infinite: false, // Desactivar bucle para evitar fechas incoherentes
 		speed: 500,
-		slidesToShow: 8, // Mostrar 8 fechas a la vez
-		slidesToScroll: 8, // Mover en bloques de 8 fechas
+		slidesToShow: 14, // Mostrar 14 fechas a la vez
+		slidesToScroll: 14, // Mover en bloques de 14 fechas
 		initialSlide: initialIndex, // Establecer índice inicial
 		centerMode: false, // Desactivar modo centrado
 		focusOnSelect: false, // No enfocar automáticamente al seleccionar
@@ -62,8 +62,8 @@ export const DateCarouselCalendar: React.FC<
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: 8,
-					slidesToScroll: 8,
+					slidesToShow: 14,
+					slidesToScroll: 14,
 				},
 			},
 			{
@@ -93,7 +93,7 @@ export const DateCarouselCalendar: React.FC<
 				onClick={goToPrev}
 				sx={{
 					position: 'absolute',
-					left: -35,
+					left: -45,
 					top: '50%',
 					transform: 'translateY(-50%)',
 					zIndex: 1,
@@ -117,7 +117,7 @@ export const DateCarouselCalendar: React.FC<
 				onClick={goToNext}
 				sx={{
 					position: 'absolute',
-					right: -35,
+					right: -45,
 					top: '50%',
 					transform: 'translateY(-50%)',
 					zIndex: 1,

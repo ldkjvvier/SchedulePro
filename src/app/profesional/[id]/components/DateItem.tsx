@@ -27,7 +27,7 @@ export const DateItem: React.FC<DateItemProps> = ({
 				alignItems: 'center',
 				justifyContent: 'center',
 				padding: '10px 0',
-				width: 60,
+				width: 40,
 				margin: 1,
 				cursor: isPastDate ? 'not-allowed' : 'pointer',
 				borderRadius: 10,
@@ -56,14 +56,8 @@ export const DateItem: React.FC<DateItemProps> = ({
 			>
 				{format(date, 'EEEE', { locale: es }).slice(0, 3)}
 			</Typography>
-			<Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+			<Typography variant="body1" sx={{ fontWeight: 'bold' }}>
 				{format(date, 'd')}
-			</Typography>
-			<Typography
-				variant="body2"
-				sx={{ textTransform: 'capitalize' }}
-			>
-				{format(date, 'MMMM', { locale: es }).slice(0, 3)}
 			</Typography>
 		</Box>
 	)
