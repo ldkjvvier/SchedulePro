@@ -6,7 +6,7 @@ import React, {
 	useRef,
 } from 'react'
 import Slider from 'react-slick'
-import { format, addDays, differenceInCalendarDays } from 'date-fns'
+import { addDays, differenceInCalendarDays } from 'date-fns'
 import { Box, IconButton } from '@mui/material'
 import { DateItem } from './DateItem'
 import 'slick-carousel/slick/slick.css'
@@ -32,15 +32,20 @@ export const DateCarouselCalendar: React.FC<
 		return datesArray
 	}, [currentDate])
 
-	// Calcular el índice inicial para centrar la fecha actual
+	// Calcular el índice inicial para centrar la fecha seleccionada
 	const initialIndex = useMemo(() => {
 		return differenceInCalendarDays(selectedDate, currentDate) + 100
 	}, [selectedDate, currentDate])
+
+	const sliderRef = useRef<Slider>(null)
 
 	// Manejar selección de fecha
 	const handleDateSelect = (date: Date) => {
 		setSelectedDate(date)
 		onSelectDate(date)
+		// Mover el carrusel para que la fecha seleccionada esté al inicio
+		const newIndex = differenceInCalendarDays(date, currentDate) + 100
+		sliderRef.current?.slickGoTo(newIndex)
 	}
 
 	// Configuración del carrusel
@@ -48,29 +53,28 @@ export const DateCarouselCalendar: React.FC<
 		dots: false,
 		infinite: false, // Desactivar bucle para evitar fechas incoherentes
 		speed: 500,
-		slidesToShow: 8,
-		slidesToScroll: 8,
-		centerMode: true,
-		focusOnSelect: true,
-		centerPadding: '0px',
+		slidesToShow: 8, // Mostrar 8 fechas a la vez
+		slidesToScroll: 8, // Mover en bloques de 8 fechas
 		initialSlide: initialIndex, // Establecer índice inicial
+		centerMode: false, // Desactivar modo centrado
+		focusOnSelect: false, // No enfocar automáticamente al seleccionar
 		responsive: [
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: 5,
+					slidesToShow: 8,
+					slidesToScroll: 8,
 				},
 			},
 			{
 				breakpoint: 600,
 				settings: {
 					slidesToShow: 3,
+					slidesToScroll: 3,
 				},
 			},
 		],
 	}
-
-	const sliderRef = useRef<Slider>(null)
 
 	// Navegación manual
 	const goToPrev = () => sliderRef.current?.slickPrev()
