@@ -1,4 +1,4 @@
-import { Schedule } from '@/models/barber'
+import { PartOfDay, Schedule, ScheduleTime } from '@/models/barber'
 import {
 	Box,
 	Typography,
@@ -12,38 +12,29 @@ export const ScheduleDateButton = ({
 	partOfDay,
 }: {
 	schedule: Schedule
-	partOfDay: 'Mañana' | 'Tarde' | 'Noche'
+	partOfDay: PartOfDay
 }) => {
-	// Función para categorizar los horarios en mañana, tarde o noche
-	const categorizeTimes = (
-		times: { id: string; time: string; isBooked: boolean }[]
+	const filterTimesByPartOfDay = (
+		times: ScheduleTime[],
+		partOfDay: PartOfDay
 	) => {
-		const morning: any[] = []
-		const afternoon: any[] = []
-		const night: any[] = []
-
-		times.forEach((time) => {
-			const [hours] = time.time.split(':').map(Number)
-			if (hours >= 6 && hours < 12) {
-				morning.push(time)
-			} else if (hours >= 12 && hours < 18) {
-				afternoon.push(time)
-			} else {
-				night.push(time)
-			}
-		})
-
-		return { morning, afternoon, night }
+		return times.filter((time) => time.partOfDay === partOfDay)
 	}
+
+	// Filtramos los horarios según la parte del día
+	const filteredTimes = filterTimesByPartOfDay(
+		schedule.times,
+		partOfDay
+	)
 
 	return (
 		<Box>
 			<Typography variant="body1" gutterBottom>
-				{partOfDay}
+				{partOfDay} {/* Esto muestra 'Mañana', 'Tarde' o 'Noche' */}
 			</Typography>
 			<hr />
 			<List>
-				{categorizeTimes(schedule.times).morning.map((time) => (
+				{filteredTimes.map((time) => (
 					<ListItem
 						key={time.id}
 						sx={{
