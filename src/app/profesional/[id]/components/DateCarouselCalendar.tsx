@@ -86,13 +86,14 @@ export const DateCarouselCalendar: React.FC<
 				position: 'relative',
 				maxWidth: '90%',
 				margin: 'auto',
+				marginBottom: 4,
 			}}
 		>
 			<IconButton
 				onClick={goToPrev}
 				sx={{
 					position: 'absolute',
-					left: -20,
+					left: -35,
 					top: '50%',
 					transform: 'translateY(-50%)',
 					zIndex: 1,
@@ -116,7 +117,7 @@ export const DateCarouselCalendar: React.FC<
 				onClick={goToNext}
 				sx={{
 					position: 'absolute',
-					right: -20,
+					right: -35,
 					top: '50%',
 					transform: 'translateY(-50%)',
 					zIndex: 1,
