@@ -42,9 +42,12 @@ export interface Service {
 
 export interface Schedule {
 	date: string
-	times: {
-		id: string
-		time: string
-		isBooked: boolean
-	}[]
+	times: ScheduleTime[]
 }
+export interface ScheduleTime {
+	id: string
+	time: string
+	isBooked: boolean
+	partOfDay: PartOfDay
+}
+export type PartOfDay = 'Mañana' | 'Tarde' | 'Noche'
