@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Typography, Box } from '@mui/material'
 import { useBarberShedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
-import { ScheduleButton } from './ScheduleButton'
+import { ScheduleDateButton } from './ScheduleDateButton'
 
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
@@ -45,15 +45,15 @@ export const SchedulePicker: React.FC = () => {
 							</Typography>
 							{schedule && (
 								<>
-									<ScheduleButton
+									<ScheduleDateButton
 										schedule={schedule}
 										partOfDay="Mañana"
 									/>
-									<ScheduleButton
+									<ScheduleDateButton
 										schedule={schedule}
 										partOfDay="Tarde"
 									/>
-									<ScheduleButton
+									<ScheduleDateButton
 										schedule={schedule}
 										partOfDay="Noche"
 									/>

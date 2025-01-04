@@ -7,7 +7,7 @@ import {
 	ListItemButton,
 } from '@mui/material'
 
-export const ScheduleButton = ({
+export const ScheduleDateButton = ({
 	schedule,
 	partOfDay,
 }: {
