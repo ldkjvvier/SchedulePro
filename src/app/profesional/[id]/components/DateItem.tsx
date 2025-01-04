@@ -26,9 +26,11 @@ export const DateItem: React.FC<DateItemProps> = ({
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
-				padding: 2,
+				padding: '10px 0',
+				width: 60,
+				margin: 1,
 				cursor: isPastDate ? 'not-allowed' : 'pointer',
-				borderRadius: 2,
+				borderRadius: 10,
 				transition: 'all 0.3s ease',
 				backgroundColor: isPastDate
 					? 'rgba(0, 0, 0, 0.1)'
@@ -52,16 +54,16 @@ export const DateItem: React.FC<DateItemProps> = ({
 				variant="caption"
 				sx={{ textTransform: 'capitalize' }}
 			>
-				{format(date, 'EEEE', { locale: es })}
+				{format(date, 'EEEE', { locale: es }).slice(0, 3)}
 			</Typography>
-			<Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+			<Typography variant="h6" sx={{ fontWeight: 'bold' }}>
 				{format(date, 'd')}
 			</Typography>
 			<Typography
 				variant="body2"
 				sx={{ textTransform: 'capitalize' }}
 			>
-				{format(date, 'MMMM', { locale: es })}
+				{format(date, 'MMMM', { locale: es }).slice(0, 3)}
 			</Typography>
 		</Box>
 	)
