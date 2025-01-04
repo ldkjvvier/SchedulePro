@@ -30,24 +30,46 @@ export const ScheduleDateButton = ({
 	return (
 		<Box>
 			<Typography variant="body1" gutterBottom>
-				{partOfDay} {/* Esto muestra 'Mañana', 'Tarde' o 'Noche' */}
+				{partOfDay}
 			</Typography>
 			<hr />
-			<List>
+			<List
+				sx={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					gap: 2,
+					padding: 0,
+					margin: 2,
+				}}
+			>
 				{filteredTimes.map((time) => (
 					<ListItem
 						key={time.id}
 						sx={{
-							'&:hover': {
-								backgroundColor: time.isBooked
-									? 'transparent'
-									: '#f0f0f0',
-							},
-							borderColor: time.isBooked ? 'red' : 'transparent',
-							borderWidth: '1px',
+							width: 'auto',
+							padding: 0,
 						}}
 					>
-						<ListItemButton disabled={time.isBooked}>
+						<ListItemButton
+							disabled={time.isBooked}
+							sx={{
+								minWidth: '80px', // Asegura que todos los botones tengan el mismo tamaño mínimo
+								textAlign: 'center',
+								justifyContent: 'center',
+								padding: '8px 16px',
+								backgroundColor: time.isBooked
+									? 'lightgray'
+									: 'white',
+								border: '1px solid',
+								borderRadius: '5px',
+								borderColor: time.isBooked ? 'gray' : 'primary.main',
+								'&:hover': {
+									backgroundColor: time.isBooked
+										? 'lightgray'
+										: 'primary.light',
+								},
+							}}
+						>
 							{time.time}
 						</ListItemButton>
 					</ListItem>
