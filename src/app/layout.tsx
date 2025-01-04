@@ -9,7 +9,7 @@ import QueryProvider from './components/QueryProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-	title: 'ShedulePro',
+	title: 'SchedulePro',
 	description: 'A simple scheduling app',
 }
 

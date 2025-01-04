@@ -14,7 +14,7 @@ export default function Home() {
 					{/* Contenido principal */}
 					<section className="tw-mb-12 tw-text-center tw-relative tw-z-10">
 						<h1 className="tw-text-4xl tw-font-bold tw-mb-4 tw-text-text-main">
-							Bienvenido a ShedulePro
+							Bienvenido a SchedulePro
 						</h1>
 						<p className="tw-text-xl tw-mb-6 tw-text-text-secondary">
 							Lorem ipsum dolor sit amet consectetur adipisicing elit.

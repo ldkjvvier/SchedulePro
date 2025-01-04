@@ -2,7 +2,7 @@
 import { IconButton, Modal } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { useState } from 'react'
-import { SchedulePicker } from './ShedulePicker'
+import { SchedulePicker } from './SchedulePicker'
 
 interface ScheduleModalWrapperProps {
 	children: React.ReactNode

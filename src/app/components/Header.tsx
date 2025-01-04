@@ -71,7 +71,7 @@ const Header = () => {
 						variant="h6"
 						className="tw-ml-3 tw-text-text-main tw-text-xl tw-font-semibold"
 					>
-						ShedulePro
+						SchedulePro
 					</Typography>
 				</Link>
 

@@ -10,7 +10,7 @@ const Map = () => {
 				style={{ border: 0 }}
 				allowFullScreen
 				loading="lazy"
-				title="Mapa de shedulePro"
+				title="Mapa de schedulePro"
 				referrerPolicy="no-referrer-when-downgrade"
 			></iframe>
 		</div>

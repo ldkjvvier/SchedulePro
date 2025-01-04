@@ -12,7 +12,8 @@ const Footer = () => {
 						variant="body2"
 						className="tw-text-text-secondary tw-mb-4 sm:tw-mb-0"
 					>
-						© {currentYear} ShedulePro. Todos los derechos reservados.
+						© {currentYear} SchedulePro. Todos los derechos
+						reservados.
 					</Typography>
 					<nav className="tw-text-center">
 						<Link

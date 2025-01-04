@@ -1,9 +1,9 @@
 // src/services/barberSchedule.ts
 
-import { mockSchedule } from '@/data/shedule'
+import { mockSchedule } from '@/data/schedule'
 import { Schedule } from '@/models/barber'
 
-export const fetchBarberShedule = async (
+export const fetchBarberSchedule = async (
 	barberId: string,
 	date: string
 ): Promise<Schedule> => {

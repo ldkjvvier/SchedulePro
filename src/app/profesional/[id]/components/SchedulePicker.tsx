@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Typography, Box } from '@mui/material'
-import { useBarberShedule } from '@/hooks/useBarberShedule'
+import { useBarberShedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { ScheduleButton } from './ScheduleButton'
 
