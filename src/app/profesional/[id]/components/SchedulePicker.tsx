@@ -3,9 +3,11 @@ import { Typography, Box } from '@mui/material'
 import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
+import { useShoppingCart } from '@/hooks/useShoppingCart'
 
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
+	const cart = useShoppingCart()
 	const {
 		data: schedule,
 		isLoading,
@@ -88,16 +90,16 @@ export const SchedulePicker: React.FC = () => {
 					</Typography>
 					<Box sx={{ p: 2 }} width={'100%'}>
 						<Typography variant="subtitle1" gutterBottom>
-							Servicio seleccionado
+							Servicio seleccionado {cart?.service.name}
 						</Typography>
 						<Typography variant="body1" gutterBottom>
-							Nombre del servicio
+							Nombre del servicio {cart?.service.name}
 						</Typography>
 						<Typography variant="body1" gutterBottom>
-							Duración del servicio
+							Duración del servicio {cart?.service.duration}
 						</Typography>
 						<Typography variant="body1" gutterBottom>
-							Precio del servicio
+							Precio del servicio {cart?.service.price}
 						</Typography>
 					</Box>
 				</Box>
