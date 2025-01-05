@@ -6,18 +6,16 @@ import { Schedule } from '@/models/barber'
 export const fetchBarberSchedule = async (
 	barberId: string,
 	date: string
-): Promise<Schedule> => {
+): Promise<Schedule | null> => {
 	try {
 		// Simular retardo
-		await new Promise((resolve) => setTimeout(resolve, 100))
+		await new Promise((resolve) => setTimeout(resolve, 500))
 
 		// Obtener horarios del barbero específico
 		const barberSchedules = mockSchedule[barberId]
 
 		if (!barberSchedules) {
-			throw new Error(
-				`No se encontraron horarios para el barbero con ID ${barberId}`
-			)
+			return null
 		}
 
 		// Buscar horarios por fecha
