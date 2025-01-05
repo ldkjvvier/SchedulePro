@@ -9,7 +9,6 @@ export const SchedulePicker: React.FC = () => {
 	const {
 		data: schedule,
 		isLoading,
-		error,
 		refetch,
 	} = useBarberShedule('2', selectedDate.toISOString().split('T')[0])
 
@@ -23,8 +22,8 @@ export const SchedulePicker: React.FC = () => {
 
 	return (
 		<div className="tw-flex tw-items-center tw-justify-center tw-bg-secondary tw-w-full tw-h-full tw-text-black">
-			<Box className="tw-flex tw-items-center tw-justify-center tw-gap-4 tw-w-[80%] tw-h-[80%]">
-				<Box className="tw-w-[60%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md">
+			<Box className="tw-container tw-flex tw-items-center tw-justify-center tw-gap-4 md:tw-w-[80%] tw-h-[80%]">
+				<Box className="tw-w-[90%] md:tw-w-[60%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md">
 					<div className="tw-border-b tw-border-secondary tw-mb-4">
 						<Typography variant="h6" sx={{ px: 2, py: 1 }}>
 							Selecciona una fecha y horario
@@ -43,13 +42,8 @@ export const SchedulePicker: React.FC = () => {
 							onSelectDate={handleSelectDate}
 						/>
 						{isLoading && <Typography>Cargando...</Typography>}
-						{error && <Typography>Error: {error.message}</Typography>}
-						{!error && selectedDate && (
+						{selectedDate && (
 							<div>
-								<Typography variant="subtitle1" gutterBottom>
-									Horarios disponibles para{' '}
-									{selectedDate.toISOString().split('T')[0]}:
-								</Typography>
 								{schedule && (
 									<>
 										<SchedulePartOfDay
