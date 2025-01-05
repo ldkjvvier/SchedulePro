@@ -1,5 +1,5 @@
 'use client'
-import { IconButton, Modal } from '@mui/material'
+import { IconButton, Modal, Slide } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { useState } from 'react'
 import { SchedulePicker } from './SchedulePicker'
@@ -29,27 +29,34 @@ export const ScheduleModalWrapper = ({
 				onClose={handleClose}
 				aria-labelledby="modal-title"
 				aria-describedby="modal-description"
+				closeAfterTransition
 			>
-				<div
-					style={{
-						position: 'relative',
-						width: '100%',
-						height: '100%',
-					}}
-				>
-					<IconButton
-						onClick={handleClose}
-						sx={{
-							position: 'absolute',
-							top: 8,
-							right: 8,
-							zIndex: 1400,
+				<Slide direction="up" in={open} mountOnEnter unmountOnExit>
+					<div
+						style={{
+							position: 'fixed',
+							bottom: 0,
+							left: 0,
+							width: '100%',
+							height: '100%',
+							backgroundColor: 'white',
+							overflow: 'auto',
 						}}
 					>
-						<CloseIcon />
-					</IconButton>
-					<SchedulePicker />
-				</div>
+						<IconButton
+							onClick={handleClose}
+							sx={{
+								position: 'absolute',
+								top: 8,
+								right: 8,
+								zIndex: 1400,
+							}}
+						>
+							<CloseIcon />
+						</IconButton>
+						<SchedulePicker />
+					</div>
+				</Slide>
 			</Modal>
 		</>
 	)
