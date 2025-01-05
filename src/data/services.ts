@@ -1,4 +1,4 @@
-import { BarberService } from '@/models/barber'
+import { BarberService } from '@/models/Service'
 
 export const mockServices: BarberService[] = [
 	{

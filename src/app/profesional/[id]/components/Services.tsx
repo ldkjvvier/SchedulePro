@@ -2,7 +2,7 @@ import { Typography, Button } from '@mui/material'
 import { useServices } from '@/hooks/useServices'
 import { AccordionSkeleton } from './loadingSkeleton'
 import { useState } from 'react'
-import { Service } from '@/models/barber'
+import { Service } from '@/models/Service'
 import { ScheduleModalWrapper } from './ScheduleModalWrapper'
 
 export const Services = ({ barberId }: { barberId: string }) => {

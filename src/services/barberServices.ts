@@ -1,4 +1,4 @@
-import { Service } from '@/models/barber'
+import { Service } from '@/models/Service'
 import { mockServices } from '@/data/services'
 
 export const fetchServices = async (

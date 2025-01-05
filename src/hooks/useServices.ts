@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Service } from '@/models/barber'
+import { Service } from '@/models/Service'
 import { fetchServices } from '@/services'
 export const useServices = (barberId: string) => {
 	return useQuery<Service[], Error>({
