@@ -69,8 +69,8 @@ export const DateCarouselCalendar: React.FC<
 			{
 				breakpoint: 600,
 				settings: {
-					slidesToShow: 3,
-					slidesToScroll: 3,
+					slidesToShow: 6,
+					slidesToScroll: 6,
 				},
 			},
 		],
