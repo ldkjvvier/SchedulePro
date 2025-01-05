@@ -1,4 +1,4 @@
-import { PartOfDay, Schedule, ScheduleTime } from '@/models/barber'
+import { PartOfDay, Schedule, ScheduleTime } from '@/models/Schedule'
 import {
 	Box,
 	Typography,

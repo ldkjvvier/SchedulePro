@@ -1,4 +1,4 @@
-import { Schedule } from '@/models/barber'
+import { Schedule } from '@/models/Schedule'
 
 export const mockSchedule: { [barberId: string]: Schedule[] } = {
 	'1': [

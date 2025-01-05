@@ -1,7 +1,7 @@
 // src/services/barberSchedule.ts
 
 import { mockSchedule } from '@/data/schedule'
-import { Schedule } from '@/models/barber'
+import { Schedule } from '@/models/Schedule'
 
 export const fetchBarberSchedule = async (
 	barberId: string,
