@@ -5,6 +5,7 @@ import './globals.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import QueryProvider from './components/QueryProvider'
+import { Providers } from '@/redux/Providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,12 +30,14 @@ export default function RootLayout({
 			<ThemeRegistry>
 				<body className={inter.className}>
 					<QueryProvider>
-						<main className="tw-flex tw-flex-1 tw-justify-between tw-min-h-screen tw-flex-col tw-bg-transparent">
-							<Header />
+						<Providers>
+							<main className="tw-flex tw-flex-1 tw-justify-between tw-min-h-screen tw-flex-col tw-bg-transparent">
+								<Header />
 
-							{children}
-							<Footer />
-						</main>
+								{children}
+								<Footer />
+							</main>
+						</Providers>
 					</QueryProvider>
 				</body>
 			</ThemeRegistry>
