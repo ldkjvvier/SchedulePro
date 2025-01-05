@@ -17,18 +17,21 @@ export const SchedulePartOfDay = ({
 	schedule,
 	partOfDay,
 	filterFn,
-}: SchedulePartOfDayProps) => (
-	<Box>
-		<Typography variant="body1" gutterBottom>
-			{partOfDay}
-		</Typography>
-		<hr />
-		<List>
-			{schedule.times.filter(filterFn).map((time) => (
-				<ListItem key={time.id}>
-					<ListItemButton>{time.time}</ListItemButton>
-				</ListItem>
-			))}
-		</List>
-	</Box>
-)
+}: SchedulePartOfDayProps) => {
+	const times = schedule.times.filter(filterFn)
+	return (
+		<Box>
+			<Typography variant="body1" gutterBottom>
+				{partOfDay}
+			</Typography>
+			<hr />
+			<List>
+				{times.map((time) => (
+					<ListItem key={time.id}>
+						<ListItemButton>{time.time}</ListItemButton>
+					</ListItem>
+				))}
+			</List>
+		</Box>
+	)
+}
