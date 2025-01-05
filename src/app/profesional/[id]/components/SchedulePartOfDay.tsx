@@ -19,6 +19,8 @@ export const SchedulePartOfDay = ({
 	filterFn,
 }: SchedulePartOfDayProps) => {
 	const times = schedule.times.filter(filterFn)
+
+	if (times.length === 0) return null
 	return (
 		<Box>
 			<Typography variant="body1" gutterBottom>
