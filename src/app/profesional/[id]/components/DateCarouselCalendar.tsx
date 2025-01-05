@@ -58,6 +58,7 @@ export const DateCarouselCalendar: React.FC<
 		initialSlide: initialIndex, // Establecer índice inicial
 		centerMode: false, // Desactivar modo centrado
 		focusOnSelect: false, // No enfocar automáticamente al seleccionar
+		arrows: false, // Desactivar flechas de navegación
 		responsive: [
 			{
 				breakpoint: 1024,
