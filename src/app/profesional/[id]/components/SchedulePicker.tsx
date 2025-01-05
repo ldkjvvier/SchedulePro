@@ -51,7 +51,7 @@ export const SchedulePicker: React.FC = () => {
 											partOfDay="Mañana"
 											filterFn={(time) => {
 												const hour = new Date(
-													`1970-01-01T${time}`
+													`1970-01-01T${time.time}`
 												).getHours()
 												return hour >= 6 && hour < 12
 											}}
@@ -61,7 +61,7 @@ export const SchedulePicker: React.FC = () => {
 											partOfDay="Tarde"
 											filterFn={(time) => {
 												const hour = new Date(
-													`1970-01-01T${time}`
+													`1970-01-01T${time.time}`
 												).getHours()
 												return hour >= 12 && hour < 18
 											}}
@@ -71,7 +71,7 @@ export const SchedulePicker: React.FC = () => {
 											partOfDay="Noche"
 											filterFn={(time) => {
 												const hour = new Date(
-													`1970-01-01T${time}`
+													`1970-01-01T${time.time}`
 												).getHours()
 												return hour >= 18 && hour < 24
 											}}
