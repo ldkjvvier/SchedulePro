@@ -1,15 +1,16 @@
 import { Typography, Button } from '@mui/material'
 import { useServices } from '@/hooks/useServices'
 import { AccordionSkeleton } from './loadingSkeleton'
-import { useState } from 'react'
 import { Service } from '@/models/Service'
 import { ScheduleModalWrapper } from './ScheduleModalWrapper'
 
+import { useDispatch } from 'react-redux'
+import { addToCart } from '@/redux/features/shoppingCartSlice'
+
 export const Services = ({ barberId }: { barberId: string }) => {
 	const { data: services, isLoading } = useServices(barberId)
-	const [selectedService, setSelectedService] = useState<Service>(
-		{} as Service
-	)
+	const dispatch = useDispatch()
+
 	if (isLoading) return <AccordionSkeleton />
 	if (!services || services.length === 0) {
 		return (
@@ -26,7 +27,28 @@ export const Services = ({ barberId }: { barberId: string }) => {
 	}
 
 	const handleClickService = (service: Service) => {
-		setSelectedService(service)
+		/* ADD TO CART */
+
+		dispatch(
+			// TODO - Add to cart
+			addToCart({
+				barber: {
+					id: barberId,
+					name: 'barberName',
+					image: 'barberImage',
+				},
+				service: {
+					id: service.id,
+					name: service.name,
+					price: service.price,
+					duration: service.duration,
+				},
+				appointment: {
+					date: '',
+					time: '',
+				},
+			})
+		)
 	}
 
 	return (
