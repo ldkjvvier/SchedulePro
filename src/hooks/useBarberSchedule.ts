@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Schedule } from '@/models/barber'
 import { fetchBarberSchedule } from '@/services/barberSchedule'
-export const useBarberShedule = (barberId: string, date: string) => {
+export const useBarberSchedule = (barberId: string, date: string) => {
 	return useQuery<Schedule, Error>({
 		queryKey: ['barberSchedule', barberId],
 		queryFn: () => fetchBarberSchedule(barberId, date),

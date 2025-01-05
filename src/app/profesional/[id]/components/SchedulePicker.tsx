@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Typography, Box } from '@mui/material'
-import { useBarberShedule } from '@/hooks/useBarberSchedule'
+import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
 
@@ -10,7 +10,7 @@ export const SchedulePicker: React.FC = () => {
 		data: schedule,
 		isLoading,
 		refetch,
-	} = useBarberShedule('2', selectedDate.toISOString().split('T')[0])
+	} = useBarberSchedule('2', selectedDate.toISOString().split('T')[0])
 
 	useEffect(() => {
 		refetch()
