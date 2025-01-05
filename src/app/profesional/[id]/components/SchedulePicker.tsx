@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Typography, Box } from '@mui/material'
+import { Typography, Box, useTheme } from '@mui/material'
 import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
@@ -8,6 +8,7 @@ import { useShoppingCart } from '@/hooks/useShoppingCart'
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 	const cart = useShoppingCart()
+	const theme = useTheme()
 	const {
 		data: schedule,
 		isLoading,
@@ -24,16 +25,43 @@ export const SchedulePicker: React.FC = () => {
 
 	return (
 		<div className="tw-flex tw-items-center tw-justify-center tw-bg-secondary tw-w-full tw-h-full tw-text-black">
-			<Box className="tw-container tw-flex tw-items-center tw-justify-center tw-gap-4 md:tw-w-[80%] tw-h-[80%]">
-				<Box className="tw-w-[90%] md:tw-w-[60%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md">
-					<div className="tw-border-b tw-border-secondary tw-mb-4">
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: { xs: 'column', md: 'row' },
+					alignItems: 'center',
+					justifyContent: 'center',
+					gap: 4,
+					width: '100%',
+					height: '100%',
+					padding: theme.spacing(2),
+				}}
+			>
+				{/* Main Schedule Picker */}
+				<Box
+					sx={{
+						width: { xs: '90%', sm: '80%', md: '60%' },
+						height: { xs: 'auto', md: '80%' },
+						borderRadius: 2,
+						boxShadow: theme.shadows[3],
+						overflow: 'hidden',
+						display: 'flex',
+						flexDirection: 'column',
+					}}
+				>
+					<Box
+						sx={{
+							borderBottom: 1,
+							borderColor: 'divider',
+							mb: 2,
+						}}
+					>
 						<Typography variant="h6" sx={{ px: 2, py: 1 }}>
 							Selecciona una fecha y horario
 						</Typography>
-					</div>
-					<div className="tw-p-4">
+					</Box>
+					<Box sx={{ padding: theme.spacing(2) }}>
 						<Typography variant="h6" gutterBottom>
-							{/* MES de la fecha seleccionada */}
 							{selectedDate.toLocaleString('es-ES', {
 								month: 'long',
 							})}
@@ -45,7 +73,7 @@ export const SchedulePicker: React.FC = () => {
 						/>
 						{isLoading && <Typography>Cargando...</Typography>}
 						{selectedDate && (
-							<div>
+							<Box>
 								{schedule && (
 									<>
 										<SchedulePartOfDay
@@ -80,26 +108,37 @@ export const SchedulePicker: React.FC = () => {
 										/>
 									</>
 								)}
-							</div>
+							</Box>
 						)}
-					</div>
+					</Box>
 				</Box>
-				<Box className="md:tw-block tw-hidden tw-w-[40%] tw-h-full tw-rounded-md tw-bg-primary tw-shadow-md tw-p-4">
+
+				{/* Service Information */}
+				<Box
+					sx={{
+						display: { xs: 'none', md: 'block' },
+						width: { md: '30%' },
+						height: '80%',
+						borderRadius: 2,
+						boxShadow: theme.shadows[3],
+						padding: theme.spacing(2),
+					}}
+				>
 					<Typography variant="subtitle1" gutterBottom>
 						Información del servicio
 					</Typography>
-					<Box sx={{ p: 2 }} width={'100%'}>
+					<Box width="100%">
 						<Typography variant="subtitle1" gutterBottom>
-							Servicio seleccionado {cart?.service.name}
+							Servicio seleccionado: {cart.service.name}
 						</Typography>
 						<Typography variant="body1" gutterBottom>
-							Nombre del servicio {cart?.service.name}
+							Nombre del servicio: {cart.service.name}
 						</Typography>
 						<Typography variant="body1" gutterBottom>
-							Duración del servicio {cart?.service.duration}
+							Duración del servicio: {cart.service.duration}
 						</Typography>
 						<Typography variant="body1" gutterBottom>
-							Precio del servicio {cart?.service.price}
+							Precio del servicio: {cart.service.price}
 						</Typography>
 					</Box>
 				</Box>
