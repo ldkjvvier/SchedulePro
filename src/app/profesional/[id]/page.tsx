@@ -16,18 +16,18 @@ export default function Profesional({
 }: {
 	params: { id: string }
 }) {
-	const { data: user, isLoading } = useBarber(params.id)
+	const { data: barber, isLoading } = useBarber(params.id)
 
 	if (isLoading) return <LoadingSkeleton />
-	if (!user) return <Custom404 message="Barber not found" />
+	if (!barber) return <Custom404 message="Barber not found" />
 
 	return (
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
 			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
 				<div className="tw-flex tw-items-center tw-gap-4 tw-mb-8">
 					<BarberImage
-						src={user.image}
-						alt={user.name}
+						src={barber.image}
+						alt={barber.name}
 						width={100}
 						height={100}
 						className="tw-rounded-full"
@@ -38,16 +38,16 @@ export default function Profesional({
 							color="text.primary"
 							sx={{ fontWeight: 'bold' }}
 						>
-							{user.name}
+							{barber.name}
 						</Typography>
 						<Typography variant="body1" color="text.secondary">
-							{user.email}
+							{barber.email}
 						</Typography>
 						<Typography variant="body1" color="text.secondary">
-							{user.contactNumber}
+							{barber.contactNumber}
 						</Typography>
 						<Typography variant="body1" color="text.secondary">
-							{user.bio}
+							{barber.bio}
 						</Typography>
 					</div>
 				</div>
@@ -65,7 +65,7 @@ export default function Profesional({
 						<Typography>Servicios de Barberia</Typography>
 					</AccordionSummary>
 					<AccordionDetails>
-						<Services barberId={user.id} />
+						<Services barber={barber} />
 					</AccordionDetails>
 				</Accordion>
 			</div>

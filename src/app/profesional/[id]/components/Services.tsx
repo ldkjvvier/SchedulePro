@@ -6,9 +6,14 @@ import { ScheduleModalWrapper } from './ScheduleModalWrapper'
 
 import { useDispatch } from 'react-redux'
 import { addToCart } from '@/redux/features/shoppingCartSlice'
+import { Barber } from '@/models/barber'
 
-export const Services = ({ barberId }: { barberId: string }) => {
-	const { data: services, isLoading } = useServices(barberId)
+interface ServiceProps {
+	barber: Barber
+}
+
+export const Services = ({ barber }: ServiceProps) => {
+	const { data: services, isLoading } = useServices(barber.id)
 	const dispatch = useDispatch()
 
 	if (isLoading) return <AccordionSkeleton />
@@ -33,9 +38,9 @@ export const Services = ({ barberId }: { barberId: string }) => {
 			// TODO - Add to cart
 			addToCart({
 				barber: {
-					id: barberId,
-					name: 'barberName',
-					image: 'barberImage',
+					id: barber.id,
+					name: barber.name,
+					image: barber.image,
 				},
 				service: {
 					id: service.id,
