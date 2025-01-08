@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react'
-import { Typography, Box, useTheme } from '@mui/material'
+import {
+	Typography,
+	Box,
+	useTheme,
+	Divider,
+	Grid,
+} from '@mui/material'
 import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
@@ -41,7 +47,7 @@ export const SchedulePicker: React.FC = () => {
 				<CustomBox
 					width={{ xs: '90%', sm: '80%', md: '60%' }}
 					height={{ xs: 'auto', md: '80%' }}
-					display={'flex'}
+					display="flex"
 					message="Selecciona una fecha y horario"
 				>
 					<Typography variant="h6" gutterBottom>
@@ -92,29 +98,42 @@ export const SchedulePicker: React.FC = () => {
 								</>
 							)}
 						</Box>
-					)}{' '}
+					)}
 				</CustomBox>
 
 				{/* Service Information */}
 				<CustomBox
-					display={{ xs: 'none', md: 'block' }}
-					width={{ md: '30%' }}
-					height={'80%'}
+					width={{ xs: '100%', md: '30%' }}
+					height="80%"
+					display={{ xs: 'none', md: 'flex' }}
 					message="Información del servicio"
 				>
-					<Box width="100%">
-						<Typography variant="subtitle1" gutterBottom>
-							Servicio seleccionado: {cart.service.name}
-						</Typography>
-						<Typography variant="body1" gutterBottom>
-							Nombre del servicio: {cart.service.name}
-						</Typography>
-						<Typography variant="body1" gutterBottom>
-							Duración del servicio: {cart.service.duration}
-						</Typography>
-						<Typography variant="body1" gutterBottom>
-							Precio del servicio: {cart.service.price}
-						</Typography>
+					<Box sx={{ width: '100%', padding: theme.spacing(2) }}>
+						{cart?.service ? (
+							<>
+								<Typography variant="subtitle1" gutterBottom>
+									Servicio seleccionado:{' '}
+									<strong>{cart.service.name}</strong>
+								</Typography>
+								<Typography variant="body1" gutterBottom>
+									<strong>Nombre del servicio:</strong>{' '}
+									{cart.service.name}
+								</Typography>
+								<Typography variant="body1" gutterBottom>
+									<strong>Duración del servicio:</strong>{' '}
+									{cart.service.duration} minutos
+								</Typography>
+								<Typography variant="body1" gutterBottom>
+									<strong>Precio del servicio:</strong> $
+									{cart.service.price}
+								</Typography>
+							</>
+						) : (
+							<Typography variant="body1" color="textSecondary">
+								No hay ningún servicio seleccionado. Por favor,
+								selecciona uno de la lista.
+							</Typography>
+						)}
 					</Box>
 				</CustomBox>
 			</Box>
@@ -141,13 +160,7 @@ const CustomBox = ({
 				md?: string
 		  }
 		| string
-	display:
-		| {
-				xs?: string
-				sm?: string
-				md?: string
-		  }
-		| string
+	display: string | { xs?: string; sm?: string; md?: string }
 	message: string
 	children: React.ReactNode
 }) => {
