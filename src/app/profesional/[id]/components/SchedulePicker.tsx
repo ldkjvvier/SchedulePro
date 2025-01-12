@@ -10,7 +10,7 @@ import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
 import { useShoppingCart } from '@/hooks/useShoppingCart'
-
+import { ShoppingCart } from '@/models/shoppingCart'
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 	const cart = useShoppingCart()
@@ -27,6 +27,10 @@ export const SchedulePicker: React.FC = () => {
 
 	const handleSelectDate = (date: Date): void => {
 		setSelectedDate(date)
+	}
+
+	const sendService = (cart: ShoppingCart) => {
+		console.log(cart)
 	}
 
 	return (
@@ -134,6 +138,42 @@ export const SchedulePicker: React.FC = () => {
 								selecciona uno de la lista.
 							</Typography>
 						)}
+						<Divider sx={{ my: 2 }} />
+
+						{cart?.barber && (
+							<>
+								<Typography variant="subtitle1" gutterBottom>
+									Barbero seleccionado:{' '}
+									<strong>{cart.barber.name}</strong>
+								</Typography>
+								<Typography variant="body1" gutterBottom>
+									<strong>Nombre del barbero:</strong>{' '}
+									{cart.barber.name}
+								</Typography>
+							</>
+						)}
+						<Divider sx={{ my: 2 }} />
+						{cart?.appointment && (
+							<>
+								<Typography variant="subtitle1" gutterBottom>
+									Horario seleccionado:{' '}
+									<strong>{cart.appointment.time}</strong>
+								</Typography>
+								<Typography variant="body1" gutterBottom>
+									<strong>Fecha del servicio:</strong>{' '}
+									{cart.appointment.date}
+								</Typography>
+							</>
+						)}
+
+						<Box sx={{ display: 'flex', justifyContent: 'center' }}>
+							<button
+								onClick={() => sendService(cart)}
+								className="tw-bg-red-400 tw-text-white tw-py-2 tw-px-4 tw-rounded-md tw-mt-4"
+							>
+								Enviar servicio
+							</button>
+						</Box>
 					</Box>
 				</CustomBox>
 			</Box>
