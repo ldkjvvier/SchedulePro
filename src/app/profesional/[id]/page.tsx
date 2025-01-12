@@ -10,7 +10,7 @@ import { Services } from './components/Services'
 import { useBarber } from '@/hooks/useBarber'
 import { LoadingSkeleton } from './components/loadingSkeleton'
 import Custom404 from '@/app/not-found'
-import { BarberImage } from '@/app/components/BarberImage'
+import { FallbackImage } from '@/app/components/FallbackImage'
 export default function Profesional({
 	params,
 }: {
@@ -25,7 +25,7 @@ export default function Profesional({
 		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
 			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
 				<div className="tw-flex tw-items-center tw-gap-4 tw-mb-8">
-					<BarberImage
+					<FallbackImage
 						src={barber.image}
 						alt={barber.name}
 						width={100}

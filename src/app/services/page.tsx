@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { useBarberList } from '@/hooks/useBarberList'
-import { BarberImage } from '../components/BarberImage'
+import { FallbackImage } from '../components/FallbackImage'
 
 export default function Servicios() {
 	const { data: barberList, isLoading, error } = useBarberList()
@@ -44,7 +44,7 @@ export default function Servicios() {
 							key={barber.id}
 							className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105"
 						>
-							<BarberImage
+							<FallbackImage
 								src={barber.image}
 								alt={barber.name}
 								width={300}

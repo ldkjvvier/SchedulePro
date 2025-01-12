@@ -1,5 +1,5 @@
 'use client'
-import { BarberImage } from './BarberImage'
+import { FallbackImage } from './FallbackImage'
 
 export const BestCuts = () => {
 	const cuts = [
@@ -34,7 +34,7 @@ export const BestCuts = () => {
 						key={cut.id}
 						className="tw-bg-primary tw-rounded-lg tw-overflow-hidden tw-shadow-lg tw-border tw-border-accent"
 					>
-						<BarberImage
+						<FallbackImage
 							src={cut.image}
 							alt={cut.name}
 							width={300}
