@@ -6,20 +6,24 @@ import { BarberImage } from '../components/BarberImage'
 export default function Servicios() {
 	const { data: barberList, isLoading, error } = useBarberList()
 	const skeleton = (
-		<div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-12">
-			{Array.from({ length: 4 }).map((_, index) => (
-				<div
-					key={index}
-					className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105"
-				>
-					<div className="tw-w-full tw-h-64 tw-bg-gray-200 tw-animate-pulse"></div>
-					<div className="tw-p-6">
-						<div className="tw-w-3/4 tw-h-4 tw-mb-2 tw-bg-gray-200 tw-animate-pulse"></div>
-						<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
-						<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
-					</div>
+		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
+			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
+				<div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-12">
+					{Array.from({ length: 4 }).map((_, index) => (
+						<div
+							key={index}
+							className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105"
+						>
+							<div className="tw-w-full tw-h-64 tw-bg-gray-200 tw-animate-pulse"></div>
+							<div className="tw-p-6">
+								<div className="tw-w-3/4 tw-h-4 tw-mb-2 tw-bg-gray-200 tw-animate-pulse"></div>
+								<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
+								<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
+							</div>
+						</div>
+					))}
 				</div>
-			))}
+			</div>
 		</div>
 	)
 
