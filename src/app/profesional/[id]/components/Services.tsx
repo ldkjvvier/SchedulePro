@@ -5,7 +5,7 @@ import { Service } from '@/models/Service'
 import { ScheduleModalWrapper } from './ScheduleModalWrapper'
 
 import { useDispatch } from 'react-redux'
-import { addToCart } from '@/redux/features/shoppingCartSlice'
+import { addBarberAndService } from '@/redux/features/shoppingCartSlice'
 import { Barber } from '@/models/barber'
 
 interface ServiceProps {
@@ -32,11 +32,8 @@ export const Services = ({ barber }: ServiceProps) => {
 	}
 
 	const handleClickService = (service: Service) => {
-		/* ADD TO CART */
-
 		dispatch(
-			// TODO - Add to cart
-			addToCart({
+			addBarberAndService({
 				barber: {
 					id: barber.id,
 					name: barber.name,
@@ -47,10 +44,6 @@ export const Services = ({ barber }: ServiceProps) => {
 					name: service.name,
 					price: service.price,
 					duration: service.duration,
-				},
-				appointment: {
-					date: '',
-					time: '',
 				},
 			})
 		)
