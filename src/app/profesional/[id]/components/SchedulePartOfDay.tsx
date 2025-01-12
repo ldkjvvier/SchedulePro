@@ -6,7 +6,8 @@ import {
 	ListItem,
 	ListItemButton,
 } from '@mui/material'
-
+import { useDispatch } from 'react-redux'
+import { addAppointment } from '@/redux/features/shoppingCartSlice'
 interface SchedulePartOfDayProps {
 	schedule: Schedule
 	partOfDay: PartOfDay
@@ -19,7 +20,15 @@ export const SchedulePartOfDay = ({
 	filterFn,
 }: SchedulePartOfDayProps) => {
 	const times = schedule.times.filter(filterFn)
-
+	const dispatch = useDispatch()
+	const handleAddAppointment = (time: ScheduleTime): void => {
+		dispatch(
+			addAppointment({
+				time: time.time,
+				date: schedule.date,
+			})
+		)
+	}
 	if (times.length === 0) return null
 
 	return (
@@ -47,6 +56,7 @@ export const SchedulePartOfDay = ({
 					>
 						<ListItemButton
 							disabled={time.isBooked}
+							onClick={() => handleAddAppointment(time)}
 							sx={{
 								minWidth: '80px', // Asegura que todos los botones tengan el mismo tamaño mínimo
 								textAlign: 'center',
