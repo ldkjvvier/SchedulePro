@@ -42,7 +42,7 @@ export const SchedulePicker: React.FC = () => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					gap: 4,
-					width: '75%',
+					width: { xs: '100%', sm: '90%', md: '85%', lg: '75%' },
 					height: '100%',
 					padding: theme.spacing(2),
 				}}
