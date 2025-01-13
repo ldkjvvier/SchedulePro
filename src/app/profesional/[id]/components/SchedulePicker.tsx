@@ -218,6 +218,7 @@ const CustomBox = ({
 				overflow: 'hidden',
 				display: display,
 				flexDirection: 'column',
+				backgroundColor: 'white',
 			}}
 		>
 			<Box
