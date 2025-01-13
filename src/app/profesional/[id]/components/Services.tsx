@@ -2,7 +2,7 @@ import { Typography, Button } from '@mui/material'
 import { useServices } from '@/hooks/useServices'
 import { AccordionSkeleton } from './loadingSkeleton'
 import { Service } from '@/models/Service'
-import { ScheduleModalWrapper } from './ScheduleModalWrapper'
+import { ScheduleModalWrapper } from '../modal/ScheduleModalWrapper'
 
 import { useDispatch } from 'react-redux'
 import { addBarberAndService } from '@/redux/features/shoppingCartSlice'
