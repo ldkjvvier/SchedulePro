@@ -1,11 +1,5 @@
 import { useState, useEffect } from 'react'
-import {
-	Typography,
-	Box,
-	useTheme,
-	Divider,
-	Grid,
-} from '@mui/material'
+import { Typography, Box, useTheme, Divider } from '@mui/material'
 import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
@@ -34,7 +28,7 @@ export const SchedulePicker: React.FC = () => {
 	}
 
 	return (
-		<div className="tw-flex tw-items-center tw-justify-center tw-w-full tw-text-black">
+		<div className="tw-flex tw-items-center tw-justify-center tw-w-full tw-overflow-hidden tw-text-black">
 			<Box
 				sx={{
 					display: 'flex',
