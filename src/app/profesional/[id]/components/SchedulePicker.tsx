@@ -107,7 +107,7 @@ export const SchedulePicker: React.FC = () => {
 
 				{/* Service Information */}
 				<CustomBox
-					width={{ xs: '100%', md: '30%' }}
+					width={{ xs: '100%', md: '40%', lg: '30%' }}
 					height="80%"
 					display={{ xs: 'none', md: 'flex' }}
 					message="Información del servicio"
@@ -192,12 +192,14 @@ const CustomBox = ({
 		xs?: string
 		sm?: string
 		md?: string
+		lg?: string
 	}
 	height:
 		| {
 				xs?: string
 				sm?: string
 				md?: string
+				lg?: string
 		  }
 		| string
 	display: string | { xs?: string; sm?: string; md?: string }
