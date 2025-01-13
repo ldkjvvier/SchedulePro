@@ -3,6 +3,7 @@ import { IconButton, Modal, Slide } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { useState } from 'react'
 import { SchedulePicker } from './SchedulePicker'
+import { Header } from './Header'
 
 interface ScheduleModalWrapperProps {
 	children: React.ReactNode
@@ -43,6 +44,7 @@ export const ScheduleModalWrapper = ({
 							overflow: 'auto',
 						}}
 					>
+						<Header />
 						<IconButton
 							onClick={handleClose}
 							sx={{
