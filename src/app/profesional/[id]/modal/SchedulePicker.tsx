@@ -34,7 +34,7 @@ export const SchedulePicker: React.FC = () => {
 	}
 
 	return (
-		<div className="tw-flex tw-flex-1 tw-items-center tw-justify-center tw-w-full tw-text-black">
+		<div className="tw-flex tw-items-center tw-justify-center tw-w-full tw-text-black">
 			<Box
 				sx={{
 					display: 'flex',

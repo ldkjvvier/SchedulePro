@@ -3,6 +3,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { useState } from 'react'
 import { SchedulePicker } from './SchedulePicker'
 import { Header } from './Header'
+import { Footer } from './Footer'
 
 interface ScheduleModalWrapperProps {
 	children: React.ReactNode
@@ -32,7 +33,7 @@ export const ScheduleModalWrapper = ({
 				closeAfterTransition
 			>
 				<Slide direction="up" in={open} mountOnEnter unmountOnExit>
-					<div className="tw-fixed tw-flex-1 tw-bottom-0 tw-left-0 tw-w-full tw-h-full tw-bg-secondary tw-overflow-auto">
+					<div className="tw-fixed tw-bottom-0 tw-left-0 tw-w-full tw-h-full tw-bg-secondary tw-overflow-auto">
 						<Header />
 						<IconButton
 							onClick={handleClose}
@@ -46,6 +47,7 @@ export const ScheduleModalWrapper = ({
 							<CloseIcon />
 						</IconButton>
 						<SchedulePicker />
+						<Footer onNext={handleClose} />
 					</div>
 				</Slide>
 			</Modal>
