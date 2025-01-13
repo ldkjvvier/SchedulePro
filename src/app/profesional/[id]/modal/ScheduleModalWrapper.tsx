@@ -32,17 +32,7 @@ export const ScheduleModalWrapper = ({
 				closeAfterTransition
 			>
 				<Slide direction="up" in={open} mountOnEnter unmountOnExit>
-					<div
-						style={{
-							position: 'fixed',
-							bottom: 0,
-							left: 0,
-							width: '100%',
-							height: '100%',
-							backgroundColor: 'white',
-							overflow: 'auto',
-						}}
-					>
+					<div className="tw-fixed tw-flex-1 tw-bottom-0 tw-left-0 tw-w-full tw-h-full tw-bg-secondary tw-overflow-auto">
 						<Header />
 						<IconButton
 							onClick={handleClose}
