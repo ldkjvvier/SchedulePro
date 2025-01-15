@@ -28,24 +28,20 @@ export const SchedulePicker: React.FC = () => {
 	}
 
 	return (
-		<div className="tw-flex tw-items-center tw-justify-center tw-w-full tw-overflow-hidden tw-text-black">
+		<div className="tw-flex tw-items-center tw-justify-center tw-text-black">
 			<Box
-				sx={{
-					display: 'flex',
-					flexDirection: { xs: 'column', md: 'row' },
-					alignItems: 'center',
-					justifyContent: 'center',
-					gap: 4,
-					width: { xs: '100%', sm: '90%', md: '85%', lg: '75%' },
-					height: '100%',
-					padding: theme.spacing(2),
-				}}
+				height={'100%'}
+				display={'flex'}
+				flexDirection={{ xs: 'column', md: 'row' }}
+				alignItems="center"
+				justifyContent="center"
+				gap={4}
+				width={{ xs: '100%', sm: '90%', md: '85%', lg: '75%' }}
+				padding={theme.spacing(2)}
 			>
 				{/* Main Schedule Picker */}
 				<CustomBox
 					width={{ xs: '90%', sm: '80%', md: '60%' }}
-					height={{ xs: 'auto', md: '80%' }}
-					display="flex"
 					message="Selecciona una fecha y horario"
 				>
 					<Typography variant="h6" gutterBottom>
@@ -98,11 +94,9 @@ export const SchedulePicker: React.FC = () => {
 						</Box>
 					)}
 				</CustomBox>
-
 				{/* Service Information */}
 				<CustomBox
 					width={{ xs: '100%', md: '40%', lg: '30%' }}
-					height="80%"
 					display={{ xs: 'none', md: 'flex' }}
 					message="Información del servicio"
 				>
@@ -159,7 +153,6 @@ export const SchedulePicker: React.FC = () => {
 								</Typography>
 							</>
 						)}
-
 						<Box sx={{ display: 'flex', justifyContent: 'center' }}>
 							<button
 								onClick={() => sendService(cart)}
@@ -177,7 +170,7 @@ export const SchedulePicker: React.FC = () => {
 
 const CustomBox = ({
 	width,
-	height,
+	height = { xs: 'auto', md: '80%' },
 	display,
 	message,
 	children,
@@ -188,15 +181,15 @@ const CustomBox = ({
 		md?: string
 		lg?: string
 	}
-	height:
+	height?:
 		| {
 				xs?: string
 				sm?: string
-				md?: string
+				md: string
 				lg?: string
 		  }
 		| string
-	display: string | { xs?: string; sm?: string; md?: string }
+	display?: string | { xs?: string; sm?: string; md?: string }
 	message: string
 	children: React.ReactNode
 }) => {
