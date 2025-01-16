@@ -1,5 +1,5 @@
 import Image, { ImageProps } from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface FallbackImageProps extends ImageProps {
 	fallbackSrc?: string
@@ -12,16 +12,21 @@ export const FallbackImage: React.FC<FallbackImageProps> = ({
 	...props
 }) => {
 	const [imgSrc, setImgSrc] = useState(src)
-	const [hasError, setHasError] = useState(false)
+
+	useEffect(() => {
+		setImgSrc(src) // Reinicia el src si cambia el prop src
+	}, [src])
 
 	const handleError = () => {
-		if (!hasError) {
-			setImgSrc(fallbackSrc)
-			setHasError(true)
-		}
+		setImgSrc(fallbackSrc) // Cambia al fallback si ocurre un error
 	}
 
 	return (
-		<Image {...props} src={imgSrc} alt={alt} onError={handleError} />
+		<Image
+			{...props}
+			src={imgSrc || fallbackSrc} // Asegúrate de que src siempre sea válido
+			alt={alt || 'Image'}
+			onError={handleError}
+		/>
 	)
 }
