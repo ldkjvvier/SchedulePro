@@ -4,22 +4,6 @@ import { useBarberList } from '@/hooks/useBarberList'
 import { FallbackImage } from '../components/FallbackImage'
 import { BarberSummary } from '@/models/barber'
 
-function BarberCardSkeleton() {
-	return (
-		<div
-			className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105"
-			aria-hidden="true"
-		>
-			<div className="tw-w-full tw-h-48 sm:tw-h-56 md:tw-h-64 tw-bg-gray-200 tw-animate-pulse"></div>
-			<div className="tw-p-4 sm:tw-p-6">
-				<div className="tw-w-3/4 tw-h-4 tw-mb-2 tw-bg-gray-200 tw-animate-pulse"></div>
-				<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
-				<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
-			</div>
-		</div>
-	)
-}
-
 function BarberCard({ barber }: { barber: BarberSummary }) {
 	return (
 		<div className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105">
@@ -60,7 +44,18 @@ export default function Servicios() {
 					</h1>
 					<div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-6">
 						{Array.from({ length: 4 }).map((_, index) => (
-							<BarberCardSkeleton key={index} />
+							<div
+								className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105"
+								aria-hidden="true"
+								key={index}
+							>
+								<div className="tw-w-full tw-h-48 sm:tw-h-56 md:tw-h-64 tw-bg-gray-200 tw-animate-pulse"></div>
+								<div className="tw-p-4 sm:tw-p-6">
+									<div className="tw-w-3/4 tw-h-4 tw-mb-2 tw-bg-gray-200 tw-animate-pulse"></div>
+									<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
+									<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
+								</div>
+							</div>
 						))}
 					</div>
 				</div>
