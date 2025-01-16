@@ -28,7 +28,7 @@ export const SchedulePicker: React.FC = () => {
 	}
 
 	return (
-		<div className="tw-flex tw-items-center tw-justify-center tw-text-black">
+		<div className="tw-flex tw-w-full tw-h-full tw-items-center tw-justify-center tw-text-black">
 			<Box
 				height={'100%'}
 				display={'flex'}
@@ -42,6 +42,7 @@ export const SchedulePicker: React.FC = () => {
 				{/* Main Schedule Picker */}
 				<CustomBox
 					width={{ xs: '90%', sm: '80%', md: '60%' }}
+					display={{ md: 'flex' }}
 					message="Selecciona una fecha y horario"
 				>
 					<Typography variant="h6" gutterBottom>
