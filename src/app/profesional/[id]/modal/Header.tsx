@@ -12,7 +12,7 @@ export const Header = () => {
 			sx={{
 				backgroundColor: '#FFFFFF',
 			}}
-			elevation={0}
+			elevation={4}
 		>
 			<Toolbar className="tw-justify-between">
 				{/* Logo y Nombre */}
