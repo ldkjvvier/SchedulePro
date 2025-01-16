@@ -11,9 +11,6 @@ export const Footer: React.FC<FooterProps> = ({ onNext }) => {
 	return (
 		<Box
 			sx={{
-				position: 'absolute',
-				bottom: 0,
-				left: 0,
 				width: '100%',
 				display: 'flex',
 				justifyContent: 'space-between',
