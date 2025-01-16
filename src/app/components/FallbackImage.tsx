@@ -24,9 +24,11 @@ export const FallbackImage: React.FC<FallbackImageProps> = ({
 	return (
 		<Image
 			{...props}
-			src={imgSrc || fallbackSrc} // Asegúrate de que src siempre sea válido
+			src={imgSrc || fallbackSrc}
 			alt={alt || 'Image'}
 			onError={handleError}
+			placeholder="blur"
+			blurDataURL={fallbackSrc}
 		/>
 	)
 }
