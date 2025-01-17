@@ -30,10 +30,10 @@ export const SchedulePicker: React.FC = () => {
 	return (
 		<div className="tw-flex tw-w-full tw-h-full tw-items-center tw-justify-center tw-text-black">
 			<Box
-				height={'100%'}
+				height={'85%'}
 				display={'flex'}
 				flexDirection={{ xs: 'column', md: 'row' }}
-				alignItems="center"
+				alignItems={{ xs: 'center', md: 'start' }}
 				justifyContent="center"
 				gap={4}
 				width={{ xs: '100%', sm: '90%', md: '85%', lg: '75%' }}
@@ -99,6 +99,7 @@ export const SchedulePicker: React.FC = () => {
 				<CustomBox
 					width={{ xs: '100%', md: '40%', lg: '30%' }}
 					display={{ xs: 'none', md: 'flex' }}
+					height={'auto'}
 					message="Información del servicio"
 				>
 					<Box sx={{ width: '100%', padding: theme.spacing(2) }}>
