@@ -102,23 +102,22 @@ export const SchedulePicker: React.FC = () => {
 					height={'auto'}
 					message="Información del servicio"
 				>
-					<Box sx={{ width: '100%', padding: theme.spacing(2) }}>
+					<Box sx={{ width: '100%' }}>
 						{cart?.service ? (
 							<>
-								<Typography variant="subtitle1" gutterBottom>
-									Servicio seleccionado:{' '}
-									<strong>{cart.service.name}</strong>
+								<Typography
+									variant="subtitle1"
+									gutterBottom
+									textTransform={'capitalize'}
+								>
+									<strong>
+										{cart.service.name} con {cart.barber.name}
+									</strong>
 								</Typography>
 								<Typography variant="body1" gutterBottom>
-									<strong>Nombre del servicio:</strong>{' '}
-									{cart.service.name}
-								</Typography>
-								<Typography variant="body1" gutterBottom>
-									<strong>Duración del servicio:</strong>{' '}
 									{cart.service.duration} minutos
 								</Typography>
 								<Typography variant="body1" gutterBottom>
-									<strong>Precio del servicio:</strong> $
 									{cart.service.price}
 								</Typography>
 							</>
@@ -127,20 +126,6 @@ export const SchedulePicker: React.FC = () => {
 								No hay ningún servicio seleccionado. Por favor,
 								selecciona uno de la lista.
 							</Typography>
-						)}
-						<Divider sx={{ my: 2 }} />
-
-						{cart?.barber && (
-							<>
-								<Typography variant="subtitle1" gutterBottom>
-									Barbero seleccionado:{' '}
-									<strong>{cart.barber.name}</strong>
-								</Typography>
-								<Typography variant="body1" gutterBottom>
-									<strong>Nombre del barbero:</strong>{' '}
-									{cart.barber.name}
-								</Typography>
-							</>
 						)}
 						<Divider sx={{ my: 2 }} />
 						{cart?.appointment && (
