@@ -16,6 +16,7 @@ const HeaderBase: React.FC<HeaderBaseProps> = ({ children, sx }) => {
 				backgroundColor: '#FFFFFF',
 				borderBottom: '1px solid #E0E0E0',
 				...sx,
+				zIndex: 1000,
 			}}
 		>
 			<Toolbar
