@@ -61,7 +61,12 @@ const Header = () => {
 			<nav className="tw-hidden lg:tw-flex tw-gap-4">
 				{navLinks.map((link) => (
 					<Link key={link.url} href={link.url} passHref>
-						<Button variant="text">{link.title}</Button>
+						<Button
+							className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
+							variant="text"
+						>
+							{link.title}
+						</Button>
 					</Link>
 				))}
 			</nav>
