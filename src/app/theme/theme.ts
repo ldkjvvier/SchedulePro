@@ -15,6 +15,27 @@ const roboto = Roboto({
 export const theme = createTheme({
 	palette: {
 		mode: 'light',
+
+		primary: {
+			main: '#42a5f5',
+			light: '#64b5f6',
+			dark: '#1565c0',
+		},
+		secondary: {
+			main: '#90caf9',
+		},
+		background: {
+			default: '#ffffff',
+			paper: '#f5f5f5',
+		},
+		text: {
+			primary: '#000000',
+			secondary: '#bdbdbd',
+		},
+		action: {
+			disabled: '#e0e0e0',
+			hover: '#e3f2fd',
+		},
 	},
 	typography: {
 		fontFamily: roboto.style.fontFamily,
