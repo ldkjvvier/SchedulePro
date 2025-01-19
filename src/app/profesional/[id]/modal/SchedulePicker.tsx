@@ -14,7 +14,10 @@ export const SchedulePicker: React.FC = () => {
 		data: schedule,
 		isLoading,
 		refetch,
-	} = useBarberSchedule('2', selectedDate.toISOString().split('T')[0])
+	} = useBarberSchedule(
+		cart.barber.id,
+		selectedDate.toISOString().split('T')[0]
+	)
 
 	useEffect(() => {
 		refetch()
