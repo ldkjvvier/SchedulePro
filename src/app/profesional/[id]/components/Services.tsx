@@ -3,7 +3,7 @@ import { useServices } from '@/hooks/useServices'
 import { AccordionSkeleton } from './loadingSkeleton'
 import { Service } from '@/models/Service'
 import { ScheduleModalWrapper } from '../modal/ScheduleModalWrapper'
-
+import { formatPrice } from '@/utils/formatPrice'
 import { useDispatch } from 'react-redux'
 import { addBarberAndService } from '@/redux/features/shoppingCartSlice'
 import { Barber } from '@/models/barber'
@@ -23,12 +23,6 @@ export const Services = ({ barber }: ServiceProps) => {
 				Services not found
 			</p>
 		)
-	}
-	const formatPrice = (price: number) => {
-		return new Intl.NumberFormat('es-CL', {
-			style: 'currency',
-			currency: 'CLP',
-		}).format(price)
 	}
 
 	const handleClickService = (service: Service) => {

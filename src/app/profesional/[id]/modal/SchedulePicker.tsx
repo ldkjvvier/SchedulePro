@@ -5,6 +5,7 @@ import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
 import { useShoppingCart } from '@/hooks/useShoppingCart'
 import { ShoppingCart } from '@/models/shoppingCart'
+import { formatPrice } from '@/utils/formatPrice'
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 	const cart = useShoppingCart()
@@ -115,10 +116,10 @@ export const SchedulePicker: React.FC = () => {
 									</strong>
 								</Typography>
 								<Typography variant="body1" gutterBottom>
-									{cart.service.duration} minutos
+									{cart.service.duration}
 								</Typography>
 								<Typography variant="body1" gutterBottom>
-									{cart.service.price}
+									{formatPrice(cart.service.price)}
 								</Typography>
 							</>
 						) : (
