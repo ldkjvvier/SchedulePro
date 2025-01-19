@@ -2,7 +2,8 @@ import { useShoppingCartActions } from '@/hooks/useShoppingCartActions'
 import { PartOfDay, Schedule, ScheduleTime } from '@/models/Schedule'
 import { Box, Typography, Button } from '@mui/material'
 import { useState } from 'react'
-import Grid from '@mui/material/Grid2' // Importa Grid2
+import Grid from '@mui/material/Grid2'
+
 interface SchedulePartOfDayProps {
 	schedule: Schedule
 	partOfDay: PartOfDay
@@ -22,7 +23,45 @@ export const SchedulePartOfDay = ({
 		addAppointmentToCart(time.time, schedule.date)
 		setSelectedId(time.id)
 	}
+
 	if (times.length === 0) return null
+
+	const getButtonStyles = (time: ScheduleTime) => {
+		const isSelected = selectedId === time.id
+		const isDisabled = time.isBooked
+
+		return {
+			width: '100%',
+			minWidth: '100px',
+			padding: '8px 12px',
+			textAlign: 'center',
+			justifyContent: 'center',
+			backgroundColor: isDisabled
+				? '#f5f5f5'
+				: isSelected
+				? '#90caf9'
+				: '#ffffff',
+			color: isDisabled
+				? '#bdbdbd'
+				: isSelected
+				? '#1565c0'
+				: '#000000',
+			border: '1px solid',
+			borderRadius: '8px',
+			borderColor: isDisabled
+				? '#e0e0e0'
+				: isSelected
+				? '#42a5f5'
+				: '#90caf9',
+			'&:hover': {
+				backgroundColor: isDisabled
+					? '#f5f5f5'
+					: isSelected
+					? '#64b5f6'
+					: '#e3f2fd',
+			},
+		}
+	}
 
 	return (
 		<Box>
@@ -41,37 +80,7 @@ export const SchedulePartOfDay = ({
 						<Button
 							disabled={time.isBooked}
 							onClick={() => handleAddAppointment(time)}
-							sx={{
-								width: '100%', // Asegura que ocupe todo el ancho disponible
-								minWidth: '100px',
-								padding: '8px 12px',
-								textAlign: 'center',
-								justifyContent: 'center',
-								backgroundColor: time.isBooked
-									? '#f5f5f5' // Gris claro para deshabilitados
-									: selectedId === time.id
-									? '#90caf9' // Azul claro para seleccionado
-									: '#ffffff', // Blanco para no seleccionado
-								color: time.isBooked
-									? '#bdbdbd' // Gris oscuro para texto deshabilitado
-									: selectedId === time.id
-									? '#1565c0' // Azul oscuro para texto seleccionado
-									: '#000000', // Negro para texto no seleccionado
-								border: '1px solid',
-								borderRadius: '8px',
-								borderColor: time.isBooked
-									? '#e0e0e0' // Gris claro para deshabilitado
-									: selectedId === time.id
-									? '#42a5f5' // Azul medio para seleccionado
-									: '#90caf9', // Azul claro para no seleccionado
-								'&:hover': {
-									backgroundColor: time.isBooked
-										? '#f5f5f5'
-										: selectedId === time.id
-										? '#64b5f6' // Azul más brillante al hacer hover
-										: '#e3f2fd', // Azul muy claro para hover general
-								},
-							}}
+							sx={getButtonStyles(time)}
 						>
 							{time.time}
 						</Button>
