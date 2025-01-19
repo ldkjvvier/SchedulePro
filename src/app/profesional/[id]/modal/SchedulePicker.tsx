@@ -4,7 +4,6 @@ import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
 import { useShoppingCart } from '@/hooks/useShoppingCart'
-import { ShoppingCart } from '@/models/shoppingCart'
 import { formatPrice } from '@/utils/formatPrice'
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
@@ -25,10 +24,6 @@ export const SchedulePicker: React.FC = () => {
 
 	const handleSelectDate = (date: Date): void => {
 		setSelectedDate(date)
-	}
-
-	const sendService = (cart: ShoppingCart) => {
-		console.log(cart)
 	}
 
 	return (
@@ -151,14 +146,6 @@ export const SchedulePicker: React.FC = () => {
 								</Typography>
 							</>
 						)}
-						<Box sx={{ display: 'flex', justifyContent: 'center' }}>
-							<button
-								onClick={() => sendService(cart)}
-								className="tw-bg-red-400 tw-text-white tw-py-2 tw-px-4 tw-rounded-md tw-mt-4"
-							>
-								Enviar servicio
-							</button>
-						</Box>
 					</Box>
 				</CustomBox>
 			</Box>
