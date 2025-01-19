@@ -63,15 +63,15 @@ export const DateCarouselCalendar: React.FC<
 			{
 				breakpoint: 1024,
 				settings: {
-					slidesToShow: 14,
-					slidesToScroll: 14,
+					slidesToShow: 10,
+					slidesToScroll: 10,
 				},
 			},
 			{
 				breakpoint: 600,
 				settings: {
-					slidesToShow: 6,
-					slidesToScroll: 6,
+					slidesToShow: 4,
+					slidesToScroll: 4,
 				},
 			},
 		],
