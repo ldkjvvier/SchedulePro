@@ -1,6 +1,7 @@
 import { useShoppingCartActions } from '@/hooks/useShoppingCartActions'
 import { PartOfDay, Schedule, ScheduleTime } from '@/models/Schedule'
 import { Box, Typography, Button } from '@mui/material'
+import { useState } from 'react'
 import Grid from '@mui/material/Grid2' // Importa Grid2
 interface SchedulePartOfDayProps {
 	schedule: Schedule
@@ -13,11 +14,13 @@ export const SchedulePartOfDay = ({
 	partOfDay,
 	filterFn,
 }: SchedulePartOfDayProps) => {
+	const [selectedId, setSelectedId] = useState<string | null>(null)
 	const times = schedule.times.filter(filterFn)
 	const { addAppointmentToCart } = useShoppingCartActions()
 
 	const handleAddAppointment = (time: ScheduleTime): void => {
 		addAppointmentToCart(time.time, schedule.date)
+		setSelectedId(time.id)
 	}
 	if (times.length === 0) return null
 
@@ -26,7 +29,7 @@ export const SchedulePartOfDay = ({
 			<Typography variant="body1" gutterBottom>
 				{partOfDay}
 			</Typography>
-			<hr />
+			<hr style={{ borderColor: '#e0e0e0', marginBottom: '16px' }} />
 			<Grid
 				container
 				spacing={{ xs: 2, md: 2 }}
@@ -39,20 +42,34 @@ export const SchedulePartOfDay = ({
 							disabled={time.isBooked}
 							onClick={() => handleAddAppointment(time)}
 							sx={{
-								minWidth: '80px', // Asegura que todos los botones tengan el mismo tamaño mínimo
+								width: '100%', // Asegura que ocupe todo el ancho disponible
+								minWidth: '100px',
+								padding: '8px 12px',
 								textAlign: 'center',
 								justifyContent: 'center',
-								padding: '6px 8px',
 								backgroundColor: time.isBooked
-									? 'lightgray'
-									: 'white',
+									? '#f5f5f5' // Gris claro para deshabilitados
+									: selectedId === time.id
+									? '#90caf9' // Azul claro para seleccionado
+									: '#ffffff', // Blanco para no seleccionado
+								color: time.isBooked
+									? '#bdbdbd' // Gris oscuro para texto deshabilitado
+									: selectedId === time.id
+									? '#1565c0' // Azul oscuro para texto seleccionado
+									: '#000000', // Negro para texto no seleccionado
 								border: '1px solid',
-								borderRadius: '5px',
-								borderColor: time.isBooked ? 'gray' : 'primary.main',
+								borderRadius: '8px',
+								borderColor: time.isBooked
+									? '#e0e0e0' // Gris claro para deshabilitado
+									: selectedId === time.id
+									? '#42a5f5' // Azul medio para seleccionado
+									: '#90caf9', // Azul claro para no seleccionado
 								'&:hover': {
 									backgroundColor: time.isBooked
-										? 'lightgray'
-										: 'primary.light',
+										? '#f5f5f5'
+										: selectedId === time.id
+										? '#64b5f6' // Azul más brillante al hacer hover
+										: '#e3f2fd', // Azul muy claro para hover general
 								},
 							}}
 						>
