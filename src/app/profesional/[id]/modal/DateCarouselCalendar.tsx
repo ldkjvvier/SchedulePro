@@ -53,8 +53,8 @@ export const DateCarouselCalendar: React.FC<
 		dots: false,
 		infinite: false, // Desactivar bucle para evitar fechas incoherentes
 		speed: 500,
-		slidesToShow: 14, // Mostrar 14 fechas a la vez
-		slidesToScroll: 14, // Mover en bloques de 14 fechas
+		slidesToShow: 10, // Mostrar 14 fechas a la vez
+		slidesToScroll: 10, // Mover en bloques de 14 fechas
 		initialSlide: initialIndex, // Establecer índice inicial
 		centerMode: false, // Desactivar modo centrado
 		focusOnSelect: false, // No enfocar automáticamente al seleccionar
