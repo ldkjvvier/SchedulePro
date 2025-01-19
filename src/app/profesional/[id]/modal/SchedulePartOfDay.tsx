@@ -1,3 +1,4 @@
+import { useShoppingCartActions } from '@/hooks/useShoppingCartActions'
 import { PartOfDay, Schedule, ScheduleTime } from '@/models/Schedule'
 import {
 	Box,
@@ -6,8 +7,6 @@ import {
 	ListItem,
 	ListItemButton,
 } from '@mui/material'
-import { useDispatch } from 'react-redux'
-import { addAppointment } from '@/redux/features/shoppingCartSlice'
 interface SchedulePartOfDayProps {
 	schedule: Schedule
 	partOfDay: PartOfDay
@@ -20,14 +19,10 @@ export const SchedulePartOfDay = ({
 	filterFn,
 }: SchedulePartOfDayProps) => {
 	const times = schedule.times.filter(filterFn)
-	const dispatch = useDispatch()
+	const { addAppointmentToCart } = useShoppingCartActions()
+
 	const handleAddAppointment = (time: ScheduleTime): void => {
-		dispatch(
-			addAppointment({
-				time: time.time,
-				date: schedule.date,
-			})
-		)
+		addAppointmentToCart(time.time, schedule.date)
 	}
 	if (times.length === 0) return null
 
