@@ -26,16 +26,20 @@ export const DateItem: React.FC<DateItemProps> = ({
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
-				padding: '10px 0',
-				width: 40,
+				padding: '12px',
+				width: 50,
 				margin: 1,
 				cursor: isPastDate ? 'not-allowed' : 'pointer',
-				borderRadius: 10,
+				borderRadius: '12px',
 				transition: 'all 0.3s ease',
 				backgroundColor: isPastDate
 					? 'rgba(0, 0, 0, 0.1)'
 					: 'inherit',
 				color: isPastDate ? 'rgba(0, 0, 0, 0.5)' : 'inherit',
+				boxShadow:
+					isSelected && !isPastDate
+						? '0 4px 10px rgba(0, 0, 0, 0.1)'
+						: 'none',
 				'&:hover': {
 					backgroundColor: !isPastDate && 'rgba(0, 0, 0, 0.04)',
 				},
@@ -52,11 +56,14 @@ export const DateItem: React.FC<DateItemProps> = ({
 		>
 			<Typography
 				variant="caption"
-				sx={{ textTransform: 'capitalize' }}
+				sx={{ textTransform: 'capitalize', fontWeight: '600' }}
 			>
 				{format(date, 'EEEE', { locale: es }).slice(0, 3)}
 			</Typography>
-			<Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+			<Typography
+				variant="h6"
+				sx={{ fontWeight: '700', fontSize: '16px' }}
+			>
 				{format(date, 'd')}
 			</Typography>
 		</Box>
