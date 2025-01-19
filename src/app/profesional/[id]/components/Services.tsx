@@ -1,12 +1,11 @@
 import { Typography, Button } from '@mui/material'
 import { useServices } from '@/hooks/useServices'
 import { AccordionSkeleton } from './loadingSkeleton'
-import { Service } from '@/models/Service'
 import { ScheduleModalWrapper } from '../modal/ScheduleModalWrapper'
 import { formatPrice } from '@/utils/formatPrice'
-import { useDispatch } from 'react-redux'
-import { addBarberAndService } from '@/redux/features/shoppingCartSlice'
 import { Barber } from '@/models/barber'
+import { useShoppingCartActions } from '@/hooks/useShoppingCartActions'
+import { Service } from '@/models/Service'
 
 interface ServiceProps {
 	barber: Barber
@@ -14,7 +13,7 @@ interface ServiceProps {
 
 export const Services = ({ barber }: ServiceProps) => {
 	const { data: services, isLoading } = useServices(barber.id)
-	const dispatch = useDispatch()
+	const { addToCart } = useShoppingCartActions()
 
 	if (isLoading) return <AccordionSkeleton />
 	if (!services || services.length === 0) {
@@ -25,22 +24,8 @@ export const Services = ({ barber }: ServiceProps) => {
 		)
 	}
 
-	const handleClickService = (service: Service) => {
-		dispatch(
-			addBarberAndService({
-				barber: {
-					id: barber.id,
-					name: barber.name,
-					image: barber.image,
-				},
-				service: {
-					id: service.id,
-					name: service.name,
-					price: service.price,
-					duration: service.duration,
-				},
-			})
-		)
+	const handleAddToCart = (service: Service) => {
+		addToCart(barber, service)
 	}
 
 	return (
@@ -87,7 +72,7 @@ export const Services = ({ barber }: ServiceProps) => {
 								variant="contained"
 								color="primary"
 								size="small"
-								onClick={() => handleClickService(service)}
+								onClick={() => handleAddToCart(service)}
 								sx={{
 									backgroundColor: '#ff0000',
 									color: 'white',
