@@ -1,12 +1,7 @@
 import { useShoppingCartActions } from '@/hooks/useShoppingCartActions'
 import { PartOfDay, Schedule, ScheduleTime } from '@/models/Schedule'
-import {
-	Box,
-	Typography,
-	List,
-	ListItem,
-	ListItemButton,
-} from '@mui/material'
+import { Box, Typography, Button } from '@mui/material'
+import Grid from '@mui/material/Grid2' // Importa Grid2
 interface SchedulePartOfDayProps {
 	schedule: Schedule
 	partOfDay: PartOfDay
@@ -32,31 +27,22 @@ export const SchedulePartOfDay = ({
 				{partOfDay}
 			</Typography>
 			<hr />
-			<List
-				sx={{
-					display: 'flex',
-					flexWrap: 'wrap',
-					gap: 2,
-					padding: 0,
-					margin: 2,
-				}}
+			<Grid
+				container
+				spacing={{ xs: 2, md: 2 }}
+				columns={{ xs: 1, sm: 1, md: 1 }}
+				paddingY={2}
 			>
 				{times.map((time) => (
-					<ListItem
-						key={time.id}
-						sx={{
-							width: 'auto',
-							padding: 0,
-						}}
-					>
-						<ListItemButton
+					<Grid key={time.id}>
+						<Button
 							disabled={time.isBooked}
 							onClick={() => handleAddAppointment(time)}
 							sx={{
 								minWidth: '80px', // Asegura que todos los botones tengan el mismo tamaño mínimo
 								textAlign: 'center',
 								justifyContent: 'center',
-								padding: '8px 16px',
+								padding: '6px 8px',
 								backgroundColor: time.isBooked
 									? 'lightgray'
 									: 'white',
@@ -71,10 +57,10 @@ export const SchedulePartOfDay = ({
 							}}
 						>
 							{time.time}
-						</ListItemButton>
-					</ListItem>
+						</Button>
+					</Grid>
 				))}
-			</List>
+			</Grid>
 		</Box>
 	)
 }
