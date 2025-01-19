@@ -61,7 +61,14 @@ export const SchedulePicker: React.FC = () => {
 					/>
 					{isLoading && <Typography>Cargando...</Typography>}
 					{selectedDate && (
-						<Box>
+						<Box
+							sx={{
+								maxHeight: '300px', // Altura máxima del contenedor
+								overflow: 'auto', // Habilita el scroll si el contenido excede la altura
+								paddingRight: 1, // Espacio adicional para evitar que el contenido quede oculto por el scrollbar
+								paddingBottom: 10, // Espacio adicional para evitar que el contenido quede oculto por el scrollbar
+							}}
+						>
 							{schedule && (
 								<>
 									<SchedulePartOfDay
