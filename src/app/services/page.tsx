@@ -45,7 +45,7 @@ export default function Servicios() {
 					<div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-6">
 						{Array.from({ length: 4 }).map((_, index) => (
 							<div
-								className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105"
+								className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden"
 								aria-hidden="true"
 								key={index}
 							>
