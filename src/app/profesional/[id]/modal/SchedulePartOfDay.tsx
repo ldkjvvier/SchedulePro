@@ -32,7 +32,7 @@ export const SchedulePartOfDay = ({
 
 		return {
 			width: '100%',
-			minWidth: '100px',
+			minWidth: '80px',
 			padding: '8px 12px',
 			textAlign: 'center',
 			justifyContent: 'center',
@@ -65,13 +65,26 @@ export const SchedulePartOfDay = ({
 
 	return (
 		<Box>
-			<Typography variant="body1" gutterBottom>
+			<Typography
+				variant="body1"
+				gutterBottom
+				sx={{
+					display: 'flex',
+					alignItems: 'center',
+					'&::after': {
+						content: '""',
+						flexGrow: 1,
+						height: '1px',
+						backgroundColor: '#e0e0e0',
+						marginLeft: '8px',
+					},
+				}}
+			>
 				{partOfDay}
 			</Typography>
-			<hr style={{ borderColor: '#e0e0e0', marginBottom: '16px' }} />
 			<Grid
 				container
-				spacing={{ xs: 2, md: 2 }}
+				spacing={{ xs: 1, md: 1 }}
 				columns={{ xs: 1, sm: 1, md: 1 }}
 				paddingY={2}
 			>
