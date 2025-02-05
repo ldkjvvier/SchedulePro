@@ -29,7 +29,7 @@ export const SchedulePicker: React.FC = () => {
 	return (
 		<div className="tw-flex tw-w-full tw-h-full tw-items-center tw-justify-center tw-text-black">
 			<Box
-				height={'85%'}
+				height={'90%'}
 				display={'flex'}
 				flexDirection={{ xs: 'column', md: 'row' }}
 				alignItems={{ xs: 'center', md: 'start' }}
