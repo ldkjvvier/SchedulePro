@@ -38,15 +38,23 @@ const cartSlice = createSlice({
 					appointment: action.payload,
 				}
 			}
+			console.log(state.cart)
 		},
 
-		// Vaciar el carrito
-		clearCart(state) {
-			state.cart = null
+		clearAppointment(state) {
+			if (state.cart) {
+				state.cart = {
+					...state.cart,
+					appointment: null,
+				}
+			}
 		},
 	},
 })
 
-export const { addBarberAndService, addAppointment, clearCart } =
-	cartSlice.actions
+export const {
+	addBarberAndService,
+	addAppointment,
+	clearAppointment,
+} = cartSlice.actions
 export default cartSlice.reducer
