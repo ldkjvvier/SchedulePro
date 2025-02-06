@@ -7,5 +7,5 @@ export interface ShoppingCart {
 	appointment: {
 		date: string
 		time: string
-	}
+	} | null
 }
