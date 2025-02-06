@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import {
 	addBarberAndService,
 	addAppointment,
+	clearAppointment,
 } from '@/redux/features/shoppingCartSlice'
 import { Barber } from '@/models/barber'
 import { Service } from '@/models/Service'
@@ -36,8 +37,13 @@ export const useShoppingCartActions = () => {
 		)
 	}
 
+	const clearCartAppointment = (): void => {
+		dispatch(clearAppointment())
+	}
+
 	return {
 		addToCart,
 		addAppointmentToCart,
+		clearCartAppointment,
 	}
 }
