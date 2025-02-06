@@ -55,50 +55,8 @@ export const SchedulePicker: React.FC = () => {
 						onSelectDate={handleSelectDate}
 					/>
 					{isLoading && <Typography>Cargando...</Typography>}
-					{selectedDate && (
-						<Box
-							sx={{
-								maxHeight: '300px', // Altura máxima del contenedor
-								overflow: 'auto', // Habilita el scroll si el contenido excede la altura
-								paddingRight: 1, // Espacio adicional para evitar que el contenido quede oculto por el scrollbar
-								paddingBottom: 10, // Espacio adicional para evitar que el contenido quede oculto por el scrollbar
-							}}
-						>
-							{schedule && (
-								<>
-									<SchedulePartOfDay
-										schedule={schedule}
-										partOfDay="Mañana"
-										filterFn={(time) => {
-											const hour = new Date(
-												`1970-01-01T${time.time}`
-											).getHours()
-											return hour >= 6 && hour < 12
-										}}
-									/>
-									<SchedulePartOfDay
-										schedule={schedule}
-										partOfDay="Tarde"
-										filterFn={(time) => {
-											const hour = new Date(
-												`1970-01-01T${time.time}`
-											).getHours()
-											return hour >= 12 && hour < 18
-										}}
-									/>
-									<SchedulePartOfDay
-										schedule={schedule}
-										partOfDay="Noche"
-										filterFn={(time) => {
-											const hour = new Date(
-												`1970-01-01T${time.time}`
-											).getHours()
-											return hour >= 18 && hour < 24
-										}}
-									/>
-								</>
-							)}
-						</Box>
+					{selectedDate && schedule && (
+						<SchedulePartOfDay schedule={schedule} />
 					)}
 				</CustomBox>
 				{/* Service Information */}
