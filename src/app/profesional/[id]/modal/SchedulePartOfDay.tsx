@@ -17,9 +17,16 @@ export const SchedulePartOfDay = ({
 }: SchedulePartOfDayProps) => {
 	const [selectedId, setSelectedId] = useState<string | null>(null)
 	const times = schedule.times.filter(filterFn)
-	const { addAppointmentToCart } = useShoppingCartActions()
+	const { addAppointmentToCart, clearCartAppointment } =
+		useShoppingCartActions()
 
 	const handleAddAppointment = (time: ScheduleTime): void => {
+		if (time.isBooked) return
+		if (selectedId === time.id) {
+			clearCartAppointment()
+			setSelectedId(null)
+			return
+		}
 		addAppointmentToCart(time.time, schedule.date)
 		setSelectedId(time.id)
 	}
