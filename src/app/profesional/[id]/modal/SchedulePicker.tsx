@@ -11,6 +11,7 @@ import {
 	CalendarMonthOutlined,
 	CalendarTodayOutlined,
 	InfoOutlined,
+	LockClockOutlined,
 } from '@mui/icons-material'
 import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
@@ -168,6 +169,12 @@ const ServiceInfo = ({ cart, date }: { cart: any; date: Date }) => {
 									month: 'long',
 									day: 'numeric',
 								})}
+							</Typography>
+						</Stack>
+						<Stack direction="row" alignItems="center" spacing={1}>
+							<LockClockOutlined fontSize="small" />
+							<Typography variant="body2">
+								{cart.appointment.time}
 							</Typography>
 						</Stack>
 					</Stack>
