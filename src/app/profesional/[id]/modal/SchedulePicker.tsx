@@ -5,10 +5,15 @@ import {
 	useTheme,
 	Divider,
 	Badge,
+	Stack,
+	Chip,
+	Paper,
 } from '@mui/material'
 import {
 	CalendarMonthOutlined,
+	CalendarTodayOutlined,
 	InfoOutlined,
+	LockClockOutlined,
 } from '@mui/icons-material'
 import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
@@ -76,7 +81,7 @@ export const SchedulePicker: React.FC = () => {
 				{cart?.service && (
 					<CustomBox
 						sx={{
-							width: { xs: '100%', md: '40%', lg: '30%' },
+							width: { xs: '100%', md: '30%', lg: '25%' },
 							display: { xs: 'none', md: 'flex' },
 						}}
 						icon={<InfoOutlined sx={{ mr: 1 }} />}
@@ -90,50 +95,84 @@ export const SchedulePicker: React.FC = () => {
 	)
 }
 
-// Componente para mostrar la información del servicio //! TODO CHANGE CART TYPE !!!
+// Componente para mostrar la información del servicio //! TODO CHANGE CART TYPE AND REMOVE PROP DATE !!!
 const ServiceInfo = ({ cart, date }: { cart: any; date: Date }) => (
-	<>
+	<Stack spacing={2}>
 		<Typography
 			variant="subtitle1"
-			gutterBottom
+			fontWeight="bold"
 			textTransform="capitalize"
 		>
-			<strong>
-				{cart.service.name} con {cart.barber.name}
-			</strong>
-		</Typography>
-		<div className="flex items-center justify-between text-sm">
-			<span className="text-muted-foreground">Duración</span>
-			<Badge>30 minutos</Badge>
-		</div>
-		<Typography variant="body1" gutterBottom>
-			{formatPrice(cart.service.price)}
+			{cart.service.name} con {cart.barber.name}
 		</Typography>
 
-		<Divider sx={{ my: 2 }} />
+		{/* Duración del servicio */}
+		<Stack
+			direction="row"
+			justifyContent="space-between"
+			alignItems="center"
+			spacing={1}
+		>
+			<Typography variant="body2" color="text.secondary">
+				Duración
+			</Typography>
+			<Chip
+				label={`${cart.service.duration} min`}
+				size="small"
+				color="primary"
+				variant="outlined"
+			/>
+		</Stack>
 
+		{/* Precio */}
+		<Stack
+			direction="row"
+			justifyContent="space-between"
+			alignItems="center"
+			spacing={1}
+			sx={{ mt: 1 }}
+		>
+			<Typography variant="body2" color="text.secondary">
+				Precio
+			</Typography>
+			<Typography
+				variant="h6"
+				fontWeight="bold"
+				color="primary"
+				sx={{ textAlign: 'right' }}
+			>
+				{formatPrice(cart.service.price)}
+			</Typography>
+		</Stack>
+
+		{/* Información de la reserva */}
 		{cart?.appointment && (
-			<>
-				<div className="tw-border tw-rounded-lg tw-p-3 tw-space-y-2 tw-bg-gray-100/80">
-					<h4 className="tw-font-medium">Reserva seleccionada:</h4>
-					<div className="tw-text-sm space-y-1">
-						<p className="tw-flex tw-items-center tw-gap-2">
-							{/* // TODO CHANGE TO CART DATE */}
+			<Paper variant="outlined" sx={{ p: 2, bgcolor: 'grey.100' }}>
+				<Typography variant="subtitle2" fontWeight="medium">
+					Reserva seleccionada:
+				</Typography>
+				<Stack spacing={1} mt={1}>
+					<Stack direction="row" alignItems="center" spacing={1}>
+						<CalendarTodayOutlined fontSize="small" />
+						<Typography variant="body2">
 							{date.toLocaleDateString('es-ES', {
 								weekday: 'long',
 								year: 'numeric',
 								month: 'long',
 								day: 'numeric',
 							})}
-						</p>
-						<p className="tw-flex tw-items-center tw-gap-2">
+						</Typography>
+					</Stack>
+					<Stack direction="row" alignItems="center" spacing={1}>
+						<LockClockOutlined fontSize="small" />
+						<Typography variant="body2">
 							{cart.appointment.time}
-						</p>
-					</div>
-				</div>
-			</>
+						</Typography>
+					</Stack>
+				</Stack>
+			</Paper>
 		)}
-	</>
+	</Stack>
 )
 
 // CustomBox optimizado para mayor flexibilidad
