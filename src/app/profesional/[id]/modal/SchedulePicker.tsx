@@ -1,5 +1,15 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Typography, Box, useTheme, Divider } from '@mui/material'
+import {
+	Typography,
+	Box,
+	useTheme,
+	Divider,
+	Badge,
+} from '@mui/material'
+import {
+	CalendarMonthOutlined,
+	InfoOutlined,
+} from '@mui/icons-material'
 import { useBarberSchedule } from '@/hooks/useBarberSchedule'
 import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
@@ -44,6 +54,7 @@ export const SchedulePicker: React.FC = () => {
 				{/* Main Schedule Picker */}
 				<CustomBox
 					sx={{ width: { xs: '90%', sm: '80%', md: '60%' } }}
+					icon={<CalendarMonthOutlined sx={{ mr: 1 }} />}
 					message="Selecciona una fecha y horario"
 				>
 					<Typography variant="h6" gutterBottom>
@@ -68,9 +79,10 @@ export const SchedulePicker: React.FC = () => {
 							width: { xs: '100%', md: '40%', lg: '30%' },
 							display: { xs: 'none', md: 'flex' },
 						}}
-						message="Información del servicio"
+						icon={<InfoOutlined sx={{ mr: 1 }} />}
+						message="Detalles del Servicio"
 					>
-						<ServiceInfo cart={cart} />
+						<ServiceInfo cart={cart} date={selectedDate} />
 					</CustomBox>
 				)}
 			</Box>
@@ -78,8 +90,8 @@ export const SchedulePicker: React.FC = () => {
 	)
 }
 
-// Componente para mostrar la información del servicio
-const ServiceInfo = ({ cart }: { cart: any }) => (
+// Componente para mostrar la información del servicio //! TODO CHANGE CART TYPE !!!
+const ServiceInfo = ({ cart, date }: { cart: any; date: Date }) => (
 	<>
 		<Typography
 			variant="subtitle1"
@@ -90,9 +102,10 @@ const ServiceInfo = ({ cart }: { cart: any }) => (
 				{cart.service.name} con {cart.barber.name}
 			</strong>
 		</Typography>
-		<Typography variant="body1" gutterBottom>
-			{cart.service.duration}
-		</Typography>
+		<div className="flex items-center justify-between text-sm">
+			<span className="text-muted-foreground">Duración</span>
+			<Badge>30 minutos</Badge>
+		</div>
 		<Typography variant="body1" gutterBottom>
 			{formatPrice(cart.service.price)}
 		</Typography>
@@ -101,13 +114,23 @@ const ServiceInfo = ({ cart }: { cart: any }) => (
 
 		{cart?.appointment && (
 			<>
-				<Typography variant="subtitle1" gutterBottom>
-					Horario seleccionado:{' '}
-					<strong>{cart.appointment.time}</strong>
-				</Typography>
-				<Typography variant="body1" gutterBottom>
-					<strong>Fecha del servicio:</strong> {cart.appointment.date}
-				</Typography>
+				<div className="tw-border tw-rounded-lg tw-p-3 tw-space-y-2 tw-bg-gray-100/80">
+					<h4 className="tw-font-medium">Reserva seleccionada:</h4>
+					<div className="tw-text-sm space-y-1">
+						<p className="tw-flex tw-items-center tw-gap-2">
+							{/* // TODO CHANGE TO CART DATE */}
+							{date.toLocaleDateString('es-ES', {
+								weekday: 'long',
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
+						</p>
+						<p className="tw-flex tw-items-center tw-gap-2">
+							{cart.appointment.time}
+						</p>
+					</div>
+				</div>
 			</>
 		)}
 	</>
@@ -116,10 +139,12 @@ const ServiceInfo = ({ cart }: { cart: any }) => (
 // CustomBox optimizado para mayor flexibilidad
 const CustomBox = ({
 	sx,
+	icon,
 	message,
 	children,
 }: {
 	sx?: object
+	icon?: React.ReactNode
 	message: string
 	children: React.ReactNode
 }) => {
@@ -138,6 +163,7 @@ const CustomBox = ({
 		>
 			<Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
 				<Typography variant="h6" sx={{ px: 2, py: 1 }}>
+					{icon && icon}
 					{message}
 				</Typography>
 			</Box>
