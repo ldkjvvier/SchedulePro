@@ -17,27 +17,35 @@ export const theme = createTheme({
 		mode: 'light',
 
 		primary: {
-			main: '#42a5f5',
-			light: '#64b5f6',
-			dark: '#1565c0',
+			main: '#757575', // Gris medio en lugar de azul
+			light: '#9e9e9e', // Gris más claro
+			dark: '#424242', // Gris oscuro pero NO negro puro
 		},
+
 		secondary: {
-			main: '#90caf9',
+			main: '#bdbdbd', // Gris claro para detalles secundarios
 		},
+
 		background: {
-			default: '#ffffff',
-			paper: '#f5f5f5',
+			default: '#f5f5f5', // Gris muy claro en lugar de blanco puro
+			paper: '#eeeeee', // Un poco más oscuro que el fondo
 		},
+
 		text: {
-			primary: '#000000',
-			secondary: '#bdbdbd',
+			primary: '#424242', // Texto principal en gris oscuro
+			secondary: '#757575', // Texto secundario en gris medio
 		},
+
 		action: {
-			disabled: '#e0e0e0',
-			hover: '#e3f2fd',
+			disabled: '#bdbdbd', // Gris claro para elementos deshabilitados
+			hover: '#e0e0e0', // Gris claro en hover
 		},
 	},
+
 	typography: {
 		fontFamily: roboto.style.fontFamily,
+		body2: {
+			color: '#757575', // Color de texto secundario en body2
+		},
 	},
 })
