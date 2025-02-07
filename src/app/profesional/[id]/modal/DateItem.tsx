@@ -1,7 +1,7 @@
 import React from 'react'
 import { format, isBefore, startOfDay } from 'date-fns'
 import { es } from 'date-fns/locale'
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 
 interface DateItemProps {
 	date: Date
@@ -14,7 +14,7 @@ export const DateItem: React.FC<DateItemProps> = ({
 	isSelected,
 	onSelect,
 }) => {
-	// Se compara la fecha sin tiempo (startOfDay) para asegurar precisión
+	const theme = useTheme()
 	const today = startOfDay(new Date())
 	const isPastDate = isBefore(startOfDay(date), today)
 
@@ -26,30 +26,35 @@ export const DateItem: React.FC<DateItemProps> = ({
 				flexDirection: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
-				padding: '12px',
+				padding: theme.spacing(1.5),
 				width: 50,
-				margin: 1,
+				margin: theme.spacing(1),
 				cursor: isPastDate ? 'not-allowed' : 'pointer',
-				borderRadius: '12px',
-				transition: 'all 0.3s ease',
+				borderRadius: theme.shape.borderRadius,
+				transition: theme.transitions.create('background-color', {
+					duration: theme.transitions.duration.short,
+				}),
+
 				backgroundColor: isPastDate
-					? 'rgba(0, 0, 0, 0.1)'
+					? theme.palette.action.disabledBackground
 					: 'inherit',
-				color: isPastDate ? 'rgba(0, 0, 0, 0.5)' : 'inherit',
+				color: isPastDate
+					? theme.palette.text.secondary
+					: theme.palette.text.primary,
+
 				boxShadow:
-					isSelected && !isPastDate
-						? '0 4px 10px rgba(0, 0, 0, 0.1)'
-						: 'none',
+					isSelected && !isPastDate ? theme.shadows[3] : 'none',
+
 				'&:hover': {
-					backgroundColor: !isPastDate && 'rgba(0, 0, 0, 0.04)',
+					backgroundColor: !isPastDate && theme.palette.action.hover,
 				},
+
 				...(isSelected &&
 					!isPastDate && {
-						backgroundColor: 'primary.main',
-						color: 'primary.contrastText',
-						boxShadow: 3,
+						backgroundColor: theme.palette.primary.main,
+						color: theme.palette.primary.contrastText,
 						'&:hover': {
-							backgroundColor: 'primary.dark',
+							backgroundColor: theme.palette.primary.dark,
 						},
 					}),
 			}}
