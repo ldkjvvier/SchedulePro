@@ -6,6 +6,7 @@ import {
 } from '@/redux/features/shoppingCartSlice'
 import { Barber } from '@/models/barber'
 import { Service } from '@/models/Service'
+import { Appointment } from '@/models/shoppingCart'
 
 export const useShoppingCartActions = () => {
 	const dispatch = useDispatch()
@@ -28,13 +29,8 @@ export const useShoppingCartActions = () => {
 		)
 	}
 
-	const addAppointmentToCart = (time: string, date: string) => {
-		dispatch(
-			addAppointment({
-				time,
-				date,
-			})
-		)
+	const addAppointmentToCart = (appointment: Appointment) => {
+		dispatch(addAppointment(appointment))
 	}
 
 	const clearCartAppointment = (): void => {

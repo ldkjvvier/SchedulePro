@@ -26,7 +26,7 @@ export const SchedulePartOfDay = ({ schedule }: ScheduleProps) => {
 			setSelectedId(null)
 			return
 		}
-		addAppointmentToCart(time.time, schedule.date)
+		addAppointmentToCart({ time: time.time, date: schedule.date })
 		setSelectedId(time.id)
 	}
 
