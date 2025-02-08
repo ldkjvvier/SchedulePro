@@ -1,8 +1,9 @@
 import { useShoppingCartActions } from '@/hooks/useShoppingCartActions'
 import { Schedule, ScheduleTime } from '@/models/Schedule'
 import { Box, Typography, Button } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2'
+import { useShoppingCart } from '@/hooks/useShoppingCart'
 
 interface ScheduleProps {
 	schedule: Schedule
@@ -16,9 +17,11 @@ const timeRanges = [
 
 export const SchedulePartOfDay = ({ schedule }: ScheduleProps) => {
 	const [selectedId, setSelectedId] = useState<string | null>(null)
+	const cart = useShoppingCart()
+	console.log(selectedId)
+	console.log(schedule)
 	const { addAppointmentToCart, clearCartAppointment } =
 		useShoppingCartActions()
-
 	const handleAddAppointment = (time: ScheduleTime): void => {
 		if (time.isBooked) return
 		if (selectedId === time.id) {
@@ -29,6 +32,17 @@ export const SchedulePartOfDay = ({ schedule }: ScheduleProps) => {
 		addAppointmentToCart({ time: time.time, date: schedule.date })
 		setSelectedId(time.id)
 	}
+
+	useEffect(() => {
+		if (cart.appointment) {
+			const time = schedule.times.find(
+				(time) => time.time === cart.appointment?.time
+			)
+			if (time) {
+				setSelectedId(time.id)
+			}
+		}
+	}, [cart.appointment, schedule.times])
 
 	const getButtonStyles = (time: ScheduleTime) => {
 		const isSelected = selectedId === time.id
