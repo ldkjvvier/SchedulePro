@@ -1,5 +1,5 @@
 export interface Schedule {
-	date: string
+	date: Date
 	times: ScheduleTime[]
 }
 export interface ScheduleTime {
