@@ -38,7 +38,6 @@ const cartSlice = createSlice({
 					appointment: action.payload,
 				}
 			}
-			console.log(state.cart)
 		},
 
 		clearAppointment(state) {
