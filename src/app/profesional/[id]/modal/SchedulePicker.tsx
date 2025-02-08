@@ -93,7 +93,7 @@ export const SchedulePicker: React.FC = () => {
 						icon={<InfoOutlined sx={{ mr: 1 }} color="primary" />}
 						message="Detalles del Servicio"
 					>
-						<ServiceInfo cart={cart} date={selectedDate} />
+						<ServiceInfo cart={cart} />
 					</CustomBox>
 				)}
 			</Box>
@@ -101,7 +101,7 @@ export const SchedulePicker: React.FC = () => {
 	)
 }
 
-const ServiceInfo = ({ cart, date }: { cart: any; date: Date }) => {
+const ServiceInfo = ({ cart }: { cart: any }) => {
 	const theme = useTheme()
 
 	return (
@@ -163,12 +163,15 @@ const ServiceInfo = ({ cart, date }: { cart: any; date: Date }) => {
 								color="primary"
 							/>
 							<Typography variant="body2">
-								{date.toLocaleDateString('es-ES', {
-									weekday: 'long',
-									year: 'numeric',
-									month: 'long',
-									day: 'numeric',
-								})}
+								{new Date(cart.appointment.date).toLocaleDateString(
+									'es-ES',
+									{
+										weekday: 'long',
+										year: 'numeric',
+										month: 'long',
+										day: 'numeric',
+									}
+								)}
 							</Typography>
 						</Stack>
 						<Stack direction="row" alignItems="center" spacing={1}>
