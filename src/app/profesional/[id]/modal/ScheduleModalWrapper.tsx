@@ -47,7 +47,7 @@ export const ScheduleModalWrapper = ({
 							<CloseIcon />
 						</IconButton>
 						<SchedulePicker />
-						<Footer onNext={handleClose} />
+						<Footer />
 					</div>
 				</Slide>
 			</Modal>

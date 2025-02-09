@@ -1,11 +1,7 @@
 import React from 'react'
-import { Box, Typography, Button, useTheme } from '@mui/material'
+import { Box, Typography, useTheme } from '@mui/material'
 
-interface FooterProps {
-	onNext: () => void
-}
-
-export const Footer: React.FC<FooterProps> = ({ onNext }) => {
+export const Footer: React.FC = () => {
 	const theme = useTheme()
 
 	return (
@@ -25,18 +21,6 @@ export const Footer: React.FC<FooterProps> = ({ onNext }) => {
 			<Typography variant="subtitle2" color="text.secondary">
 				Desarrollado por SchedulePro
 			</Typography>
-
-			{/* Next Button */}
-			<Button
-				variant="contained"
-				color="primary"
-				onClick={onNext}
-				sx={{
-					minWidth: '120px',
-				}}
-			>
-				Siguiente
-			</Button>
 		</Box>
 	)
 }
