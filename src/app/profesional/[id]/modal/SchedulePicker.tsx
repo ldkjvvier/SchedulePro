@@ -6,6 +6,7 @@ import {
 	Stack,
 	Chip,
 	Paper,
+	Button,
 } from '@mui/material'
 import {
 	CalendarMonthOutlined,
@@ -149,39 +150,46 @@ const ServiceInfo = ({ cart }: { cart: any }) => {
 				</Typography>
 			</Stack>
 			{cart?.appointment && (
-				<Paper
-					variant="outlined"
-					sx={{ p: 2, bgcolor: theme.palette.background.default }}
-				>
-					<Typography variant="subtitle2" fontWeight="medium">
-						Reserva seleccionada:
-					</Typography>
-					<Stack spacing={1} mt={1}>
-						<Stack direction="row" alignItems="center" spacing={1}>
-							<CalendarTodayOutlined
-								fontSize="small"
-								color="primary"
-							/>
-							<Typography variant="body2">
-								{new Date(cart.appointment.date).toLocaleDateString(
-									'es-ES',
-									{
-										weekday: 'long',
-										year: 'numeric',
-										month: 'long',
-										day: 'numeric',
-									}
-								)}
-							</Typography>
+				<>
+					<Paper
+						variant="outlined"
+						sx={{ p: 2, bgcolor: theme.palette.background.default }}
+					>
+						<Typography variant="subtitle2" fontWeight="medium">
+							Reserva seleccionada:
+						</Typography>
+						<Stack spacing={1} mt={1}>
+							<Stack direction="row" alignItems="center" spacing={1}>
+								<CalendarTodayOutlined
+									fontSize="small"
+									color="primary"
+								/>
+								<Typography variant="body2">
+									{new Date(cart.appointment.date).toLocaleDateString(
+										'es-ES',
+										{
+											weekday: 'long',
+											year: 'numeric',
+											month: 'long',
+											day: 'numeric',
+										}
+									)}
+								</Typography>
+							</Stack>
+							<Stack direction="row" alignItems="center" spacing={1}>
+								<LockClockOutlined fontSize="small" />
+								<Typography variant="body2">
+									{cart.appointment.time}
+								</Typography>
+							</Stack>
 						</Stack>
-						<Stack direction="row" alignItems="center" spacing={1}>
-							<LockClockOutlined fontSize="small" />
-							<Typography variant="body2">
-								{cart.appointment.time}
-							</Typography>
-						</Stack>
+					</Paper>
+					<Stack>
+						<Button variant="contained" color="primary" size="large">
+							Confirmar reserva
+						</Button>
 					</Stack>
-				</Paper>
+				</>
 			)}
 		</Stack>
 	)
