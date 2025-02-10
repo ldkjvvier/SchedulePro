@@ -85,9 +85,24 @@ export const SchedulePartOfDay = ({ schedule }: ScheduleProps) => {
 		<Box
 			sx={{
 				maxHeight: '300px',
-				overflow: 'auto',
+				minHeight: '150px',
+				overflowY: 'auto',
 				paddingRight: 1,
 				paddingBottom: 10,
+				'&::-webkit-scrollbar': {
+					width: '8px',
+				},
+				'&::-webkit-scrollbar-thumb': {
+					backgroundColor: '#b0b0b0',
+					borderRadius: '4px',
+				},
+				'&::-webkit-scrollbar-thumb:hover': {
+					backgroundColor: '#909090',
+				},
+				'&::-webkit-scrollbar-track': {
+					backgroundColor: '#f0f0f0',
+					borderRadius: '4px',
+				},
 			}}
 		>
 			{schedule &&
