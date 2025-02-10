@@ -65,7 +65,7 @@ export const SchedulePicker: React.FC = () => {
 					icon={
 						<CalendarMonthOutlined sx={{ mr: 1 }} color="primary" />
 					}
-					message="Selecciona una fecha y horario"
+					message="Selecciona Fecha y Hora"
 				>
 					<Typography
 						variant="h6"
