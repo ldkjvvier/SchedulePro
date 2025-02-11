@@ -1,4 +1,10 @@
-import { IconButton, Modal, Slide } from '@mui/material'
+import {
+	IconButton,
+	Modal,
+	Slide,
+	Paper,
+	useTheme,
+} from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { useState } from 'react'
 import { SchedulePicker } from './SchedulePicker'
@@ -16,9 +22,15 @@ export const ScheduleModalWrapper = ({
 	const handleOpen = () => setOpen(true)
 	const handleClose = () => setOpen(false)
 
+	const theme = useTheme()
+
 	return (
 		<>
-			<div onClick={handleOpen}>{children}</div>
+			{/* Trigger para abrir el modal */}
+			<div onClick={handleOpen} style={{ cursor: 'pointer' }}>
+				{children}
+			</div>
+
 			<Modal
 				open={open}
 				onClose={handleClose}
@@ -27,22 +39,42 @@ export const ScheduleModalWrapper = ({
 				closeAfterTransition
 			>
 				<Slide direction="up" in={open} mountOnEnter unmountOnExit>
-					<div className="tw-flex tw-justify-between tw-flex-col tw-bottom-0 tw-left-0 tw-w-full tw-h-full tw-max-h-dvh tw-bg-secondary">
+					<Paper
+						elevation={3}
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							justifyContent: 'space-between',
+							position: 'fixed',
+							bottom: 0,
+							left: 0,
+							width: '100%',
+							height: '100%',
+							maxHeight: '100dvh',
+							bgcolor: theme.palette.background.paper,
+							boxShadow: theme.shadows[5],
+							overflow: 'hidden',
+						}}
+					>
 						<Header />
+
 						<IconButton
 							onClick={handleClose}
 							sx={{
 								position: 'absolute',
 								top: 8,
 								right: 8,
-								zIndex: 1400,
+								color: theme.palette.text.primary,
 							}}
+							aria-label="Cerrar"
 						>
 							<CloseIcon />
 						</IconButton>
+
+						{/* Contenido del modal */}
 						<SchedulePicker />
 						<Footer />
-					</div>
+					</Paper>
 				</Slide>
 			</Modal>
 		</>
