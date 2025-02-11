@@ -24,8 +24,9 @@ export default function Home() {
 					py: 6,
 					px: { xs: 3, sm: 6, md: 8, lg: 12 },
 					bgcolor: 'background.default',
-					boxShadow: 3,
+					borderColor: 'transparent',
 				}}
+				elevation={0}
 			>
 				{/* Sección Bienvenida */}
 				<Box textAlign="center" mb={6}>
