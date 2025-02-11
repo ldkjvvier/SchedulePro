@@ -17,35 +17,35 @@ export const theme = createTheme({
 		mode: 'light',
 
 		primary: {
-			main: '#616161', // Gris más oscuro para mayor contraste
-			light: '#9e9e9e', // Gris claro
-			dark: '#424242', // Gris oscuro
+			main: '#424242', // Gris oscuro para mejor contraste
+			light: '#757575', // Gris medio
+			dark: '#212121', // Gris más oscuro casi negro
 		},
 
 		secondary: {
-			main: '#9e9e9e', // Gris más claro para detalles secundarios
+			main: '#9e9e9e', // Gris claro para detalles secundarios
 		},
 
 		background: {
-			default: '#fafafa', // Fondo más claro para evitar saturación
-			paper: '#ffffff', // Fondo blanco para un buen contraste
+			default: '#f5f5f5', // Fondo principal (gris muy claro, casi blanco)
+			paper: '#ffffff', // Subfondo blanco para contrastar tarjetas y modales
 		},
 
 		text: {
-			primary: '#212121', // Gris muy oscuro (casi negro) para texto principal
-			secondary: '#757575', // Gris medio para texto secundario
+			primary: '#212121', // Texto principal (negro suave) para mejor legibilidad
+			secondary: '#616161', // Texto secundario (gris oscuro)
 		},
 
 		action: {
 			disabled: '#bdbdbd', // Gris claro para elementos deshabilitados
-			hover: '#e0e0e0', // Gris claro en hover
+			hover: '#e0e0e0', // Gris claro para efecto hover
 		},
 	},
 
 	typography: {
 		fontFamily: roboto.style.fontFamily,
 		body2: {
-			color: '#616161', // Texto en gris más oscuro para mayor legibilidad
+			color: '#424242', // Texto más oscuro para mayor legibilidad
 		},
 	},
 })
