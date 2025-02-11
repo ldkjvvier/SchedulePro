@@ -217,6 +217,7 @@ const CustomBox = ({
 				overflow: 'hidden',
 				display: 'flex',
 				flexDirection: 'column',
+				backgroundColor: theme.palette.background.paper,
 			}}
 		>
 			<Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>

@@ -51,7 +51,7 @@ export const ScheduleModalWrapper = ({
 							width: '100%',
 							height: '100%',
 							maxHeight: '100dvh',
-							bgcolor: theme.palette.background.paper,
+							bgcolor: theme.palette.background.default,
 							boxShadow: theme.shadows[5],
 							overflow: 'hidden',
 						}}
