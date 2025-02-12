@@ -1,39 +1,58 @@
 import React from 'react'
-import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
+import {
+	Box,
+	Container,
+	Typography,
+	Link,
+	Stack,
+} from '@mui/material'
 
 const Footer = () => {
 	const currentYear = new Date().getFullYear()
+
 	return (
-		<footer className="tw-bg-primary tw-px-12 tw-py-6 tw-border-t tw-w-full">
-			<div className="tw-px-12">
-				<div className="tw-flex tw-justify-between tw-items-center tw-flex-col sm:tw-flex-row">
+		<Box
+			component="footer"
+			sx={{
+				bgcolor: 'primary.main',
+				borderTop: 1,
+				borderColor: 'divider',
+				py: 3,
+			}}
+		>
+			<Container>
+				<Stack
+					direction={{ xs: 'column', sm: 'row' }}
+					justifyContent="space-between"
+					alignItems="center"
+				>
 					<Typography
 						variant="body2"
-						className="tw-text-text-secondary tw-mb-4 sm:tw-mb-0"
+						color="text.secondary"
+						sx={{ mb: { xs: 2, sm: 0 } }}
 					>
 						© {currentYear} SchedulePro. Todos los derechos
 						reservados.
 					</Typography>
-					<nav className="tw-text-center">
+					<Stack direction="row" spacing={2}>
 						<Link
 							href="/privacidad"
-							className="tw-text-text-main tw-mr-4 tw-transition-colors"
+							color="text.primary"
 							underline="hover"
 						>
 							Política de Privacidad
 						</Link>
 						<Link
 							href="/terminos"
-							className="tw-text-text-main tw-transition-colors"
+							color="text.primary"
 							underline="hover"
 						>
 							Términos de Servicio
 						</Link>
-					</nav>
-				</div>
-			</div>
-		</footer>
+					</Stack>
+				</Stack>
+			</Container>
+		</Box>
 	)
 }
 
