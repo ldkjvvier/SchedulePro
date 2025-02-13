@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
 				display: 'flex',
 				justifyContent: 'space-between',
 				alignItems: 'center',
-				backgroundColor: theme.palette.background.paper,
+				backgroundColor: 'Background.paper',
 				padding: theme.spacing(2),
 				boxShadow: `0 -2px 5px ${theme.palette.grey[400]}`,
 				zIndex: 10,

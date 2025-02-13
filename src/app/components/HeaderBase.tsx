@@ -13,7 +13,7 @@ const HeaderBase: React.FC<HeaderBaseProps> = ({ children, sx }) => {
 		<AppBar
 			position="static"
 			sx={{
-				backgroundColor: '#FFFFFF',
+				backgroundColor: 'background.paper',
 				borderBottom: '1px solid #E0E0E0',
 				...sx,
 				zIndex: 1000,
