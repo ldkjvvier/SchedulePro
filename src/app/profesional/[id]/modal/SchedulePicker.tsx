@@ -92,7 +92,7 @@ export const SchedulePicker: React.FC = () => {
 					<CustomBox
 						sx={{
 							width: { xs: '100%', md: '30%', lg: '25%' },
-							display: { xs: 'none !important', md: 'block' },
+							display: { xs: 'none', md: 'block' },
 						}}
 						icon={<InfoOutlined sx={{ mr: 1 }} color="primary" />}
 						message="Detalles del Servicio"
