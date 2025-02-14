@@ -144,11 +144,7 @@ const ServiceInfo = ({ cart }: { cart: any }) => {
 				<Typography variant="body2" color="text.secondary">
 					Precio
 				</Typography>
-				<Typography
-					variant="h6"
-					fontWeight="bold"
-					color={theme.palette.secondary.main}
-				>
+				<Typography variant="h6" fontWeight="bold">
 					{formatPrice(cart.service.price)}
 				</Typography>
 			</Stack>
