@@ -90,7 +90,10 @@ export const SchedulePicker: React.FC = () => {
 
 				{cart?.service && (
 					<CustomBox
-						sx={{ width: { xs: '100%', md: '30%', lg: '25%' } }}
+						sx={{
+							width: { xs: '100%', md: '30%', lg: '25%' },
+							display: { xs: 'none !important', md: 'block' },
+						}}
 						icon={<InfoOutlined sx={{ mr: 1 }} color="primary" />}
 						message="Detalles del Servicio"
 					>
