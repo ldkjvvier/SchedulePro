@@ -214,13 +214,13 @@ const CustomBox = ({
 	return (
 		<Box
 			sx={{
-				...sx,
 				borderRadius: 2,
 				boxShadow: theme.shadows[3],
 				overflow: 'hidden',
 				display: 'flex',
 				flexDirection: 'column',
 				backgroundColor: theme.palette.background.paper,
+				...sx,
 			}}
 		>
 			<Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
