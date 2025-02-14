@@ -1,6 +1,7 @@
 import { useShoppingCartActions } from '@/hooks/useShoppingCartActions'
 import { Schedule, ScheduleTime } from '@/models/Schedule'
 import { Box, Typography, Button } from '@mui/material'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid2'
 import { useShoppingCart } from '@/hooks/useShoppingCart'
@@ -51,32 +52,44 @@ export const SchedulePartOfDay = ({ schedule }: ScheduleProps) => {
 		return {
 			width: '100%',
 			minWidth: '80px',
-			padding: '8px 12px',
+			padding: '6px 10px',
 			textAlign: 'center',
 			justifyContent: 'center',
-			backgroundColor: isDisabled
-				? '#f5f5f5'
-				: isSelected
-				? '#90caf9'
-				: '#ffffff',
-			color: isDisabled
-				? '#bdbdbd'
-				: isSelected
-				? '#1565c0'
-				: '#000000',
-			border: '1px solid',
+			fontSize: '0.9rem',
 			borderRadius: '8px',
-			borderColor: isDisabled
-				? '#e0e0e0'
+			border: '1px solid',
+			transition: 'all 0.3s ease',
+
+			// Colores según estado
+			backgroundColor: isDisabled
+				? 'grey.200'
 				: isSelected
-				? '#42a5f5'
-				: '#90caf9',
+				? 'primary.main'
+				: 'background.paper',
+
+			color: isDisabled
+				? 'grey.500'
+				: isSelected
+				? 'common.white'
+				: 'text.primary',
+
+			borderColor: isDisabled
+				? 'grey.300'
+				: isSelected
+				? 'primary.dark'
+				: 'primary.light',
+
 			'&:hover': {
 				backgroundColor: isDisabled
-					? '#f5f5f5'
+					? 'grey.200'
 					: isSelected
-					? '#64b5f6'
-					: '#e3f2fd',
+					? 'primary.dark'
+					: 'primary.light',
+			},
+
+			'& .MuiButton-startIcon': {
+				fontSize: '1.1rem', // Ajuste de tamaño del icono
+				color: isSelected ? 'common.white' : 'primary.main',
 			},
 		}
 	}
@@ -141,6 +154,10 @@ export const SchedulePartOfDay = ({ schedule }: ScheduleProps) => {
 											disabled={time.isBooked}
 											onClick={() => handleAddAppointment(time)}
 											sx={getButtonStyles(time)}
+											tabIndex={0}
+											startIcon={
+												<AccessTimeIcon fontSize="inherit" />
+											}
 										>
 											{time.time}
 										</Button>
