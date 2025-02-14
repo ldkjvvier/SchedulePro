@@ -130,8 +130,8 @@ const ServiceInfo = ({ cart }: { cart: any }) => {
 				<Chip
 					label={`${cart.service.duration}`}
 					size="small"
-					color="primary"
-					variant="outlined"
+					color="default"
+					variant="filled"
 				/>
 			</Stack>
 			<Stack
