@@ -3,7 +3,14 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { TextField, Button, Box, Typography } from '@mui/material'
+import {
+	TextField,
+	Button,
+	Box,
+	Typography,
+	FormControl,
+	FormLabel,
+} from '@mui/material'
 
 const formSchema = z.object({
 	name: z
@@ -18,9 +25,13 @@ export type ContactFormData = z.infer<typeof formSchema>
 
 interface ContactFormProps {
 	onSubmit: (data: ContactFormData) => void
+	prevStep: () => void
 }
 
-export function ContactForm({ onSubmit }: ContactFormProps) {
+export function ContactForm({
+	onSubmit,
+	prevStep,
+}: ContactFormProps) {
 	const {
 		register,
 		handleSubmit,
@@ -54,48 +65,63 @@ export function ContactForm({ onSubmit }: ContactFormProps) {
 			<Typography variant="h5" sx={{ textAlign: 'center', mb: 2 }}>
 				Datos de contacto
 			</Typography>
-			<TextField
-				label="Nombre completo"
-				{...register('name')}
-				error={!!errors.name}
-				helperText={errors.name?.message}
-				fullWidth
-			/>
-			<TextField
-				label="Email"
-				type="email"
-				{...register('email')}
-				error={!!errors.email}
-				helperText={errors.email?.message}
-				fullWidth
-			/>
-			<TextField
-				label="Teléfono"
-				type="tel"
-				{...register('phone')}
-				error={!!errors.phone}
-				helperText={errors.phone?.message}
-				fullWidth
-			/>
-			<TextField
-				label="Notas adicionales (opcional)"
-				multiline
-				rows={4}
-				{...register('notes')}
-				fullWidth
-			/>
-			<Button
-				type="submit"
-				variant="contained"
+
+			<FormControl fullWidth>
+				<FormLabel>Nombre completo</FormLabel>
+				<TextField
+					{...register('name')}
+					error={!!errors.name}
+					helperText={errors.name?.message}
+				/>
+			</FormControl>
+
+			<FormControl fullWidth>
+				<FormLabel>Email</FormLabel>
+				<TextField
+					type="email"
+					{...register('email')}
+					error={!!errors.email}
+					helperText={errors.email?.message}
+				/>
+			</FormControl>
+
+			<FormControl fullWidth>
+				<FormLabel>Teléfono</FormLabel>
+				<TextField
+					type="tel"
+					{...register('phone')}
+					error={!!errors.phone}
+					helperText={errors.phone?.message}
+				/>
+			</FormControl>
+
+			<FormControl fullWidth>
+				<FormLabel>Notas adicionales (opcional)</FormLabel>
+				<TextField multiline rows={4} {...register('notes')} />
+			</FormControl>
+
+			<Box
 				sx={{
-					backgroundColor: 'primary.main',
-					color: 'white',
-					mt: 2,
-					'&:hover': { backgroundColor: 'primary.dark' },
+					display: 'flex',
+					justifyContent: 'space-between',
+					mt: 3,
 				}}
 			>
-				Enviar
-			</Button>
+				<Button variant="outlined" onClick={prevStep}>
+					Atrás
+				</Button>
+				<Button
+					type="submit"
+					variant="contained"
+					sx={{
+						backgroundColor: 'primary.main',
+						color: 'white',
+						'&:hover': { backgroundColor: 'primary.dark' },
+					}}
+				>
+					Enviar
+				</Button>
+			</Box>
 		</Box>
 	)
 }
