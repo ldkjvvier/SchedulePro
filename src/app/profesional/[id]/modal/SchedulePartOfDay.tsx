@@ -19,8 +19,6 @@ const timeRanges = [
 export const SchedulePartOfDay = ({ schedule }: ScheduleProps) => {
 	const [selectedId, setSelectedId] = useState<string | null>(null)
 	const cart = useShoppingCart()
-	console.log(selectedId)
-	console.log(schedule)
 	const { addAppointmentToCart, clearCartAppointment } =
 		useShoppingCartActions()
 	const handleAddAppointment = (time: ScheduleTime): void => {
