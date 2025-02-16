@@ -64,6 +64,7 @@ export const ScheduleModalWrapper = ({
 								position: 'absolute',
 								top: 8,
 								right: 8,
+								zIndex: 1000,
 								color: theme.palette.text.primary,
 							}}
 							aria-label="Cerrar"
