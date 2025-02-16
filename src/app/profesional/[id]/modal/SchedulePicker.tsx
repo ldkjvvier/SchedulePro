@@ -19,6 +19,9 @@ import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
 import { useShoppingCart } from '@/hooks/useShoppingCart'
 import { formatPrice } from '@/utils/formatPrice'
+import { Stepper } from './Stepper'
+
+const STEPS = ['Fecha y hora', 'Datos de contacto', 'Confirmación']
 
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
@@ -44,15 +47,19 @@ export const SchedulePicker: React.FC = () => {
 	return (
 		<Box
 			display="flex"
+			flexDirection="column"
 			justifyContent="center"
 			alignItems="center"
 			width="100%"
 			height="100%"
 			color={theme.palette.text.primary}
 		>
+			<Box width={{ xs: '100%', sm: '80%', md: '70%' }} mb={4}>
+				<Stepper steps={STEPS} currentStep={1} />
+			</Box>
 			<Box
 				width={{ xs: '100%', sm: '90%', md: '85%', lg: '75%' }}
-				height="90%"
+				height="auto"
 				padding={theme.spacing(2)}
 				display="flex"
 				flexDirection={{ xs: 'column', md: 'row' }}
@@ -61,7 +68,7 @@ export const SchedulePicker: React.FC = () => {
 				gap={4}
 			>
 				<CustomBox
-					sx={{ width: { xs: '90%', sm: '80%', md: '60%' } }}
+					sx={{ width: { xs: '100%', sm: '80%', md: '60%' } }}
 					icon={
 						<CalendarMonthOutlined sx={{ mr: 1 }} color="primary" />
 					}
