@@ -5,6 +5,10 @@ import {
 	Paper,
 	useTheme,
 	Box,
+	Button,
+	Card,
+	CardContent,
+	CardHeader,
 } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { useState } from 'react'
@@ -55,12 +59,12 @@ export const ScheduleModalWrapper = ({
 						sx={{
 							display: 'flex',
 							flexDirection: 'column',
-							justifyContent: 'space-between',
+							justifyContent: 'center',
+							alignItems: 'center',
 							position: 'fixed',
 							bottom: 0,
 							left: 0,
 							width: '100%',
-							height: '100%',
 							maxHeight: '100dvh',
 							bgcolor: theme.palette.background.default,
 							boxShadow: theme.shadows[5],
@@ -84,28 +88,56 @@ export const ScheduleModalWrapper = ({
 						</IconButton>
 
 						{/* Contenido del modal */}
-
 						<Box
-							justifyItems={'center'}
-							px={{
-								xs: 2,
-								sm: 24,
+							sx={{
+								display: 'flex',
+								flexDirection: 'column',
+								alignItems: 'center',
+								justifyContent: 'center',
+								width: '100%',
+								padding: 2,
+								mt: 4,
 							}}
-							mb={4}
 						>
 							<Stepper steps={STEPS} currentStep={currentStep} />
 						</Box>
 						{currentStep === 0 && (
 							<SchedulePicker nextStep={handleNextStep} />
 						)}
-
 						{currentStep === 1 && (
-							<ContactForm
-								onSubmit={(data: ContactFormData) => {
-									console.log(data)
-									handleNextStep()
+							<Box
+								sx={{
+									width: '100%',
+									display: 'flex',
+									justifyContent: 'center',
 								}}
-							/>
+							>
+								<Card
+									sx={{
+										backgroundColor: 'transparent',
+										display: 'flex',
+										flexDirection: 'column',
+										justifyContent: 'space-between',
+										maxWidth: 500,
+										width: '100%',
+									}}
+								>
+									<CardHeader>
+										<h2 className="text-xl font-semibold">
+											Datos de contacto
+										</h2>
+									</CardHeader>
+									<CardContent>
+										<ContactForm
+											prevStep={handlePrevStep}
+											onSubmit={(data: ContactFormData) => {
+												console.log(data)
+												handleNextStep()
+											}}
+										/>
+									</CardContent>
+								</Card>
+							</Box>
 						)}
 
 						<Footer />
