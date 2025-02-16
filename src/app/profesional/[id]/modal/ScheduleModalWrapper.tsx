@@ -12,6 +12,7 @@ import { SchedulePicker } from './SchedulePicker'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { Stepper } from './Stepper'
+import { ContactForm, ContactFormData } from './ContactForm'
 
 interface ScheduleModalWrapperProps {
 	children: React.ReactNode
@@ -94,7 +95,19 @@ export const ScheduleModalWrapper = ({
 						>
 							<Stepper steps={STEPS} currentStep={currentStep} />
 						</Box>
-						<SchedulePicker />
+						{currentStep === 0 && (
+							<SchedulePicker nextStep={handleNextStep} />
+						)}
+
+						{currentStep === 1 && (
+							<ContactForm
+								onSubmit={(data: ContactFormData) => {
+									console.log(data)
+									handleNextStep()
+								}}
+							/>
+						)}
+
 						<Footer />
 					</Paper>
 				</Slide>
