@@ -19,11 +19,14 @@ import { DateCarouselCalendar } from './DateCarouselCalendar'
 import { SchedulePartOfDay } from './SchedulePartOfDay'
 import { useShoppingCart } from '@/hooks/useShoppingCart'
 import { formatPrice } from '@/utils/formatPrice'
-import { Stepper } from './Stepper'
 
-const STEPS = ['Fecha y hora', 'Datos de contacto', 'Confirmación']
+interface SchedulePickerProps {
+	nextStep: () => void
+}
 
-export const SchedulePicker: React.FC = () => {
+export const SchedulePicker: React.FC<SchedulePickerProps> = ({
+	nextStep,
+}: SchedulePickerProps) => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 	const theme = useTheme()
 	const cart = useShoppingCart()
@@ -101,7 +104,16 @@ export const SchedulePicker: React.FC = () => {
 						icon={<InfoOutlined sx={{ mr: 1 }} color="primary" />}
 						message="Detalles del Servicio"
 					>
-						<ServiceInfo cart={cart} />
+						<ServiceInfo cart={cart}>
+							<Button
+								variant="contained"
+								color="primary"
+								size="large"
+								onClick={nextStep}
+							>
+								Continuar
+							</Button>
+						</ServiceInfo>
 					</CustomBox>
 				)}
 			</Box>
@@ -109,7 +121,13 @@ export const SchedulePicker: React.FC = () => {
 	)
 }
 
-const ServiceInfo = ({ cart }: { cart: any }) => {
+const ServiceInfo = ({
+	cart,
+	children,
+}: {
+	cart: any
+	children?: React.ReactNode
+}) => {
 	const theme = useTheme()
 
 	return (
@@ -187,11 +205,7 @@ const ServiceInfo = ({ cart }: { cart: any }) => {
 							</Stack>
 						</Stack>
 					</Paper>
-					<Stack>
-						<Button variant="contained" color="primary" size="large">
-							Continuar
-						</Button>
-					</Stack>
+					<Stack>{children}</Stack>
 				</>
 			)}
 		</Stack>
