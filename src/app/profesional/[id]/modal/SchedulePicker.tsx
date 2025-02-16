@@ -25,6 +25,7 @@ const STEPS = ['Fecha y hora', 'Datos de contacto', 'Confirmación']
 
 export const SchedulePicker: React.FC = () => {
 	const [selectedDate, setSelectedDate] = useState<Date>(new Date())
+	const [currentStep, setCurrentStep] = useState(0)
 	const theme = useTheme()
 	const cart = useShoppingCart()
 	const {
@@ -44,6 +45,13 @@ export const SchedulePicker: React.FC = () => {
 		setSelectedDate(date)
 	}, [])
 
+	const handleNextStep = () => {
+		if (currentStep === STEPS.length - 1) return
+		if (!cart.appointment) return
+		setCurrentStep((prev) => prev + 1)
+	}
+	const handlePrevStep = () => setCurrentStep((prev) => prev - 1)
+
 	return (
 		<Box
 			display="flex"
@@ -55,7 +63,7 @@ export const SchedulePicker: React.FC = () => {
 			color={theme.palette.text.primary}
 		>
 			<Box width={{ xs: '100%', sm: '80%', md: '70%' }} mb={4}>
-				<Stepper steps={STEPS} currentStep={1} />
+				<Stepper steps={STEPS} currentStep={currentStep} />
 			</Box>
 			<Box
 				width={{ xs: '100%', sm: '90%', md: '85%', lg: '75%' }}
@@ -104,7 +112,10 @@ export const SchedulePicker: React.FC = () => {
 						icon={<InfoOutlined sx={{ mr: 1 }} color="primary" />}
 						message="Detalles del Servicio"
 					>
-						<ServiceInfo cart={cart} />
+						<ServiceInfo
+							cart={cart}
+							handleNextStep={handleNextStep}
+						/>
 					</CustomBox>
 				)}
 			</Box>
@@ -112,7 +123,13 @@ export const SchedulePicker: React.FC = () => {
 	)
 }
 
-const ServiceInfo = ({ cart }: { cart: any }) => {
+const ServiceInfo = ({
+	cart,
+	handleNextStep,
+}: {
+	cart: any
+	handleNextStep: () => void
+}) => {
 	const theme = useTheme()
 
 	return (
@@ -191,8 +208,15 @@ const ServiceInfo = ({ cart }: { cart: any }) => {
 						</Stack>
 					</Paper>
 					<Stack>
-						<Button variant="contained" color="primary" size="large">
-							Confirmar reserva
+						<Button
+							variant="contained"
+							color="primary"
+							size="large"
+							onClick={() => {
+								handleNextStep()
+							}}
+						>
+							Continuar
 						</Button>
 					</Stack>
 				</>
