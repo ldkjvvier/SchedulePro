@@ -4,21 +4,31 @@ import {
 	Slide,
 	Paper,
 	useTheme,
+	Box,
 } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import { useState } from 'react'
 import { SchedulePicker } from './SchedulePicker'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { Stepper } from './Stepper'
 
 interface ScheduleModalWrapperProps {
 	children: React.ReactNode
 }
+const STEPS = ['Fecha y hora', 'Datos de contacto', 'Confirmación']
 
 export const ScheduleModalWrapper = ({
 	children,
 }: ScheduleModalWrapperProps) => {
 	const [open, setOpen] = useState(false)
+	const [currentStep, setCurrentStep] = useState(0)
+
+	const handleNextStep = () => {
+		if (currentStep === STEPS.length - 1) return
+		setCurrentStep((prev) => prev + 1)
+	}
+	const handlePrevStep = () => setCurrentStep((prev) => prev - 1)
 	const handleOpen = () => setOpen(true)
 	const handleClose = () => setOpen(false)
 
@@ -73,6 +83,10 @@ export const ScheduleModalWrapper = ({
 						</IconButton>
 
 						{/* Contenido del modal */}
+
+						<Box width={{ xs: '100%', sm: '80%', md: '70%' }} mb={4}>
+							<Stepper steps={STEPS} currentStep={currentStep} />
+						</Box>
 						<SchedulePicker />
 						<Footer />
 					</Paper>
