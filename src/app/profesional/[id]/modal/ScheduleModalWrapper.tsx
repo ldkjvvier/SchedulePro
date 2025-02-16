@@ -84,7 +84,14 @@ export const ScheduleModalWrapper = ({
 
 						{/* Contenido del modal */}
 
-						<Box width={{ xs: '100%', sm: '80%', md: '70%' }} mb={4}>
+						<Box
+							justifyItems={'center'}
+							px={{
+								xs: 2,
+								sm: 24,
+							}}
+							mb={4}
+						>
 							<Stepper steps={STEPS} currentStep={currentStep} />
 						</Box>
 						<SchedulePicker />
