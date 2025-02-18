@@ -5,7 +5,7 @@ import {
 	Paper,
 	useTheme,
 	Box,
-	Button,
+	Typography,
 	Card,
 	CardContent,
 	CardHeader,
@@ -60,7 +60,6 @@ export const ScheduleModalWrapper = ({
 							display: 'flex',
 							flexDirection: 'column',
 							justifyContent: 'space-between',
-							position: 'fixed',
 							bottom: 0,
 							left: 0,
 							width: '100%',
@@ -71,21 +70,17 @@ export const ScheduleModalWrapper = ({
 							overflow: 'hidden',
 						}}
 					>
-						<Header />
-
-						<IconButton
-							onClick={handleClose}
-							sx={{
-								position: 'absolute',
-								top: 8,
-								right: 8,
-								zIndex: 1000,
-								color: theme.palette.text.primary,
-							}}
-							aria-label="Cerrar"
-						>
-							<CloseIcon />
-						</IconButton>
+						<Header>
+							<IconButton
+								onClick={handleClose}
+								sx={{
+									color: theme.palette.text.primary,
+								}}
+								aria-label="Cerrar"
+							>
+								<CloseIcon />
+							</IconButton>
+						</Header>
 
 						{/* Contenido del modal */}
 						<Box
@@ -98,45 +93,43 @@ export const ScheduleModalWrapper = ({
 							}}
 						>
 							<Stepper steps={STEPS} currentStep={currentStep} />
-						</Box>
-						{currentStep === 0 && (
-							<SchedulePicker nextStep={handleNextStep} />
-						)}
-						{currentStep === 1 && (
-							<Box
-								sx={{
-									width: '100%',
-									display: 'flex',
-									justifyContent: 'center',
-								}}
-							>
-								<Card
+							{currentStep === 0 && (
+								<SchedulePicker nextStep={handleNextStep} />
+							)}
+							{currentStep === 1 && (
+								<Box
 									sx={{
-										backgroundColor: 'transparent',
-										display: 'flex',
-										flexDirection: 'column',
-										justifyContent: 'space-between',
-										maxWidth: 500,
 										width: '100%',
+										display: 'flex',
+										justifyContent: 'center',
 									}}
 								>
-									<CardHeader>
-										<h2 className="text-xl font-semibold">
-											Datos de contacto
-										</h2>
-									</CardHeader>
-									<CardContent>
-										<ContactForm
-											prevStep={handlePrevStep}
-											onSubmit={(data: ContactFormData) => {
-												console.log(data)
-												handleNextStep()
-											}}
-										/>
-									</CardContent>
-								</Card>
-							</Box>
-						)}
+									<Card
+										sx={{
+											backgroundColor: 'background.paper',
+											display: 'flex',
+											flexDirection: 'column',
+											justifyContent: 'space-between',
+											maxWidth: 500,
+											width: '100%',
+											p: 3,
+											borderRadius: 2,
+											boxShadow: 3,
+										}}
+									>
+										<CardContent sx={{ p: 0 }}>
+											<ContactForm
+												prevStep={handlePrevStep}
+												onSubmit={(data: ContactFormData) => {
+													console.log(data)
+													handleNextStep()
+												}}
+											/>
+										</CardContent>
+									</Card>
+								</Box>
+							)}
+						</Box>
 
 						<Footer />
 					</Paper>
