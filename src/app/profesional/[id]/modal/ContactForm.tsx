@@ -1,5 +1,3 @@
-'use client'
-
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -56,10 +54,6 @@ export function ContactForm({
 				gap: 2,
 				maxWidth: 400,
 				margin: 'auto',
-				padding: 3,
-				borderRadius: 2,
-				boxShadow: 3,
-				backgroundColor: 'background.paper',
 			}}
 		>
 			<Typography variant="h5" sx={{ textAlign: 'center', mb: 2 }}>
