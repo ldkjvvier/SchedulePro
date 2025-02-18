@@ -4,7 +4,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import HeaderBase from '@/app/components/HeaderBase'
 
-export const Header = () => {
+interface HeaderProps {
+	children?: React.ReactNode
+}
+
+export const Header = ({ children }: HeaderProps) => {
 	return (
 		<HeaderBase>
 			<Link className="tw-flex tw-items-center" href="/">
@@ -21,6 +25,8 @@ export const Header = () => {
 					SchedulePro
 				</Typography>
 			</Link>
+
+			{children}
 		</HeaderBase>
 	)
 }
