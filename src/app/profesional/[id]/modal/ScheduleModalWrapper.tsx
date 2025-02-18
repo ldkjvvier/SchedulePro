@@ -59,12 +59,12 @@ export const ScheduleModalWrapper = ({
 						sx={{
 							display: 'flex',
 							flexDirection: 'column',
-							justifyContent: 'center',
-							alignItems: 'center',
+							justifyContent: 'space-between',
 							position: 'fixed',
 							bottom: 0,
 							left: 0,
 							width: '100%',
+							height: '100%',
 							maxHeight: '100dvh',
 							bgcolor: theme.palette.background.default,
 							boxShadow: theme.shadows[5],
@@ -92,11 +92,9 @@ export const ScheduleModalWrapper = ({
 							sx={{
 								display: 'flex',
 								flexDirection: 'column',
-								alignItems: 'center',
-								justifyContent: 'center',
 								width: '100%',
 								padding: 2,
-								mt: 4,
+								mt: 1,
 							}}
 						>
 							<Stepper steps={STEPS} currentStep={currentStep} />
