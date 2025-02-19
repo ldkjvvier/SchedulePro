@@ -83,6 +83,10 @@ export const SchedulePartOfDay = ({ schedule }: ScheduleProps) => {
 					: isSelected
 					? 'primary.dark'
 					: 'primary.light',
+				color: 'grey.300',
+				'& .MuiButton-startIcon': {
+					color: 'grey.300',
+				},
 			},
 
 			'& .MuiButton-startIcon': {
