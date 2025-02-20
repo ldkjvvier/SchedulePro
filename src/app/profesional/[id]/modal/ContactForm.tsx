@@ -65,6 +65,7 @@ export function ContactForm({
 				<TextField
 					{...register('name')}
 					error={!!errors.name}
+					label="Tu nombre"
 					helperText={errors.name?.message}
 				/>
 			</FormControl>
@@ -74,6 +75,7 @@ export function ContactForm({
 				<TextField
 					type="email"
 					{...register('email')}
+					label="tu@gmail.com"
 					error={!!errors.email}
 					helperText={errors.email?.message}
 				/>
@@ -85,13 +87,19 @@ export function ContactForm({
 					type="tel"
 					{...register('phone')}
 					error={!!errors.phone}
+					label="+56 9 1234 5678"
 					helperText={errors.phone?.message}
 				/>
 			</FormControl>
 
 			<FormControl fullWidth>
 				<FormLabel>Notas adicionales (opcional)</FormLabel>
-				<TextField multiline rows={4} {...register('notes')} />
+				<TextField
+					multiline
+					rows={4}
+					{...register('notes')}
+					label="Información adicional para el barbero"
+				/>
 			</FormControl>
 
 			<Box
