@@ -93,11 +93,11 @@ export function ContactForm({
 
 			<FormControl fullWidth>
 				<FormLabel>Notas adicionales (opcional)</FormLabel>
-				<TextField
+				<Input
 					multiline
 					rows={4}
 					{...register('notes')}
-					label="Información adicional para el barbero"
+					placeholder="Información adicional para el barbero"
 				/>
 			</FormControl>
 
