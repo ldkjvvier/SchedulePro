@@ -110,8 +110,7 @@ export const ScheduleModalWrapper = ({
 											display: 'flex',
 											flexDirection: 'column',
 											justifyContent: 'space-between',
-											maxWidth: 500,
-											width: '100%',
+
 											p: 3,
 											borderRadius: 2,
 											boxShadow: 3,

@@ -52,7 +52,7 @@ export function ContactForm({
 				display: 'flex',
 				flexDirection: 'column',
 				gap: 2,
-				maxWidth: 400,
+				width: 350,
 				margin: 'auto',
 			}}
 		>
