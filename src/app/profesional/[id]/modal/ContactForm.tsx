@@ -8,6 +8,7 @@ import {
 	Typography,
 	FormControl,
 	FormLabel,
+	Input,
 } from '@mui/material'
 
 const formSchema = z.object({
@@ -62,33 +63,31 @@ export function ContactForm({
 
 			<FormControl fullWidth>
 				<FormLabel>Nombre completo</FormLabel>
-				<TextField
+				<Input
+					id="name"
 					{...register('name')}
 					error={!!errors.name}
-					label="Tu nombre"
-					helperText={errors.name?.message}
+					placeholder="Tu nombre"
 				/>
 			</FormControl>
 
 			<FormControl fullWidth>
 				<FormLabel>Email</FormLabel>
-				<TextField
+				<Input
 					type="email"
 					{...register('email')}
-					label="tu@gmail.com"
+					placeholder="tu@gmail.com"
 					error={!!errors.email}
-					helperText={errors.email?.message}
 				/>
 			</FormControl>
 
 			<FormControl fullWidth>
 				<FormLabel>Teléfono</FormLabel>
-				<TextField
+				<Input
 					type="tel"
 					{...register('phone')}
 					error={!!errors.phone}
-					label="+56 9 1234 5678"
-					helperText={errors.phone?.message}
+					placeholder="+56 9 1234 5678"
 				/>
 			</FormControl>
 
