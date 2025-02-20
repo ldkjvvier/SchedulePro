@@ -1,14 +1,13 @@
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import {
-	TextField,
-	Button,
 	Box,
 	Typography,
+	TextField,
+	Button,
 	FormControl,
-	FormLabel,
-	Input,
+	FormHelperText,
 } from '@mui/material'
 
 const formSchema = z.object({
@@ -32,7 +31,7 @@ export function ContactForm({
 	prevStep,
 }: ContactFormProps) {
 	const {
-		register,
+		control,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<ContactFormData>({
@@ -61,46 +60,78 @@ export function ContactForm({
 				Datos de contacto
 			</Typography>
 
+			{/* Nombre */}
+			<FormControl fullWidth error={!!errors.name}>
+				<Controller
+					name="name"
+					control={control}
+					render={({ field }) => (
+						<TextField
+							label="Nombre completo"
+							placeholder="Tu nombre"
+							variant="outlined"
+							{...field}
+						/>
+					)}
+				/>
+				<FormHelperText>{errors.name?.message}</FormHelperText>
+			</FormControl>
+
+			{/* Email */}
+			<FormControl fullWidth error={!!errors.email}>
+				<Controller
+					name="email"
+					control={control}
+					render={({ field }) => (
+						<TextField
+							label="Email"
+							type="email"
+							placeholder="tu@gmail.com"
+							variant="outlined"
+							{...field}
+						/>
+					)}
+				/>
+				<FormHelperText>{errors.email?.message}</FormHelperText>
+			</FormControl>
+
+			{/* Teléfono */}
+			<FormControl fullWidth error={!!errors.phone}>
+				<Controller
+					name="phone"
+					control={control}
+					render={({ field }) => (
+						<TextField
+							label="Teléfono"
+							type="tel"
+							placeholder="+56 9 1234 5678"
+							variant="outlined"
+							{...field}
+						/>
+					)}
+				/>
+				<FormHelperText>{errors.phone?.message}</FormHelperText>
+			</FormControl>
+
+			{/* Notas */}
 			<FormControl fullWidth>
-				<FormLabel>Nombre completo</FormLabel>
-				<Input
-					id="name"
-					{...register('name')}
-					error={!!errors.name}
-					placeholder="Tu nombre"
+				<Controller
+					name="notes"
+					control={control}
+					render={({ field }) => (
+						<TextField
+							label="Notas adicionales (opcional)"
+							multiline
+							rows={4}
+							placeholder="Información adicional para el barbero..."
+							variant="outlined"
+							{...field}
+						/>
+					)}
 				/>
 			</FormControl>
 
-			<FormControl fullWidth>
-				<FormLabel>Email</FormLabel>
-				<Input
-					type="email"
-					{...register('email')}
-					placeholder="tu@gmail.com"
-					error={!!errors.email}
-				/>
-			</FormControl>
-
-			<FormControl fullWidth>
-				<FormLabel>Teléfono</FormLabel>
-				<Input
-					type="tel"
-					{...register('phone')}
-					error={!!errors.phone}
-					placeholder="+56 9 1234 5678"
-				/>
-			</FormControl>
-
-			<FormControl fullWidth>
-				<FormLabel>Notas adicionales (opcional)</FormLabel>
-				<Input
-					multiline
-					rows={4}
-					{...register('notes')}
-					placeholder="Información adicional para el barbero"
-				/>
-			</FormControl>
-
+			{/* Botones */}
 			<Box
 				sx={{
 					display: 'flex',
