@@ -51,7 +51,7 @@ export function ContactForm({
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				gap: 2,
+				gap: 1,
 				width: 350,
 				margin: 'auto',
 			}}
@@ -74,7 +74,9 @@ export function ContactForm({
 						/>
 					)}
 				/>
-				<FormHelperText>{errors.name?.message}</FormHelperText>
+				<FormHelperText sx={{ minHeight: '20px' }}>
+					{errors.name?.message || ' '}
+				</FormHelperText>
 			</FormControl>
 
 			{/* Email */}
@@ -92,7 +94,9 @@ export function ContactForm({
 						/>
 					)}
 				/>
-				<FormHelperText>{errors.email?.message}</FormHelperText>
+				<FormHelperText sx={{ minHeight: '20px' }}>
+					{errors.email?.message || ' '}
+				</FormHelperText>
 			</FormControl>
 
 			{/* Teléfono */}
@@ -110,7 +114,9 @@ export function ContactForm({
 						/>
 					)}
 				/>
-				<FormHelperText>{errors.phone?.message}</FormHelperText>
+				<FormHelperText sx={{ minHeight: '20px' }}>
+					{errors.phone?.message || ' '}
+				</FormHelperText>
 			</FormControl>
 
 			{/* Notas */}
