@@ -55,7 +55,15 @@ const CustomStepLabel = styled(StepLabel)(({ theme }) => ({
 
 export function Stepper({ steps, currentStep }: StepperProps) {
 	return (
-		<Box sx={{ width: '100%', py: 2 }}>
+		<Box
+			sx={{
+				width: {
+					sm: '100%',
+					md: '50%',
+				},
+				py: 2,
+			}}
+		>
 			<MuiStepper
 				connector={<CustomConnector />}
 				activeStep={currentStep}

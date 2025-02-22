@@ -87,6 +87,7 @@ export const ScheduleModalWrapper = ({
 							sx={{
 								display: 'flex',
 								flexDirection: 'column',
+								alignItems: 'center',
 								width: '100%',
 								padding: 2,
 								mt: 1,
