@@ -8,24 +8,16 @@ import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import Drawer from '@mui/material/Drawer'
 import Image from 'next/image'
+import Box from '@mui/material/Box'
 import HeaderBase from './HeaderBase'
 
 const Header = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
 	const navLinks = [
-		{
-			title: 'Inicio',
-			url: '/',
-		},
-		{
-			title: 'Servicios',
-			url: '/services',
-		},
-		{
-			title: 'Contacto',
-			url: '/contact',
-		},
+		{ title: 'Inicio', url: '/' },
+		{ title: 'Servicios', url: '/services' },
+		{ title: 'Contacto', url: '/contact' },
 	]
 
 	const toggleDrawer = () => {
@@ -34,61 +26,109 @@ const Header = () => {
 
 	return (
 		<HeaderBase>
-			<Link className="tw-flex tw-items-center" href="/">
-				<Image
-					src="/page_logo.png"
-					alt="Barbería Logo"
-					width={40}
-					height={40}
-				/>
-				<Typography
-					variant="h6"
-					className="tw-ml-3 tw-text-text-main tw-text-xl tw-font-semibold"
+			<Link href="/" passHref>
+				<Box
+					sx={{
+						display: 'flex',
+						alignItems: 'center',
+						textDecoration: 'none',
+					}}
 				>
-					SchedulePro
-				</Typography>
+					<Image
+						src="/page_logo.png"
+						alt="Barbería Logo"
+						width={40}
+						height={40}
+					/>
+					<Typography
+						variant="h6"
+						sx={{
+							ml: 2,
+							color: 'text.primary',
+							fontSize: '1.25rem',
+							fontWeight: 600,
+						}}
+					>
+						SchedulePro
+					</Typography>
+				</Box>
 			</Link>
 
-			<div className="tw-flex lg:tw-hidden">
+			<Box sx={{ display: { xs: 'flex', lg: 'none' }, ml: 'auto' }}>
 				<IconButton
 					onClick={toggleDrawer}
-					className="tw-text-text-main"
+					sx={{ color: 'text.primary' }}
 				>
 					{isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
 				</IconButton>
-			</div>
+			</Box>
 
-			<nav className="tw-hidden lg:tw-flex tw-gap-4">
+			<Box
+				component="nav"
+				sx={{
+					display: { xs: 'none', lg: 'flex' },
+					gap: 2,
+					ml: 'auto',
+				}}
+			>
 				{navLinks.map((link) => (
 					<Link key={link.url} href={link.url} passHref>
 						<Button
-							className="tw-text-text-main hover:tw-bg-secondary hover:tw-text-text-main tw-rounded-lg tw-px-4"
 							variant="text"
+							sx={{
+								color: 'text.primary',
+								borderRadius: 2,
+								px: 2,
+								'&:hover': {
+									backgroundColor: 'secondary.main',
+									color: 'text.primary',
+								},
+							}}
 						>
 							{link.title}
 						</Button>
 					</Link>
 				))}
-			</nav>
+			</Box>
 
 			<Drawer
 				anchor="right"
 				open={isDrawerOpen}
 				onClose={toggleDrawer}
 			>
-				<div className="tw-p-4 tw-w-64 tw-bg-primary tw-h-full">
+				<Box
+					sx={{
+						p: 2,
+						width: 256,
+						height: '100%',
+						backgroundColor: 'primary.main',
+					}}
+				>
 					<Typography
 						variant="h6"
-						className="tw-mb-4 tw-text-text-main"
+						sx={{
+							mb: 2,
+							color: 'text.primary',
+						}}
 					>
 						Menú
 					</Typography>
 					{navLinks.map((link) => (
 						<Link key={link.url} href={link.url} passHref>
-							<Button variant="text">{link.title}</Button>
+							<Button
+								variant="text"
+								fullWidth
+								sx={{
+									justifyContent: 'flex-start',
+									color: 'text.primary',
+									mb: 1,
+								}}
+							>
+								{link.title}
+							</Button>
 						</Link>
 					))}
-				</div>
+				</Box>
 			</Drawer>
 		</HeaderBase>
 	)
