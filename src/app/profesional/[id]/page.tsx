@@ -11,12 +11,10 @@ import { useBarber } from '@/hooks/useBarber'
 import { LoadingSkeleton } from './components/loadingSkeleton'
 import Custom404 from '@/app/not-found'
 import { FallbackImage } from '@/app/components/FallbackImage'
-export default function Profesional({
-	params,
-}: {
-	params: { id: string }
-}) {
-	const { data: barber, isLoading } = useBarber(params.id)
+import { useParams } from 'next/navigation'
+export default function Profesional() {
+	const params = useParams()
+	const { data: barber, isLoading } = useBarber(params.id as string)
 
 	if (isLoading) return <LoadingSkeleton />
 	if (!barber) return <Custom404 message="Barber not found" />
