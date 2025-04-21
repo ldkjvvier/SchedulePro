@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import ThemeRegistry from './theme/themeRegistry'
-import './globals.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import QueryProvider from './components/QueryProvider'
 import { Providers } from '@/redux/Providers'
+import Box from '@mui/material/Box'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -31,12 +31,27 @@ export default function RootLayout({
 				<body className={inter.className}>
 					<QueryProvider>
 						<Providers>
-							<main className="tw-flex tw-flex-1 tw-justify-between tw-min-h-screen tw-flex-col tw-bg-transparent">
+							<Box
+								sx={{
+									display: 'flex',
+									flexDirection: 'column',
+									minHeight: '100vh',
+								}}
+							>
 								<Header />
 
-								{children}
+								<Box
+									component="main"
+									sx={{
+										flexGrow: 1,
+										bgcolor: 'transparent',
+									}}
+								>
+									{children}
+								</Box>
+
 								<Footer />
-							</main>
+							</Box>
 						</Providers>
 					</QueryProvider>
 				</body>
