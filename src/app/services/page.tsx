@@ -3,82 +3,257 @@ import Link from 'next/link'
 import { useBarberList } from '@/hooks/useBarberList'
 import { FallbackImage } from '../components/FallbackImage'
 import { BarberSummary } from '@/models/barber'
+import {
+	Box,
+	Typography,
+	Button,
+	Card,
+	CardContent,
+	CardMedia,
+	Grid,
+	Container,
+} from '@mui/material'
 
 function BarberCard({ barber }: { barber: BarberSummary }) {
 	return (
-		<div className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden tw-transform tw-transition-transform tw-duration-300 hover:tw-scale-105">
+		<Card
+			sx={{
+				bgcolor: 'white',
+				boxShadow: 3,
+				borderRadius: 2,
+				border: '1px solid',
+				borderColor: 'primary.main',
+				overflow: 'hidden',
+				transition: 'transform 0.3s',
+				'&:hover': {
+					transform: 'scale(1.05)',
+				},
+			}}
+		>
 			<FallbackImage
 				src={barber.image}
 				alt={barber.name}
 				width={300}
 				height={200}
-				className="tw-w-full tw-h-48 sm:tw-h-56 md:tw-h-64 tw-object-cover"
+				style={{ objectFit: 'cover', width: '100%' }}
 			/>
-			<div className="tw-p-4 sm:tw-p-6">
-				<h2 className="tw-text-xl sm:tw-text-2xl tw-font-semibold tw-mb-2 tw-text-text-main">
+			<CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+				<Typography
+					variant="h6"
+					component="h2"
+					sx={{
+						fontWeight: 600,
+						mb: 1,
+						color: 'text.primary',
+					}}
+				>
 					{barber.name}
-				</h2>
-				<p className="tw-text-text-secondary tw-mb-4 tw-text-sm">
+				</Typography>
+				<Typography
+					variant="body2"
+					sx={{ color: 'text.secondary', mb: 2 }}
+				>
 					{barber.specialty}
-				</p>
-				<Link
+				</Typography>
+				<Button
+					component={Link}
 					href={`/profesional/${barber.id}`}
-					className="tw-inline-block tw-bg-button-primary tw-text-white tw-px-4 sm:tw-px-6 tw-py-2 sm:tw-py-3 tw-rounded-md tw-font-medium tw-shadow hover:tw-bg-button-secondary hover:tw-text-text-main tw-no-underline tw-transition-colors"
+					variant="contained"
+					sx={{
+						px: { xs: 2, sm: 3 },
+						py: { xs: 1, sm: 1.5 },
+						fontWeight: 500,
+						borderRadius: 2,
+						boxShadow: 2,
+						bgcolor: 'primary.main',
+						color: 'white',
+						textTransform: 'none',
+						'&:hover': {
+							color: 'text.primary',
+						},
+					}}
 				>
 					Ver Servicios
-				</Link>
-			</div>
-		</div>
+				</Button>
+			</CardContent>
+		</Card>
 	)
 }
 
 export default function Servicios() {
 	const { data: barberList, isLoading, error } = useBarberList()
 
-	if (isLoading)
+	const skeletonCard = (
+		<Card
+			sx={{
+				bgcolor: 'white',
+				boxShadow: 3,
+				borderRadius: 2,
+				border: '1px solid',
+				borderColor: 'primary.main',
+				overflow: 'hidden',
+			}}
+		>
+			<Box
+				sx={{
+					width: '100%',
+					height: { xs: 192, sm: 224, md: 256 },
+					bgcolor: 'grey.300',
+					animation: 'pulse 1.5s infinite',
+				}}
+			/>
+			<CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+				<Box
+					sx={{
+						width: '75%',
+						height: 16,
+						mb: 1,
+						bgcolor: 'grey.300',
+						animation: 'pulse 1.5s infinite',
+					}}
+				/>
+				<Box
+					sx={{
+						width: '50%',
+						height: 16,
+						mb: 2,
+						bgcolor: 'grey.300',
+						animation: 'pulse 1.5s infinite',
+					}}
+				/>
+				<Box
+					sx={{
+						width: '50%',
+						height: 16,
+						bgcolor: 'grey.300',
+						animation: 'pulse 1.5s infinite',
+					}}
+				/>
+			</CardContent>
+		</Card>
+	)
+
+	if (isLoading) {
 		return (
-			<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
-				<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
-					<h1 className="tw-text-center tw-text-3xl sm:tw-text-4xl tw-font-bold tw-mb-4 tw-text-text-main">
-						Nuestros Barberos
-					</h1>
-					<div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-6">
-						{Array.from({ length: 4 }).map((_, index) => (
-							<div
-								className="tw-bg-white tw-shadow-lg tw-rounded-lg tw-border tw-border-accent tw-overflow-hidden"
-								aria-hidden="true"
-								key={index}
-							>
-								<div className="tw-w-full tw-h-48 sm:tw-h-56 md:tw-h-64 tw-bg-gray-200 tw-animate-pulse"></div>
-								<div className="tw-p-4 sm:tw-p-6">
-									<div className="tw-w-3/4 tw-h-4 tw-mb-2 tw-bg-gray-200 tw-animate-pulse"></div>
-									<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
-									<div className="tw-w-1/2 tw-h-4 tw-mb-4 tw-bg-gray-200 tw-animate-pulse"></div>
-								</div>
-							</div>
-						))}
-					</div>
-				</div>
-			</div>
+			<>
+				<Box
+					sx={{
+						bgcolor: 'primary.main',
+						color: 'white',
+						py: { xs: 6, md: 10 },
+						width: '100%',
+						textAlign: 'center',
+					}}
+				>
+					<Container>
+						<Typography
+							variant="h2"
+							component="h1"
+							gutterBottom
+							sx={{
+								fontSize: { xs: '2rem', sm: '2.5rem', md: '2.75rem' },
+							}}
+						>
+							Nuestros Barberos
+						</Typography>
+						<Typography
+							variant="subtitle1"
+							sx={{
+								maxWidth: '800px',
+								mx: 'auto',
+								fontSize: { xs: '1rem', md: '1.1rem' },
+							}}
+						>
+							Conoce a nuestro equipo de profesionales, expertos en
+							diferentes estilos y técnicas de barbería, listos para
+							ofrecerte el mejor servicio.
+						</Typography>
+					</Container>
+				</Box>
+				<Box
+					sx={{
+						py: 12,
+						width: '100%',
+						flex: 1,
+					}}
+				>
+					<Box sx={{ maxWidth: '1200px', mx: 'auto', px: 2, py: 4 }}>
+						<Grid container spacing={3}>
+							{Array.from({ length: 4 }).map((_, index) => (
+								<Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+									{skeletonCard}
+								</Grid>
+							))}
+						</Grid>
+					</Box>
+				</Box>
+			</>
 		)
+	}
 
 	if (error)
-		return <p>Error al cargar los barberos: {error.message}</p>
+		return (
+			<Typography>
+				Error al cargar los barberos: {error.message}
+			</Typography>
+		)
+
 	if (!barberList || barberList.length === 0)
-		return <p>No hay barberos disponibles</p>
+		return <Typography>No hay barberos disponibles</Typography>
 
 	return (
-		<div className="tw-bg-secondary tw-flex-1 tw-w-full tw-py-12">
-			<div className="tw-container tw-mx-auto tw-px-4 tw-py-8">
-				<h1 className="tw-text-center tw-text-3xl sm:tw-text-4xl tw-font-bold tw-mb-4 tw-text-text-main">
-					Nuestros Barberos
-				</h1>
-				<div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-4 tw-gap-6">
-					{barberList.map((barber) => (
-						<BarberCard key={barber.id} barber={barber} />
-					))}
-				</div>
-			</div>
-		</div>
+		<>
+			<Box
+				sx={{
+					bgcolor: 'primary.main',
+					color: 'white',
+					py: { xs: 6, md: 10 },
+					width: '100%',
+					textAlign: 'center',
+				}}
+			>
+				<Container>
+					<Typography
+						variant="h2"
+						component="h1"
+						gutterBottom
+						sx={{
+							fontSize: { xs: '2rem', sm: '2.5rem', md: '2.75rem' },
+						}}
+					>
+						Nuestros Barberos
+					</Typography>
+					<Typography
+						variant="subtitle1"
+						sx={{
+							maxWidth: '800px',
+							mx: 'auto',
+							fontSize: { xs: '1rem', md: '1.1rem' },
+						}}
+					>
+						Conoce a nuestro equipo de profesionales, expertos en
+						diferentes estilos y técnicas de barbería, listos para
+						ofrecerte el mejor servicio.
+					</Typography>
+				</Container>
+			</Box>
+			<Box
+				sx={{
+					py: 12,
+					width: '100%',
+					flex: 1,
+				}}
+			>
+				<Box sx={{ maxWidth: '1200px', mx: 'auto', px: 2, py: 0 }}>
+					<Grid container spacing={3}>
+						{barberList.map((barber) => (
+							<Grid item xs={12} sm={6} md={4} lg={3} key={barber.id}>
+								<BarberCard barber={barber} />
+							</Grid>
+						))}
+					</Grid>
+				</Box>
+			</Box>
+		</>
 	)
 }
