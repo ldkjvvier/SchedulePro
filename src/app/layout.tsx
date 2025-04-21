@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
 	title: 'SchedulePro',
-	description: 'A simple scheduling app',
+	description: 'Una aplicación sencilla para agendar citas',
 }
 
 export default function RootLayout({
@@ -20,7 +20,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang="en">
+		<html lang="es">
 			<head>
 				<meta
 					name="viewport"
