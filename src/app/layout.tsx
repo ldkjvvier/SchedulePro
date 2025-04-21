@@ -43,8 +43,12 @@ export default function RootLayout({
 								<Box
 									component="main"
 									sx={{
-										flexGrow: 1,
-										bgcolor: 'transparent',
+										flex: 1,
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										flexDirection: 'column',
+										overflow: 'hidden',
 									}}
 								>
 									{children}
