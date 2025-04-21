@@ -44,7 +44,7 @@ export const BestCuts = () => {
 			</Typography>
 			<Grid container spacing={4} justifyContent="center">
 				{cuts.map((cut) => (
-					<Grid item xs={12} sm={6} md={4} key={cut.id}>
+					<Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={cut.id}>
 						<Card
 							sx={{
 								borderRadius: 3,

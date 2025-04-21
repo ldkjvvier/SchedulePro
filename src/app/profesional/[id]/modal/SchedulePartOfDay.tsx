@@ -1,9 +1,8 @@
 import { useShoppingCartActions } from '@/hooks/useShoppingCartActions'
 import { Schedule, ScheduleTime } from '@/models/Schedule'
-import { Box, Typography, Button } from '@mui/material'
+import { Box, Typography, Button, Grid } from '@mui/material'
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import { useEffect, useState } from 'react'
-import Grid from '@mui/material/Grid2'
 import { useShoppingCart } from '@/hooks/useShoppingCart'
 
 interface ScheduleProps {

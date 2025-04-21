@@ -180,7 +180,10 @@ export default function Servicios() {
 					<Box sx={{ maxWidth: '1200px', mx: 'auto', px: 2, py: 4 }}>
 						<Grid container spacing={3}>
 							{Array.from({ length: 4 }).map((_, index) => (
-								<Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+								<Grid
+									size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+									key={index}
+								>
 									{skeletonCard}
 								</Grid>
 							))}
@@ -247,7 +250,10 @@ export default function Servicios() {
 				<Box sx={{ maxWidth: '1200px', mx: 'auto', px: 2, py: 0 }}>
 					<Grid container spacing={3}>
 						{barberList.map((barber) => (
-							<Grid item xs={12} sm={6} md={4} lg={3} key={barber.id}>
+							<Grid
+								size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+								key={barber.id}
+							>
 								<BarberCard barber={barber} />
 							</Grid>
 						))}
