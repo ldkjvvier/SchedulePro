@@ -11,31 +11,31 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@fontsource/roboto": "^5.0.14",
-    "@hookform/resolvers": "^4.1.0",
+    "@fontsource/roboto": "^5.2.5",
+    "@hookform/resolvers": "^5.0.1",
     "@mui/icons-material": "^7.0.2",
     "@mui/material": "^7.0.2",
-    "@reduxjs/toolkit": "^2.5.0",
-    "@tanstack/react-query": "^5.62.8",
-    "axios": "^1.7.9",
+    "@reduxjs/toolkit": "^2.7.0",
+    "@tanstack/react-query": "^5.74.4",
+    "axios": "^1.8.4",
     "date-fns": "^4.1.0",
-    "next": "^14.2.20",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^15.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-redux": "^9.2.0",
     "react-slick": "^0.30.3",
     "rut.js": "^2.1.0",
     "slick-carousel": "^1.8.1",
-    "zod": "^3.24.2"
+    "zod": "^3.24.3"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
     "@types/react-slick": "^0.23.13",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.5",
-    "typescript": "^5"
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.25.1",
+    "eslint-config-next": "^15.3.1",
+    "typescript": "^5.8.3"
   }
 }
