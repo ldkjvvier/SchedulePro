@@ -1,8 +1,9 @@
+'use client'
 import React from 'react'
 import Typography from '@mui/material/Typography'
-import Link from 'next/link'
 import Image from 'next/image'
 import HeaderBase from '@/app/components/HeaderBase'
+import { Box } from '@mui/material'
 
 interface HeaderProps {
 	children?: React.ReactNode
@@ -11,7 +12,10 @@ interface HeaderProps {
 export const Header = ({ children }: HeaderProps) => {
 	return (
 		<HeaderBase>
-			<Link className="tw-flex tw-items-center" href="/">
+			<Box
+				component={'link'}
+				sx={{ display: 'flex', alignItems: 'center' }}
+			>
 				<Image
 					src="/page_logo.png"
 					alt="Barbería Logo"
@@ -20,11 +24,15 @@ export const Header = ({ children }: HeaderProps) => {
 				/>
 				<Typography
 					variant="h6"
-					className="tw-ml-3 tw-text-text-main tw-text-xl tw-font-semibold"
+					sx={{
+						fontStyle: 'semibold',
+						fontSize: '1.5rem',
+						textDecoration: 'none',
+					}}
 				>
 					SchedulePro
 				</Typography>
-			</Link>
+			</Box>
 
 			{children}
 		</HeaderBase>
